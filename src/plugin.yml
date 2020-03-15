@@ -3,3 +3,4 @@ name: IMLobby
 author: MangoleHD
 version: 1.0
 api-version: 1.15
+depend: [IMAPI]
