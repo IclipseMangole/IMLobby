@@ -1,20 +1,19 @@
 package IMLobby;
 
 
-import IMLobby.Listener.SettingsInventory;
-import IMLobby.Listener.TeleporterInventory;
+import IMLobby.Listener.StartInventoryListener;
 import IMLobby.Listener.JoinListener;
 import IMLobby.Listener.ParticleListener;
-import IMLobby.LobbyExtras.SchadenListener;
+import IMLobby.Listener.SchadenListener;
 import IMLobby.Commands.cmd_startInventory;
+import IMLobby.Data;
 
-import IMLobby.MySQL.MySQL_LobbySettings;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import static de.Iclipse.IMAPI.IMAPI.register;
 
-public class main extends JavaPlugin {
+public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
@@ -22,6 +21,7 @@ public class main extends JavaPlugin {
         registerListener();
         registerCommands();
         createTables();
+        Data.tablist = new Tablist();
     }
 
     @Override
@@ -33,8 +33,7 @@ public class main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ParticleListener(),this);
         Bukkit.getPluginManager().registerEvents(new JoinListener(),this);
         Bukkit.getPluginManager().registerEvents(new SchadenListener(),this);
-        Bukkit.getPluginManager().registerEvents(new TeleporterInventory(),this);
-        Bukkit.getPluginManager().registerEvents(new SettingsInventory(),this);
+        Bukkit.getPluginManager().registerEvents(new StartInventoryListener(),this);
     }
 
     public void registerCommands() {
@@ -42,6 +41,6 @@ public class main extends JavaPlugin {
     }
 
     public void createTables() {
-        MySQL_LobbySettings.createLobbyTable();
+
     }
 }

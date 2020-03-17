@@ -20,7 +20,7 @@ public class cmd_startInventory {
             noConsole = true,
             minArgs = 0,
             maxArgs = 0,
-            permissions = "im.command.startinventory"
+            permissions = "im.cmd.startinventory"
 
     )
     public void execute(Player p) {
@@ -36,9 +36,21 @@ public class cmd_startInventory {
         ItemMeta sett = settings.getItemMeta();
         sett.setDisplayName("Settings");
         settings.setItemMeta(sett);
+
+        ItemStack enderpearl = new ItemStack(Material.ENDER_PEARL);
+        ItemMeta ender = enderpearl.getItemMeta();
+        ender.setDisplayName("Beam");
+        enderpearl.setItemMeta(ender);
+
+        ItemStack news = new ItemStack(Material.BOOK);
+        ItemMeta n = news.getItemMeta();
+        n.setDisplayName("News");
+        news.setItemMeta(n);
         //Inventory
         i.setItem(0,compass);
         i.setItem(8,settings);
+        i.setItem(1,enderpearl);
+        i.setItem(7,news);
 
     }
 }

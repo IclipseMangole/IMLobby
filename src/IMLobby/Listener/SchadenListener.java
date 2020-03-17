@@ -1,4 +1,4 @@
-package IMLobby.LobbyExtras;
+package IMLobby.Listener;
 
 import net.minecraft.server.v1_15_R1.SoundEffect;
 import org.bukkit.Location;
@@ -18,6 +18,7 @@ public class SchadenListener implements Listener {
             Player p = ((Player) e.getEntity()).getPlayer();
             e.setCancelled(true);
             if(e.getCause().equals(EntityDamageEvent.DamageCause.VOID)){
+                e.setCancelled(true);
                 Location Spawn = new Location(p.getWorld(),0.5,4,0.5,180,0);
                 p.teleport(Spawn);
                 p.playSound(Spawn, Sound.ENTITY_ENDERMAN_TELEPORT,1,1);

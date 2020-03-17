@@ -1,6 +1,6 @@
 package IMLobby.Listener.PopupMenus;
 
-import IMLobby.MySQL.MySQL_LobbySettings;
+import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.Iclipse.IMAPI.Util.menu.MenuItem;
 import de.Iclipse.IMAPI.Util.menu.PopupMenuAPI;
@@ -15,42 +15,68 @@ public class ParticleMenu {
         //Menu
         PopupMenu particles = new PopupMenu("Particles",1);
         //MenuItems
-        MenuItem flame = new MenuItem("Flames", new ItemStack(Material.BLAZE_POWDER)) {
+        MenuItem flames = new MenuItem("Flames", new ItemStack(Material.BLAZE_POWDER)) {
             @Override
             public void onClick(Player player) {
-                MySQL_LobbySettings.setParticles(UUIDFetcher.getUUID(player.getName()), "Flames");
-                player.sendMessage("Verbrenne dich nicht!");
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","flames");
+                player.sendMessage("§6Verbrenne dich nicht!");
+
+                particles.closeMenu(player);
             }
         };
 
         MenuItem water = new MenuItem("Water", new ItemStack(Material.WATER_BUCKET)) {
             @Override
             public void onClick(Player player) {
-                MySQL_LobbySettings.setParticles(UUIDFetcher.getUUID(player.getName()), "Water");
-                player.sendMessage("Du magst nasse Füße haben? Von mir aus.");
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","water");
+                player.sendMessage("§bDu möchtest nasse Füße haben? Von mir aus.");
+
+                particles.closeMenu(player);
             }
         };
 
         MenuItem lava = new MenuItem("Lava", new ItemStack(Material.LAVA_BUCKET)) {
             @Override
             public void onClick(Player player) {
-                MySQL_LobbySettings.setParticles(UUIDFetcher.getUUID(player.getName()), "Lava");
-                player.sendMessage("HEIß, HEIß, HEIß!!!");
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","lava");
+                player.sendMessage("§cHEIß, HEIß, HEIß!!!");
+
+                particles.closeMenu(player);
             }
         };
 
         MenuItem love = new MenuItem("Love", new ItemStack(Material.POPPY)) {
             @Override
             public void onClick(Player player) {
-                MySQL_LobbySettings.setParticles(UUIDFetcher.getUUID(player.getName()), "Love");
-                player.sendMessage("Du bist ja richtig sexy heute...");
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","love");
+                player.sendMessage("§dDu bist ja richtig sexy heute...");
+
+                particles.closeMenu(player);
             }
         };
+
+        MenuItem music = new MenuItem("Music", new ItemStack(Material.NOTE_BLOCK)) {
+            @Override
+            public void onClick(Player player) {
+
+            }
+        };
+
+        MenuItem off = new MenuItem("Off", new ItemStack(Material.BARRIER)) {
+            @Override
+            public void onClick(Player player) {
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","off");
+
+                particles.closeMenu(player);
+            }
+        };
+
         //Menu with Items
-        particles.addMenuItem(flame,  0);
-        particles.addMenuItem(water, 1);
+        particles.addMenuItem(flames,0);
+        particles.addMenuItem(water,1);
         particles.addMenuItem(lava,2);
         particles.addMenuItem(love,3);
+        particles.addMenuItem(off,8);
 
         PopupMenuAPI.switchMenu(p,old,particles);
     }
