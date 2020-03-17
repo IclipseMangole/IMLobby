@@ -8,8 +8,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import static de.Iclipse.IMAPI.Data.dsp;
-import static de.Iclipse.IMAPI.Data.tablist;
+import static IMLobby.Data.dsp;
+import static IMLobby.Data.tablist;
+
 
 public class JoinListener implements Listener {
 

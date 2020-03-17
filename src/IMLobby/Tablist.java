@@ -32,7 +32,7 @@ public class Tablist {
 
 
     public Tablist() {
-        header = "§8«§l " + Data.prefix.replaceAll(Data.symbol, "") + "§r§fLobby§r§8 »";
+        header = "§8«§5§lIM§r§fLobby§r§8 »";
         footer = "§7Server: §e" + Data.instance.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getName();
         port = "\n§7Port: §e" + Bukkit.getPort();
         ranks = "§4Admin §cMod \n §3User";

@@ -8,9 +8,12 @@ import IMLobby.Listener.SchadenListener;
 import IMLobby.Commands.cmd_startInventory;
 import IMLobby.Data;
 
+import de.Iclipse.IMAPI.Functions.Listener.QuitListener;
+import de.Iclipse.IMAPI.Util.Dispatching.Dispatcher;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import static IMLobby.Data.dsp;
 import static de.Iclipse.IMAPI.IMAPI.register;
 
 public class Main extends JavaPlugin {
@@ -22,6 +25,7 @@ public class Main extends JavaPlugin {
         registerCommands();
         createTables();
         Data.tablist = new Tablist();
+        dsp = new Dispatcher(this);
     }
 
     @Override
@@ -34,6 +38,7 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new JoinListener(),this);
         Bukkit.getPluginManager().registerEvents(new SchadenListener(),this);
         Bukkit.getPluginManager().registerEvents(new StartInventoryListener(),this);
+        Bukkit.getPluginManager().registerEvents(new QuitListener(),this);
     }
 
     public void registerCommands() {
