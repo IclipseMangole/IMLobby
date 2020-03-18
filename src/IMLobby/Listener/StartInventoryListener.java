@@ -17,6 +17,7 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import IMLobby.Data;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Timer;
 
@@ -72,6 +73,14 @@ public class StartInventoryListener implements Listener {
                     p.getInventory().setItem(1, enderpearl);
                     Data.enderCooldown.put(p.getName(), System.currentTimeMillis());
                 }
+                p.getInventory().setItem(1,enderpearl);
+            }
+            if(p.getInventory().getItem(1).equals(Material.AIR)){
+                ItemStack ender = new ItemStack(Material.ENDER_PEARL);
+                ItemMeta end = ender.getItemMeta();
+                end.setDisplayName("Beam");
+                ender.setItemMeta(end);
+                p.getInventory().setItem(1,ender);
             }
         }
     }
@@ -112,16 +121,25 @@ public class StartInventoryListener implements Listener {
         if (item.equals(new ItemStack(Material.REPEATER))) {
             p.getInventory().setItem(8, item);
         }
-        if (item.equals(new ItemStack(Material.LEATHER_HELMET))) {
+        if(item.getItemMeta().getDisplayName().endsWith("Helmet")){
             p.getInventory().setHelmet(item);
         }
-        if (item.equals(new ItemStack(Material.LEATHER_CHESTPLATE))) {
+        if(item.getItemMeta().getDisplayName().endsWith("Hat")){
+            p.getInventory().setHelmet(item);
+        }
+        if(item.getItemMeta().getDisplayName().endsWith("Chestplate")){
             p.getInventory().setChestplate(item);
         }
-        if (item.equals(new ItemStack(Material.LEATHER_LEGGINGS))) {
+        if(item.getItemMeta().getDisplayName().endsWith("Tunic")){
+            p.getInventory().setChestplate(item);
+        }
+        if(item.getItemMeta().getDisplayName().endsWith("Leggings")){
             p.getInventory().setLeggings(item);
         }
-        if (item.equals(new ItemStack(Material.LEATHER_BOOTS))) {
+        if(item.getItemMeta().getDisplayName().endsWith("Trousers")){
+            p.getInventory().setLeggings(item);
+        }
+        if(item.getItemMeta().getDisplayName().endsWith("Boots")){
             p.getInventory().setBoots(item);
         }
     }
@@ -145,16 +163,25 @@ public class StartInventoryListener implements Listener {
                 if (item.equals(new ItemStack(Material.REPEATER))) {
                     p.getInventory().setItem(8, item);
                 }
-                if (item.equals(new ItemStack(Material.LEATHER_HELMET))) {
+                if(item.getItemMeta().getDisplayName().endsWith("Helmet")){
                     p.getInventory().setHelmet(item);
                 }
-                if (item.equals(new ItemStack(Material.LEATHER_CHESTPLATE))) {
+                if(item.getItemMeta().getDisplayName().endsWith("Hat")){
+                    p.getInventory().setHelmet(item);
+                }
+                if(item.getItemMeta().getDisplayName().endsWith("Chestplate")){
                     p.getInventory().setChestplate(item);
                 }
-                if (item.equals(new ItemStack(Material.LEATHER_LEGGINGS))) {
+                if(item.getItemMeta().getDisplayName().endsWith("Tunic")){
+                    p.getInventory().setChestplate(item);
+                }
+                if(item.getItemMeta().getDisplayName().endsWith("Leggings")){
                     p.getInventory().setLeggings(item);
                 }
-                if (item.equals(new ItemStack(Material.LEATHER_BOOTS))) {
+                if(item.getItemMeta().getDisplayName().endsWith("Trousers")){
+                    p.getInventory().setLeggings(item);
+                }
+                if(item.getItemMeta().getDisplayName().endsWith("Boots")){
                     p.getInventory().setBoots(item);
                 }
             }

@@ -26,7 +26,7 @@ public class ParticleListener implements Listener {
             }
 
             if (MySQL_UserSettings.getString(uuid, "particles").equals("water")) {
-                p.getWorld().spawnParticle(Particle.WATER_BUBBLE, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 5);
+                p.getWorld().spawnParticle(Particle.WATER_SPLASH, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 5);
             }
 
             if (MySQL_UserSettings.getString(uuid, "particles").equals("lava")) {
@@ -35,6 +35,22 @@ public class ParticleListener implements Listener {
 
             if (MySQL_UserSettings.getString(uuid, "particles").equals("love")) {
                 p.getWorld().spawnParticle(Particle.HEART, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 5);
+            }
+
+            if (MySQL_UserSettings.getString(uuid, "particles").equals("music")) {
+                p.getWorld().spawnParticle(Particle.NOTE, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 5);
+            }
+
+            if (MySQL_UserSettings.getString(uuid, "particles").equals("boom")) {
+                p.getWorld().spawnParticle(Particle.EXPLOSION_HUGE, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 5);
+            }
+
+            if (MySQL_UserSettings.getString(uuid, "particles").equals("smoke")) {
+                p.getWorld().spawnParticle(Particle.SMOKE_LARGE, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 5);
+            }
+
+            if (MySQL_UserSettings.getString(uuid, "particles").equals("slime")) {
+                p.getWorld().spawnParticle(Particle.SLIME, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 5);
             }
         }
     }

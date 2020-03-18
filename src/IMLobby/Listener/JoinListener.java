@@ -1,5 +1,6 @@
 package IMLobby.Listener;
 
+import IMLobby.StaticClasses.onClother;
 import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import org.bukkit.Bukkit;
@@ -28,5 +29,6 @@ public class JoinListener implements Listener {
                 dsp.send(entry, "join.message", p.getDisplayName());
             }
         });
+        onClother.onCloth(p);
     }
 }

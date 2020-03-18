@@ -8,6 +8,7 @@ import de.Iclipse.IMAPI.Util.menu.PopupMenu;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import IMLobby.Data;
 
 public class ParticleMenu {
 
@@ -19,7 +20,7 @@ public class ParticleMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","flames");
-                player.sendMessage("§6Verbrenne dich nicht!");
+                Data.dsp.send(player,"clothing.lava");
 
                 particles.closeMenu(player);
             }
@@ -29,7 +30,7 @@ public class ParticleMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","water");
-                player.sendMessage("§bDu möchtest nasse Füße haben? Von mir aus.");
+                Data.dsp.send(player,"clothing.lava");
 
                 particles.closeMenu(player);
             }
@@ -39,7 +40,7 @@ public class ParticleMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","lava");
-                player.sendMessage("§cHEIß, HEIß, HEIß!!!");
+                Data.dsp.send(player,"clothing.lava");
 
                 particles.closeMenu(player);
             }
@@ -49,16 +50,44 @@ public class ParticleMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","love");
-                player.sendMessage("§dDu bist ja richtig sexy heute...");
-
+                Data.dsp.send(player,"clothing.lava");
                 particles.closeMenu(player);
             }
         };
 
-        MenuItem music = new MenuItem("Music", new ItemStack(Material.NOTE_BLOCK)) {
+        MenuItem music = new MenuItem("Music", new ItemStack(Material.JUKEBOX)) {
             @Override
             public void onClick(Player player) {
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","music");
+                Data.dsp.send(player,"clothing.lava");
+                particles.closeMenu(player);
+            }
+        };
 
+        MenuItem boom = new MenuItem("BOOM", new ItemStack(Material.TNT)) {
+            @Override
+            public void onClick(Player player) {
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","boom");
+                Data.dsp.send(player,"clothing.lava");
+                particles.closeMenu(player);
+            }
+        };
+
+        MenuItem smoke = new MenuItem("Smoke", new ItemStack(Material.BONE_MEAL)) {
+            @Override
+            public void onClick(Player player) {
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","smoke");
+                Data.dsp.send(player,"clothing.lava");
+                particles.closeMenu(player);
+            }
+        };
+
+        MenuItem slime = new MenuItem("Slime", new ItemStack(Material.SLIME_BALL)) {
+            @Override
+            public void onClick(Player player) {
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","slime");
+                Data.dsp.send(player,"clothing.lava");
+                particles.closeMenu(player);
             }
         };
 
@@ -66,7 +95,7 @@ public class ParticleMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","off");
-
+                Data.dsp.send(player,"clothing.lava");
                 particles.closeMenu(player);
             }
         };
@@ -76,6 +105,10 @@ public class ParticleMenu {
         particles.addMenuItem(water,1);
         particles.addMenuItem(lava,2);
         particles.addMenuItem(love,3);
+        particles.addMenuItem(music,4);
+        particles.addMenuItem(boom,5);
+        particles.addMenuItem(smoke,6);
+        particles.addMenuItem(slime,7);
         particles.addMenuItem(off,8);
 
         PopupMenuAPI.switchMenu(p,old,particles);

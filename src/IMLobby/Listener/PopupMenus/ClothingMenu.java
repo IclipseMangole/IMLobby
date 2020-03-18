@@ -1,5 +1,6 @@
 package IMLobby.Listener.PopupMenus;
 
+import IMLobby.StaticClasses.onClother;
 import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.Iclipse.IMAPI.Util.menu.MenuItem;
@@ -9,6 +10,7 @@ import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class ClothingMenu {
@@ -25,32 +27,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","black_leather");
-
-                ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
-                ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE);
-                ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
-                ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
-
-                LeatherArmorMeta h = (LeatherArmorMeta) helmet.getItemMeta();
-                LeatherArmorMeta c = (LeatherArmorMeta) chest.getItemMeta();
-                LeatherArmorMeta l = (LeatherArmorMeta) leggings.getItemMeta();
-                LeatherArmorMeta b = (LeatherArmorMeta) boots.getItemMeta();
-
-                h.setColor(Color.BLACK);
-                c.setColor(Color.BLACK);
-                l.setColor(Color.BLACK);
-                b.setColor(Color.BLACK);
-
-                helmet.setItemMeta(h);
-                chest.setItemMeta(c);
-                leggings.setItemMeta(l);
-                boots.setItemMeta(b);
-
-                player.getInventory().setHelmet(helmet);
-                player.getInventory().setChestplate(chest);
-                player.getInventory().setLeggings(leggings);
-                player.getInventory().setBoots(boots);
-
+                onClother.onCloth(player);
                 clothing.closeMenu(player);
 
             }
@@ -64,32 +41,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","gray_leather");
-
-                ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
-                ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE);
-                ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
-                ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
-
-                LeatherArmorMeta h = (LeatherArmorMeta) helmet.getItemMeta();
-                LeatherArmorMeta c = (LeatherArmorMeta) chest.getItemMeta();
-                LeatherArmorMeta l = (LeatherArmorMeta) leggings.getItemMeta();
-                LeatherArmorMeta b = (LeatherArmorMeta) boots.getItemMeta();
-
-                h.setColor(Color.GRAY);
-                c.setColor(Color.GRAY);
-                l.setColor(Color.GRAY);
-                b.setColor(Color.GRAY);
-
-                helmet.setItemMeta(h);
-                chest.setItemMeta(c);
-                leggings.setItemMeta(l);
-                boots.setItemMeta(b);
-
-                player.getInventory().setHelmet(helmet);
-                player.getInventory().setChestplate(chest);
-                player.getInventory().setLeggings(leggings);
-                player.getInventory().setBoots(boots);
-
+                onClother.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -102,32 +54,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","white_leather");
-
-                ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
-                ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE);
-                ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
-                ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
-
-                LeatherArmorMeta h = (LeatherArmorMeta) helmet.getItemMeta();
-                LeatherArmorMeta c = (LeatherArmorMeta) chest.getItemMeta();
-                LeatherArmorMeta l = (LeatherArmorMeta) leggings.getItemMeta();
-                LeatherArmorMeta b = (LeatherArmorMeta) boots.getItemMeta();
-
-                h.setColor(Color.WHITE);
-                c.setColor(Color.WHITE);
-                l.setColor(Color.WHITE);
-                b.setColor(Color.WHITE);
-
-                helmet.setItemMeta(h);
-                chest.setItemMeta(c);
-                leggings.setItemMeta(l);
-                boots.setItemMeta(b);
-
-                player.getInventory().setHelmet(helmet);
-                player.getInventory().setChestplate(chest);
-                player.getInventory().setLeggings(leggings);
-                player.getInventory().setBoots(boots);
-
+                onClother.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -140,32 +67,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","red_leather");
-
-                ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
-                ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE);
-                ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
-                ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
-
-                LeatherArmorMeta h = (LeatherArmorMeta) helmet.getItemMeta();
-                LeatherArmorMeta c = (LeatherArmorMeta) chest.getItemMeta();
-                LeatherArmorMeta l = (LeatherArmorMeta) leggings.getItemMeta();
-                LeatherArmorMeta b = (LeatherArmorMeta) boots.getItemMeta();
-
-                h.setColor(Color.RED);
-                c.setColor(Color.RED);
-                l.setColor(Color.RED);
-                b.setColor(Color.RED);
-
-                helmet.setItemMeta(h);
-                chest.setItemMeta(c);
-                leggings.setItemMeta(l);
-                boots.setItemMeta(b);
-
-                player.getInventory().setHelmet(helmet);
-                player.getInventory().setChestplate(chest);
-                player.getInventory().setLeggings(leggings);
-                player.getInventory().setBoots(boots);
-
+                onClother.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -178,32 +80,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","blue_leather");
-
-                ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
-                ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE);
-                ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
-                ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
-
-                LeatherArmorMeta h = (LeatherArmorMeta) helmet.getItemMeta();
-                LeatherArmorMeta c = (LeatherArmorMeta) chest.getItemMeta();
-                LeatherArmorMeta l = (LeatherArmorMeta) leggings.getItemMeta();
-                LeatherArmorMeta b = (LeatherArmorMeta) boots.getItemMeta();
-
-                h.setColor(Color.BLUE);
-                c.setColor(Color.BLUE);
-                l.setColor(Color.BLUE);
-                b.setColor(Color.BLUE);
-
-                helmet.setItemMeta(h);
-                chest.setItemMeta(c);
-                leggings.setItemMeta(l);
-                boots.setItemMeta(b);
-
-                player.getInventory().setHelmet(helmet);
-                player.getInventory().setChestplate(chest);
-                player.getInventory().setLeggings(leggings);
-                player.getInventory().setBoots(boots);
-
+                onClother.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -216,32 +93,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","green_leather");
-
-                ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
-                ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE);
-                ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
-                ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
-
-                LeatherArmorMeta h = (LeatherArmorMeta) helmet.getItemMeta();
-                LeatherArmorMeta c = (LeatherArmorMeta) chest.getItemMeta();
-                LeatherArmorMeta l = (LeatherArmorMeta) leggings.getItemMeta();
-                LeatherArmorMeta b = (LeatherArmorMeta) boots.getItemMeta();
-
-                h.setColor(Color.GREEN);
-                c.setColor(Color.GREEN);
-                l.setColor(Color.GREEN);
-                b.setColor(Color.GREEN);
-
-                helmet.setItemMeta(h);
-                chest.setItemMeta(c);
-                leggings.setItemMeta(l);
-                boots.setItemMeta(b);
-
-                player.getInventory().setHelmet(helmet);
-                player.getInventory().setChestplate(chest);
-                player.getInventory().setLeggings(leggings);
-                player.getInventory().setBoots(boots);
-
+                onClother.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -254,32 +106,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","purple_leather");
-
-                ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
-                ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE);
-                ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
-                ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
-
-                LeatherArmorMeta h = (LeatherArmorMeta) helmet.getItemMeta();
-                LeatherArmorMeta c = (LeatherArmorMeta) chest.getItemMeta();
-                LeatherArmorMeta l = (LeatherArmorMeta) leggings.getItemMeta();
-                LeatherArmorMeta b = (LeatherArmorMeta) boots.getItemMeta();
-
-                h.setColor(Color.PURPLE);
-                c.setColor(Color.PURPLE);
-                l.setColor(Color.PURPLE);
-                b.setColor(Color.PURPLE);
-
-                helmet.setItemMeta(h);
-                chest.setItemMeta(c);
-                leggings.setItemMeta(l);
-                boots.setItemMeta(b);
-
-                player.getInventory().setHelmet(helmet);
-                player.getInventory().setChestplate(chest);
-                player.getInventory().setLeggings(leggings);
-                player.getInventory().setBoots(boots);
-
+                onClother.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -292,32 +119,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","aqua_leather");
-
-                ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
-                ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE);
-                ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
-                ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
-
-                LeatherArmorMeta h = (LeatherArmorMeta) helmet.getItemMeta();
-                LeatherArmorMeta c = (LeatherArmorMeta) chest.getItemMeta();
-                LeatherArmorMeta l = (LeatherArmorMeta) leggings.getItemMeta();
-                LeatherArmorMeta b = (LeatherArmorMeta) boots.getItemMeta();
-
-                h.setColor(Color.AQUA);
-                c.setColor(Color.AQUA);
-                l.setColor(Color.AQUA);
-                b.setColor(Color.AQUA);
-
-                helmet.setItemMeta(h);
-                chest.setItemMeta(c);
-                leggings.setItemMeta(l);
-                boots.setItemMeta(b);
-
-                player.getInventory().setHelmet(helmet);
-                player.getInventory().setChestplate(chest);
-                player.getInventory().setLeggings(leggings);
-                player.getInventory().setBoots(boots);
-
+                onClother.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -330,32 +132,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","orange_leather");
-
-                ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
-                ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE);
-                ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
-                ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
-
-                LeatherArmorMeta h = (LeatherArmorMeta) helmet.getItemMeta();
-                LeatherArmorMeta c = (LeatherArmorMeta) chest.getItemMeta();
-                LeatherArmorMeta l = (LeatherArmorMeta) leggings.getItemMeta();
-                LeatherArmorMeta b = (LeatherArmorMeta) boots.getItemMeta();
-
-                h.setColor(Color.ORANGE);
-                c.setColor(Color.ORANGE);
-                l.setColor(Color.ORANGE);
-                b.setColor(Color.ORANGE);
-
-                helmet.setItemMeta(h);
-                chest.setItemMeta(c);
-                leggings.setItemMeta(l);
-                boots.setItemMeta(b);
-
-                player.getInventory().setHelmet(helmet);
-                player.getInventory().setChestplate(chest);
-                player.getInventory().setLeggings(leggings);
-                player.getInventory().setBoots(boots);
-
+                onClother.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -368,32 +145,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","yellow_leather");
-
-                ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
-                ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE);
-                ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
-                ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
-
-                LeatherArmorMeta h = (LeatherArmorMeta) helmet.getItemMeta();
-                LeatherArmorMeta c = (LeatherArmorMeta) chest.getItemMeta();
-                LeatherArmorMeta l = (LeatherArmorMeta) leggings.getItemMeta();
-                LeatherArmorMeta b = (LeatherArmorMeta) boots.getItemMeta();
-
-                h.setColor(Color.YELLOW);
-                c.setColor(Color.YELLOW);
-                l.setColor(Color.YELLOW);
-                b.setColor(Color.YELLOW);
-
-                helmet.setItemMeta(h);
-                chest.setItemMeta(c);
-                leggings.setItemMeta(l);
-                boots.setItemMeta(b);
-
-                player.getInventory().setHelmet(helmet);
-                player.getInventory().setChestplate(chest);
-                player.getInventory().setLeggings(leggings);
-                player.getInventory().setBoots(boots);
-
+                onClother.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -406,32 +158,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","olive_leather");
-
-                ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
-                ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE);
-                ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
-                ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
-
-                LeatherArmorMeta h = (LeatherArmorMeta) helmet.getItemMeta();
-                LeatherArmorMeta c = (LeatherArmorMeta) chest.getItemMeta();
-                LeatherArmorMeta l = (LeatherArmorMeta) leggings.getItemMeta();
-                LeatherArmorMeta b = (LeatherArmorMeta) boots.getItemMeta();
-
-                h.setColor(Color.OLIVE);
-                c.setColor(Color.OLIVE);
-                l.setColor(Color.OLIVE);
-                b.setColor(Color.OLIVE);
-
-                helmet.setItemMeta(h);
-                chest.setItemMeta(c);
-                leggings.setItemMeta(l);
-                boots.setItemMeta(b);
-
-                player.getInventory().setHelmet(helmet);
-                player.getInventory().setChestplate(chest);
-                player.getInventory().setLeggings(leggings);
-                player.getInventory().setBoots(boots);
-
+                onClother.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -444,32 +171,89 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","navy_leather");
+                onClother.onCloth(player);
+                clothing.closeMenu(player);
+            }
+        };
 
-                ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
-                ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE);
-                ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
-                ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
+        ItemStack fuchsialeather = new ItemStack(Material.LEATHER_CHESTPLATE);
+        LeatherArmorMeta fuchsiameta = (LeatherArmorMeta) fuchsialeather.getItemMeta();
+        fuchsiameta.setColor(Color.FUCHSIA);
+        fuchsialeather.setItemMeta(fuchsiameta);
+        MenuItem Fuchsia_Leather = new MenuItem("Fuchsia",fuchsialeather) {
+            @Override
+            public void onClick(Player player) {
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","fuchsia_leather");
+                onClother.onCloth(player);
+                clothing.closeMenu(player);
+            }
+        };
 
-                LeatherArmorMeta h = (LeatherArmorMeta) helmet.getItemMeta();
-                LeatherArmorMeta c = (LeatherArmorMeta) chest.getItemMeta();
-                LeatherArmorMeta l = (LeatherArmorMeta) leggings.getItemMeta();
-                LeatherArmorMeta b = (LeatherArmorMeta) boots.getItemMeta();
+        ItemStack maroonleather = new ItemStack(Material.LEATHER_CHESTPLATE);
+        LeatherArmorMeta maroonmeta = (LeatherArmorMeta) maroonleather.getItemMeta();
+        maroonmeta.setColor(Color.MAROON);
+        maroonleather.setItemMeta(maroonmeta);
+        MenuItem Maroon_Leather = new MenuItem("Maroon",maroonleather) {
+            @Override
+            public void onClick(Player player) {
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","maroon_leather");
+                onClother.onCloth(player);
+                clothing.closeMenu(player);
+            }
+        };
 
-                h.setColor(Color.NAVY);
-                c.setColor(Color.NAVY);
-                l.setColor(Color.NAVY);
-                b.setColor(Color.NAVY);
+        ItemStack silverleather = new ItemStack(Material.LEATHER_CHESTPLATE);
+        LeatherArmorMeta silvermeta = (LeatherArmorMeta) silverleather.getItemMeta();
+        silvermeta.setColor(Color.SILVER);
+        silverleather.setItemMeta(silvermeta);
+        MenuItem Silver_Leather = new MenuItem("Silver",silverleather) {
+            @Override
+            public void onClick(Player player) {
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","silver_leather");
+                onClother.onCloth(player);
+                clothing.closeMenu(player);
+            }
+        };
 
-                helmet.setItemMeta(h);
-                chest.setItemMeta(c);
-                leggings.setItemMeta(l);
-                boots.setItemMeta(b);
+        ItemStack tealleather = new ItemStack(Material.LEATHER_CHESTPLATE);
+        LeatherArmorMeta tealmeta = (LeatherArmorMeta) tealleather.getItemMeta();
+        tealmeta.setColor(Color.TEAL);
+        tealleather.setItemMeta(tealmeta);
+        MenuItem Teal_Leather = new MenuItem("Teal",tealleather) {
+            @Override
+            public void onClick(Player player) {
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","teal_leather");
+                onClother.onCloth(player);
+                clothing.closeMenu(player);
+            }
+        };
 
-                player.getInventory().setHelmet(helmet);
-                player.getInventory().setChestplate(chest);
-                player.getInventory().setLeggings(leggings);
-                player.getInventory().setBoots(boots);
+        ItemStack goldchest = new ItemStack(Material.GOLDEN_CHESTPLATE);
+        MenuItem King = new MenuItem("King",goldchest) {
+            @Override
+            public void onClick(Player player) {
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","king");
+                onClother.onCloth(player);
+                clothing.closeMenu(player);
+            }
+        };
 
+        ItemStack chainchest = new ItemStack(Material.CHAINMAIL_CHESTPLATE);
+        MenuItem Thief = new MenuItem("Thief",chainchest) {
+            @Override
+            public void onClick(Player player) {
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","thief");
+                onClother.onCloth(player);
+                clothing.closeMenu(player);
+            }
+        };
+
+        ItemStack slime = new ItemStack(Material.SLIME_BLOCK);
+        MenuItem Slime = new MenuItem("Jumper",slime) {
+            @Override
+            public void onClick(Player player) {
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","jumper");
+                onClother.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -500,8 +284,14 @@ public class ClothingMenu {
         clothing.addMenuItem(Orange_Leather,9);
         clothing.addMenuItem(Navy_Leather,10);
         clothing.addMenuItem(Olive_Leather,11);
+        clothing.addMenuItem(Fuchsia_Leather,12);
+        clothing.addMenuItem(Maroon_Leather,13);
+        clothing.addMenuItem(Silver_Leather,14);
+        clothing.addMenuItem(Teal_Leather,15);
+        clothing.addMenuItem(King,0,2);
+        clothing.addMenuItem(Thief,1,2);
+        clothing.addMenuItem(Slime,2,2);
         clothing.addMenuItem(Off,26);
-
 
         PopupMenuAPI.switchMenu(p,old,clothing);
     }

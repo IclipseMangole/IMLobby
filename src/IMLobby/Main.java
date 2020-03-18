@@ -1,10 +1,7 @@
 package IMLobby;
 
 
-import IMLobby.Listener.StartInventoryListener;
-import IMLobby.Listener.JoinListener;
-import IMLobby.Listener.ParticleListener;
-import IMLobby.Listener.SchadenListener;
+import IMLobby.Listener.*;
 import IMLobby.Commands.cmd_startInventory;
 import IMLobby.Data;
 
@@ -39,6 +36,7 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new SchadenListener(),this);
         Bukkit.getPluginManager().registerEvents(new StartInventoryListener(),this);
         Bukkit.getPluginManager().registerEvents(new QuitListener(),this);
+        Bukkit.getPluginManager().registerEvents(new ClothingListener(),this);
     }
 
     public void registerCommands() {
