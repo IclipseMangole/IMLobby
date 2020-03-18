@@ -1,4 +1,4 @@
-package IMLobby.Listener;
+package de.MangoleHD.IMLobby.Listener;
 
 import net.minecraft.server.v1_15_R1.SoundEffect;
 import org.bukkit.Location;

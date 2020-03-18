@@ -1,10 +1,11 @@
-package IMLobby.Listener;
+package de.MangoleHD.IMLobby.Listener;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import static IMLobby.Data.dsp;
+import static de.Iclipse.IMAPI.Data.dsp;
+
 
 public class QuitListener {
 

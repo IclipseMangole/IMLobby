@@ -1,4 +1,4 @@
-package IMLobby.Commands;
+package de.MangoleHD.IMLobby.Commands;
 
 import de.Iclipse.IMAPI.Util.Command.IMCommand;
 import de.Iclipse.IMAPI.Util.menu.MenuItem;

@@ -1,4 +1,4 @@
-package IMLobby.StaticClasses;
+package de.MangoleHD.IMLobby.StaticClasses;
 
 import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;

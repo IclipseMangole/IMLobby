@@ -1,6 +1,6 @@
-package IMLobby.Listener.PopupMenus;
+package de.MangoleHD.IMLobby.Listener.PopupMenus;
 
-import IMLobby.StaticClasses.onClother;
+import de.MangoleHD.IMLobby.StaticClasses.onClother;
 import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.Iclipse.IMAPI.Util.menu.MenuItem;
@@ -10,7 +10,6 @@ import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class ClothingMenu {

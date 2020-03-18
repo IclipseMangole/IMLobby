@@ -1,6 +1,6 @@
-package IMLobby.Listener;
+package de.MangoleHD.IMLobby.Listener;
 
-import IMLobby.StaticClasses.onClother;
+import de.MangoleHD.IMLobby.StaticClasses.onClother;
 import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import org.bukkit.Bukkit;
@@ -9,8 +9,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import static IMLobby.Data.dsp;
-import static IMLobby.Data.tablist;
+import static de.Iclipse.IMAPI.Data.dsp;
+import static de.MangoleHD.IMLobby.Data.tablist;
 
 
 public class JoinListener implements Listener {

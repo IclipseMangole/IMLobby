@@ -1,4 +1,4 @@
-package IMLobby.Listener;
+package de.MangoleHD.IMLobby.Listener;
 
 import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;

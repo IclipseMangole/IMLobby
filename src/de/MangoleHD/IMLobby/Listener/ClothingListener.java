@@ -1,4 +1,4 @@
-package IMLobby.Listener;
+package de.MangoleHD.IMLobby.Listener;
 
 import IMLobby.Data;
 import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
