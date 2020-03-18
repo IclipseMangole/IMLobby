@@ -258,6 +258,16 @@ public class ClothingMenu {
             }
         };
 
+        ItemStack ghost = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        MenuItem Ghost = new MenuItem("Ghost",ghost) {
+            @Override
+            public void onClick(Player player) {
+                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","ghost");
+                onClother.onCloth(player);
+                clothing.closeMenu(player);
+            }
+        };
+
         MenuItem Off = new MenuItem("Off",new ItemStack(Material.BARRIER)) {
             @Override
             public void onClick(Player player) {
@@ -291,6 +301,7 @@ public class ClothingMenu {
         clothing.addMenuItem(King,0,2);
         clothing.addMenuItem(Thief,1,2);
         clothing.addMenuItem(Slime,2,2);
+        clothing.addMenuItem(Ghost,3,2);
         clothing.addMenuItem(Off,26);
 
         PopupMenuAPI.switchMenu(p,old,clothing);

@@ -78,9 +78,6 @@ public class onClother implements Listener {
         if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("fuchsia_leather")) {
             onCloth(p, Color.FUCHSIA);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("jumper")) {
-            onCloth(p, Color.LIME);
-        }
         if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("maroon_leather")) {
             onCloth(p, Color.MAROON);
         }
@@ -95,6 +92,12 @@ public class onClother implements Listener {
         }
         if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("thief")) {
             onClothThief(p);
+        }
+        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("jumper")) {
+            onCloth(p, Color.LIME);
+        }
+        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("ghost")) {
+            onClothGhost(p);
         }
         if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("off")) {
             p.getInventory().setHelmet(new ItemStack(Material.AIR));
@@ -126,6 +129,17 @@ public class onClother implements Listener {
         p.getInventory().setChestplate(chest);
         p.getInventory().setLeggings(leggings);
         p.getInventory().setBoots(boots);
+    }
 
+    public static void onClothGhost(Player p) {
+        ItemStack helmet = new ItemStack(Material.AIR);
+        ItemStack chest = new ItemStack(Material.AIR);
+        ItemStack leggings = new ItemStack(Material.AIR);
+        ItemStack boots = new ItemStack(Material.AIR);
+
+        p.getInventory().setHelmet(helmet);
+        p.getInventory().setChestplate(chest);
+        p.getInventory().setLeggings(leggings);
+        p.getInventory().setBoots(boots);
     }
 }
