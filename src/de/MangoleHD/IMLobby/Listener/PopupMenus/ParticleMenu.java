@@ -1,5 +1,6 @@
-package IMLobby.Listener.PopupMenus;
+package de.MangoleHD.IMLobby.Listener.PopupMenus;
 
+import de.Iclipse.IMAPI.Data;
 import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.Iclipse.IMAPI.Util.menu.MenuItem;
@@ -8,7 +9,6 @@ import de.Iclipse.IMAPI.Util.menu.PopupMenu;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import IMLobby.Data;
 
 public class ParticleMenu {
 
@@ -20,7 +20,7 @@ public class ParticleMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","flames");
-                Data.dsp.send(player,"clothing.lava");
+                Data.dsp.send(player,"clothing.flames");
 
                 particles.closeMenu(player);
             }
@@ -30,7 +30,7 @@ public class ParticleMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","water");
-                Data.dsp.send(player,"clothing.lava");
+                Data.dsp.send(player,"clothing.water");
 
                 particles.closeMenu(player);
             }
@@ -50,7 +50,7 @@ public class ParticleMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","love");
-                Data.dsp.send(player,"clothing.lava");
+                Data.dsp.send(player,"clothing.love");
                 particles.closeMenu(player);
             }
         };
@@ -59,7 +59,7 @@ public class ParticleMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","music");
-                Data.dsp.send(player,"clothing.lava");
+                Data.dsp.send(player,"clothing.music");
                 particles.closeMenu(player);
             }
         };
@@ -68,7 +68,7 @@ public class ParticleMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","boom");
-                Data.dsp.send(player,"clothing.lava");
+                Data.dsp.send(player,"clothing.boom");
                 particles.closeMenu(player);
             }
         };
@@ -77,7 +77,7 @@ public class ParticleMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","smoke");
-                Data.dsp.send(player,"clothing.lava");
+                Data.dsp.send(player,"clothing.smoke");
                 particles.closeMenu(player);
             }
         };
@@ -86,7 +86,7 @@ public class ParticleMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","slime");
-                Data.dsp.send(player,"clothing.lava");
+                Data.dsp.send(player,"clothing.slime");
                 particles.closeMenu(player);
             }
         };
@@ -95,7 +95,7 @@ public class ParticleMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"particles","off");
-                Data.dsp.send(player,"clothing.lava");
+                Data.dsp.send(player,"clothing.off");
                 particles.closeMenu(player);
             }
         };

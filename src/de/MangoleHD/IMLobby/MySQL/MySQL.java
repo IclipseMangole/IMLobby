@@ -1,4 +1,4 @@
-package IMLobby.MySQL;
+package de.MangoleHD.IMLobby.MySQL;
 
 import de.Iclipse.IMAPI.Data;
 import org.bukkit.ChatColor;

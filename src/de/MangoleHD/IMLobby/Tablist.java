@@ -1,4 +1,4 @@
-package IMLobby;
+package de.MangoleHD.IMLobby;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

@@ -1,17 +1,18 @@
-package IMLobby;
+package de.MangoleHD.IMLobby;
 
 
-import IMLobby.Listener.*;
-import IMLobby.Commands.cmd_startInventory;
-import IMLobby.Data;
+import de.MangoleHD.IMLobby.Commands.cmd_startInventory;
 
 import de.Iclipse.IMAPI.Functions.Listener.QuitListener;
+import de.Iclipse.IMAPI.IMAPI;
 import de.Iclipse.IMAPI.Util.Dispatching.Dispatcher;
+import de.Iclipse.IMAPI.Util.Dispatching.Language;
+import de.MangoleHD.IMLobby.Listener.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import static IMLobby.Data.dsp;
-import static de.Iclipse.IMAPI.IMAPI.register;
+import static de.Iclipse.IMAPI.Util.Dispatching.ResourceBundle.*;
+import static de.Iclipse.IMAPI.Util.Dispatching.ResourceBundle.msgEN;
 
 public class Main extends JavaPlugin {
 
@@ -22,7 +23,6 @@ public class Main extends JavaPlugin {
         registerCommands();
         createTables();
         Data.tablist = new Tablist();
-        dsp = new Dispatcher(this);
     }
 
     @Override
@@ -40,10 +40,11 @@ public class Main extends JavaPlugin {
     }
 
     public void registerCommands() {
-        register(new cmd_startInventory(), this);
+        IMAPI.register(new cmd_startInventory(), this);
     }
 
     public void createTables() {
 
     }
+
 }

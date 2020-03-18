@@ -1,11 +1,9 @@
-package IMLobby.Listener;
+package de.MangoleHD.IMLobby.Listener;
 
-import IMLobby.Listener.PopupMenus.SettingsMenu;
-import IMLobby.Listener.PopupMenus.TeleporterMenu;
-import net.minecraft.server.v1_15_R1.Schedule;
+import de.MangoleHD.IMLobby.Listener.PopupMenus.SettingsMenu;
+import de.MangoleHD.IMLobby.Listener.PopupMenus.TeleporterMenu;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,10 +14,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import IMLobby.Data;
+import de.MangoleHD.IMLobby.Data;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.Timer;
 
 public class StartInventoryListener implements Listener {
 
@@ -149,42 +145,43 @@ public class StartInventoryListener implements Listener {
     public void NoClick(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
         ItemStack item = e.getCursor();
-
-        ClickType c = e.getClick();
-        if (c.isLeftClick() || c.isRightClick() || c.isShiftClick() || c.isKeyboardClick()) {
-            if (!c.isCreativeAction()) {
-                e.setCancelled(true);
-                if (item.equals(new ItemStack(Material.COMPASS))) {
-                    p.getInventory().setItem(0, item);
+        if(!item.getType().equals(Material.AIR)){
+            ClickType c = e.getClick();
+            if (c.isLeftClick() || c.isRightClick() || c.isShiftClick() || c.isKeyboardClick()) {
+                if (!c.isCreativeAction()) {
+                    e.setCancelled(true);
+                    if (item.equals(new ItemStack(Material.COMPASS))) {
+                        p.getInventory().setItem(0, item);
+                    }
+                    if (item.equals(new ItemStack(Material.ENDER_PEARL))) {
+                        p.getInventory().setItem(1, item);
+                    }
+                    if (item.equals(new ItemStack(Material.REPEATER))) {
+                        p.getInventory().setItem(8, item);
+                    }
+                    if (item.getItemMeta().getDisplayName().endsWith("Helmet")) {
+                        p.getInventory().setHelmet(item);
+                    }
+                    if (item.getItemMeta().getDisplayName().endsWith("Hat")) {
+                        p.getInventory().setHelmet(item);
+                    }
+                    if (item.getItemMeta().getDisplayName().endsWith("Chestplate")) {
+                        p.getInventory().setChestplate(item);
+                    }
+                    if (item.getItemMeta().getDisplayName().endsWith("Tunic")) {
+                        p.getInventory().setChestplate(item);
+                    }
+                    if (item.getItemMeta().getDisplayName().endsWith("Leggings")) {
+                        p.getInventory().setLeggings(item);
+                    }
+                    if (item.getItemMeta().getDisplayName().endsWith("Trousers")) {
+                        p.getInventory().setLeggings(item);
+                    }
+                    if (item.getItemMeta().getDisplayName().endsWith("Boots")) {
+                        p.getInventory().setBoots(item);
+                    }
                 }
-                if (item.equals(new ItemStack(Material.ENDER_PEARL))) {
-                    p.getInventory().setItem(1, item);
-                }
-                if (item.equals(new ItemStack(Material.REPEATER))) {
-                    p.getInventory().setItem(8, item);
-                }
-                if(item.getItemMeta().getDisplayName().endsWith("Helmet")){
-                    p.getInventory().setHelmet(item);
-                }
-                if(item.getItemMeta().getDisplayName().endsWith("Hat")){
-                    p.getInventory().setHelmet(item);
-                }
-                if(item.getItemMeta().getDisplayName().endsWith("Chestplate")){
-                    p.getInventory().setChestplate(item);
-                }
-                if(item.getItemMeta().getDisplayName().endsWith("Tunic")){
-                    p.getInventory().setChestplate(item);
-                }
-                if(item.getItemMeta().getDisplayName().endsWith("Leggings")){
-                    p.getInventory().setLeggings(item);
-                }
-                if(item.getItemMeta().getDisplayName().endsWith("Trousers")){
-                    p.getInventory().setLeggings(item);
-                }
-                if(item.getItemMeta().getDisplayName().endsWith("Boots")){
-                    p.getInventory().setBoots(item);
                 }
             }
         }
-    }
 }
