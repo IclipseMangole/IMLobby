@@ -62,14 +62,4 @@ public class LobbyListener implements Listener {
             e.setCancelled(true);
         }
     }
-
-    @EventHandler
-    public void onSpawn(EntitySpawnEvent e){
-        if(!(e.getEntity() instanceof Chicken)){
-            e.setCancelled(true);
-        }else{
-            Animals chicken = (Animals) e.getEntity();
-            Scheduler.Killer(chicken);
-        }
-    }
 }

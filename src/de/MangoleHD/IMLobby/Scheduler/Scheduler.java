@@ -52,25 +52,6 @@ public class Scheduler {
         },5*20);
     }
 
-    public static void ChickenBomb(Location egg){
-        scheduler = Bukkit.getScheduler().scheduleSyncRepeatingTask(Data.instance, new Runnable() {
-            @Override
-            public void run() {
-                egg.getWorld().spawnEntity(egg,EntityType.CHICKEN);
-                Bukkit.getScheduler().cancelTask(60);
-            }
-        },1,3);
-    }
-
-    public static void Killer(Animals chicken){
-        Bukkit.getScheduler().runTaskLater(Data.instance, new Runnable() {
-            @Override
-            public void run() {
-                chicken.setHealth(0);
-            }
-        },5*20);
-    }
-
     public static void stopScheduler(){
         Bukkit.getScheduler().cancelTask(scheduler);
     }

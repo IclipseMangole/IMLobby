@@ -33,13 +33,4 @@ public class ExtrasListener implements Listener {
            }
        }
    }
-
-   @EventHandler
-    public void onChickenBomb(PlayerEggThrowEvent e){
-       Projectile projectile = e.getEgg();
-       ItemStack egg = (ItemStack) e.getEgg();
-       Player p = e.getPlayer();
-       Scheduler.ChickenBomb(projectile.getLocation());
-
-   }
 }
