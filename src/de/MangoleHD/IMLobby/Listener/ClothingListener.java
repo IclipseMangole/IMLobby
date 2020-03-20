@@ -25,7 +25,7 @@ public class ClothingListener implements Listener {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if(MySQL_UserSettings.getString(uuid,"clothing").equals("thief")){
-            PotionEffect speed = new PotionEffect(PotionEffectType.SPEED,20,99);
+            PotionEffect speed = new PotionEffect(PotionEffectType.SPEED,20,4);
             p.addPotionEffect(speed);
         }
     }
@@ -36,12 +36,21 @@ public class ClothingListener implements Listener {
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if(!p.getGameMode().equals(GameMode.CREATIVE)){
             e.setCancelled(true);
-            Block b = p.getWorld().getBlockAt(p.getLocation().subtract(0,2,0));
-            if(!b.getType().equals(Material.AIR)){
                 if(MySQL_UserSettings.getString(uuid,"clothing").equals("jumper")){
                     Vector v = p.getLocation().getDirection().multiply(1).setY(1);
                     p.setVelocity(v);
-                }
+                    p.setAllowFlight(false);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onJumperGround(PlayerMoveEvent e){
+        Player p = e.getPlayer();
+        UUID uuid = UUIDFetcher.getUUID(p.getName());
+        if(p.isOnGround()) {
+            if (MySQL_UserSettings.getString(uuid, "clothing").equals("jumper")) {
+                p.setAllowFlight(true);
             }
         }
     }

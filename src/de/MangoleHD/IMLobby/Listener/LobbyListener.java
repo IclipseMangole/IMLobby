@@ -22,16 +22,15 @@ public class LobbyListener implements Listener {
 
     @EventHandler
     public void Damage(EntityDamageEvent e){
-        System.out.println("DamageEvent");
         if(e.getEntity() instanceof Player) {
             Player p = ((Player) e.getEntity()).getPlayer();
-            p.sendMessage("Du bekommst Schaden");
-            e.setCancelled(true);
+            e.setDamage(0);
+            p.setHealth(20);
             if(e.getCause().equals(EntityDamageEvent.DamageCause.VOID)){
-                p.sendMessage("Du wirst in die Base teleportiert");
                 Location Spawn = new Location(p.getWorld(),0.5,4,0.5,180,0);
                 p.teleport(Spawn);
                 p.playSound(Spawn, Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
+
             }
         }
     }

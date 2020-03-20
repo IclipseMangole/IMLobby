@@ -42,6 +42,10 @@ public class JoinListener implements Listener {
 
         getClothing.onCloth(p);
 
-        p.setAllowFlight(true);
+        if(MySQL_UserSettings.getString(uuid,"clothing").equals("jumper")) {
+            p.setAllowFlight(true);
+        }else{
+            p.setAllowFlight(false);
+        }
     }
 }
