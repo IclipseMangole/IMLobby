@@ -1,6 +1,6 @@
 package de.MangoleHD.IMLobby.Listener.PopupMenus;
 
-import de.MangoleHD.IMLobby.StaticClasses.onClother;
+import de.MangoleHD.IMLobby.StaticClasses.getClothing;
 import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.Iclipse.IMAPI.Util.menu.MenuItem;
@@ -26,7 +26,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","black_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
 
             }
@@ -40,7 +40,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","gray_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -53,7 +53,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","white_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -66,7 +66,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","red_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -79,7 +79,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","blue_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -92,7 +92,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","green_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -105,7 +105,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","purple_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -118,7 +118,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","aqua_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -131,7 +131,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","orange_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -144,7 +144,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","yellow_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -157,7 +157,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","olive_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -170,7 +170,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","navy_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -183,7 +183,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","fuchsia_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -196,7 +196,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","maroon_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -209,7 +209,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","silver_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -222,7 +222,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","teal_leather");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -232,7 +232,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","king");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -242,7 +242,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","thief");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -252,7 +252,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","jumper");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };
@@ -262,7 +262,7 @@ public class ClothingMenu {
             @Override
             public void onClick(Player player) {
                 MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()),"clothing","ghost");
-                onClother.onCloth(player);
+                getClothing.onCloth(player);
                 clothing.closeMenu(player);
             }
         };

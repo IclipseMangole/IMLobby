@@ -8,6 +8,8 @@ import de.Iclipse.IMAPI.IMAPI;
 import de.Iclipse.IMAPI.Util.Dispatching.Dispatcher;
 import de.Iclipse.IMAPI.Util.Dispatching.Language;
 import de.MangoleHD.IMLobby.Listener.*;
+import de.MangoleHD.IMLobby.Scheduler.Scheduler;
+import net.minecraft.server.v1_15_R1.Schedule;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -23,20 +25,24 @@ public class Main extends JavaPlugin {
         registerCommands();
         createTables();
         Data.tablist = new Tablist();
+        Data.instance = this;
+        Scheduler.GhostScheduler();
     }
 
     @Override
     public void onDisable() {
         super.onDisable();
+        Scheduler.stopScheduler();
     }
 
     public void registerListener() {
         Bukkit.getPluginManager().registerEvents(new ParticleListener(),this);
         Bukkit.getPluginManager().registerEvents(new JoinListener(),this);
-        Bukkit.getPluginManager().registerEvents(new SchadenListener(),this);
+        Bukkit.getPluginManager().registerEvents(new LobbyListener(),this);
         Bukkit.getPluginManager().registerEvents(new StartInventoryListener(),this);
         Bukkit.getPluginManager().registerEvents(new QuitListener(),this);
         Bukkit.getPluginManager().registerEvents(new ClothingListener(),this);
+        Bukkit.getPluginManager().registerEvents(new ExtrasListener(),this);
     }
 
     public void registerCommands() {

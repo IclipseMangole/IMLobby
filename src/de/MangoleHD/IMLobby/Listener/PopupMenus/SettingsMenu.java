@@ -25,9 +25,18 @@ public class SettingsMenu {
                 ClothingMenu.openClothingMenu(player, settMenu);
             }
         };
+
+        MenuItem extras = new MenuItem("Extras", new ItemStack(Material.SNOWBALL)) {
+            @Override
+            public void onClick(Player player) {
+                ExtrasMenu.openExtrasMenu(player, settMenu);
+            }
+        };
+
         //Menu with Items
         settMenu.addMenuItem(particles,2,2);
         settMenu.addMenuItem(clothing,6,2);
+        settMenu.addMenuItem(extras,4,1);
 
         settMenu.openMenu(p);
     }

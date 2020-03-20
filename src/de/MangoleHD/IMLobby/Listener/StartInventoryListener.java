@@ -2,20 +2,22 @@ package de.MangoleHD.IMLobby.Listener;
 
 import de.MangoleHD.IMLobby.Listener.PopupMenus.SettingsMenu;
 import de.MangoleHD.IMLobby.Listener.PopupMenus.TeleporterMenu;
+import de.MangoleHD.IMLobby.Scheduler.Scheduler;
 import org.bukkit.Material;
+import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import de.MangoleHD.IMLobby.Data;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class StartInventoryListener implements Listener {
 
@@ -47,38 +49,16 @@ public class StartInventoryListener implements Listener {
     }
 
     @EventHandler
-    public void Enderpearl(PlayerInteractEvent e) {
-        Player p = e.getPlayer();
-        ItemStack enderpearl = e.getItem();
-        Action click = e.getAction();
-        long cooldown = 5;
+    public void Enderpearl(ProjectileLaunchEvent e) {
+        Projectile ender = e.getEntity();
 
-        if (click.equals(Action.RIGHT_CLICK_BLOCK) || click.equals(Action.RIGHT_CLICK_AIR)) {
-            if (enderpearl.getType().equals(Material.ENDER_PEARL) && enderpearl.getItemMeta().getDisplayName().equalsIgnoreCase("Beam")) {
-                if (Data.enderCooldown.containsKey(p.getName())) {
-                    long cooldownLeft = (Data.enderCooldown.get(p.getName()) / 1000 + cooldown) - (System.currentTimeMillis() / 1000);
-
-                    if (cooldownLeft > 0) {
-                        e.setCancelled(true);
-                        p.sendMessage("§cDu musst noch " + cooldownLeft + " Sekunden warten!");
-                    } else {
-                        Data.enderCooldown.remove(p.getName());
-                        p.getInventory().setItem(1,enderpearl);
-                    }
-                } else {
-                    p.getInventory().setItem(1, enderpearl);
-                    Data.enderCooldown.put(p.getName(), System.currentTimeMillis());
-                }
-                p.getInventory().setItem(1,enderpearl);
-            }
-            if(p.getInventory().getItem(1).equals(Material.AIR)){
-                ItemStack ender = new ItemStack(Material.ENDER_PEARL);
-                ItemMeta end = ender.getItemMeta();
-                end.setDisplayName("Beam");
-                ender.setItemMeta(end);
-                p.getInventory().setItem(1,ender);
+        if(ender instanceof EnderPearl){
+            if(((EnderPearl) ender).getItem().getItemMeta().getDisplayName().equals("Beam")) {
+                Player p = (Player) ender.getShooter();
+                Scheduler.EnderToClay(p);
             }
         }
+
     }
 
     @EventHandler
@@ -102,7 +82,7 @@ public class StartInventoryListener implements Listener {
     }
 
     @EventHandler
-    public void NoDrop(PlayerDropItemEvent e) {
+    public void onDrop(PlayerDropItemEvent e) {
         Player p = e.getPlayer();
         ItemStack item = e.getItemDrop().getItemStack();
         e.setCancelled(true);
@@ -138,11 +118,14 @@ public class StartInventoryListener implements Listener {
         if(item.getItemMeta().getDisplayName().endsWith("Boots")){
             p.getInventory().setBoots(item);
         }
+        if(item.getItemMeta().getDisplayName().endsWith("§cRocket")){
+            p.getInventory().setItem(4,item);
+        }
     }
 
 
     @EventHandler
-    public void NoClick(InventoryClickEvent e) {
+    public void onClick(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
         ItemStack item = e.getCursor();
         if(!item.getType().equals(Material.AIR)){
@@ -179,6 +162,9 @@ public class StartInventoryListener implements Listener {
                     }
                     if (item.getItemMeta().getDisplayName().endsWith("Boots")) {
                         p.getInventory().setBoots(item);
+                    }
+                    if (item.getItemMeta().getDisplayName().endsWith("§cRocket")) {
+                        p.getInventory().setItem(4,item);
                     }
                 }
                 }

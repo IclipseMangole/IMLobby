@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
-public class onClother implements Listener {
+public class getClothing implements Listener {
 
     private static void onCloth(Player p, Color color) {
         ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);

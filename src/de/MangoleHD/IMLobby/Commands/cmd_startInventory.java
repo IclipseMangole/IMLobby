@@ -12,6 +12,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.HashMap;
+import java.util.List;
+
+import static de.MangoleHD.IMLobby.Data.dsp;
 
 public class cmd_startInventory {
 
@@ -52,5 +55,7 @@ public class cmd_startInventory {
         i.setItem(1,enderpearl);
         i.setItem(7,news);
 
+        p.setFoodLevel(20);
+        p.setHealth(20);
     }
 }
