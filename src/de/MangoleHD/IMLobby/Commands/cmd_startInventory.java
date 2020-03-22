@@ -43,7 +43,7 @@ public class cmd_startInventory {
         ItemStack settings = new ItemStack(Material.REPEATER);
         ItemMeta sett = settings.getItemMeta();
         sett.setDisplayName(Data.dsp.get("startinventory.name.settings", getLanguage(UUIDFetcher.getUUID(p.getName()))));
-       // sett.setLore(Data.dsp.get("startinventory.lore.settings", getLanguage(UUIDFetcher.getUUID(p.getName()))));
+        //sett.setLore({Data.dsp.get("startinventory.lore.settings", getLanguage(UUIDFetcher.getUUID(p.getName())))});
         settings.setItemMeta(sett);
 
         ItemStack enderpearl = new ItemStack(Material.ENDER_PEARL);
