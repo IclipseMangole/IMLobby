@@ -1,6 +1,7 @@
 package de.MangoleHD.IMLobby.Scheduler;
 
 import de.Iclipse.IMAPI.Util.ScoreboardSign;
+import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.MangoleHD.IMLobby.Data;
 import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
 import org.bukkit.Bukkit;
@@ -13,6 +14,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitTask;
+
+import java.util.Arrays;
+
+import static de.Iclipse.IMAPI.Functions.MySQL.MySQL_User.getLanguage;
 
 public class Scheduler {
     public static int scheduler;
@@ -36,7 +41,8 @@ public class Scheduler {
             public void run() {
                 ItemStack clay = new ItemStack(Material.CLAY_BALL);
                 ItemMeta claymeta = clay.getItemMeta();
-                claymeta.setDisplayName("§6WAIT");
+                claymeta.setDisplayName(de.Iclipse.IMAPI.Data.dsp.get("scheduler.clay",getLanguage(UUIDFetcher.getUUID(p.getName()))));
+                claymeta.setLore(Arrays.asList(new String[]{de.Iclipse.IMAPI.Data.dsp.get("scheduler.clay.lore", getLanguage(UUIDFetcher.getUUID(p.getName())))}));
                 clay.setItemMeta(claymeta);
                 p.getInventory().setItem(1,clay);
                 ClayToEnder(p);
@@ -50,7 +56,8 @@ public class Scheduler {
             public void run() {
             ItemStack ender = new ItemStack(Material.ENDER_PEARL);
             ItemMeta endermeta = ender.getItemMeta();
-            endermeta.setDisplayName("§rBeam");
+            endermeta.setDisplayName(de.Iclipse.IMAPI.Data.dsp.get("startinventory.name.beam",getLanguage(UUIDFetcher.getUUID(p.getName()))));
+            endermeta.setLore(Arrays.asList(new String[]{de.Iclipse.IMAPI.Data.dsp.get("startinventory.lore.beam", getLanguage(UUIDFetcher.getUUID(p.getName())))}));
             ender.setItemMeta(endermeta);
             p.getInventory().setItem(1,ender);
             }
@@ -71,48 +78,48 @@ public class Scheduler {
                         getScoreboard.animation = 0;
                     }
                     if(getScoreboard.animation == 0){
-                        String a = getScoreboard.getAnimation();
                         for(Player all: getScoreboard.boards.keySet()){
                             ScoreboardSign ss = getScoreboard.boards.get(all);
+                            String a = getScoreboard.getAnimation(all);
                             ss.setLine(0,"§6" + all.getName());
-                            ss.setLine(1,"   " + ChatColor.BLUE);
+                            ss.setLine(1,"" + ChatColor.GOLD);
                             ss.setLine(2,"§2Buon Giorno");
                             ss.setLine(3,"" + a);
-                            ss.setLine(4,"§l ");
-                            ss.setLine(5,"§l  ");
-                            ss.setLine(6,"§fSie spielen hier auf");
-                            ss.setLine(7,"§c§lMEINEM");
-                            ss.setLine(8,"§r§fServer!!!");
+                            ss.setLine(4,""  + ChatColor.BLUE);
+                            ss.setLine(5,"" + ChatColor.RED);
+                            ss.setLine(6, de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.6",getLanguage(UUIDFetcher.getUUID(all.getName()))));
+                            ss.setLine(7, de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.7",getLanguage(UUIDFetcher.getUUID(all.getName()))));
+                            ss.setLine(8, de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.8",getLanguage(UUIDFetcher.getUUID(all.getName()))));
                         }
                     }
                     if(getScoreboard.animation == 1){
-                        String a = getScoreboard.getAnimation();
                         for(Player all: getScoreboard.boards.keySet()){
                             ScoreboardSign ss = getScoreboard.boards.get(all);
+                            String a = getScoreboard.getAnimation(all);
                             ss.setLine(0,"§6" + all.getName());
-                            ss.setLine(1,"   " + ChatColor.BLUE);
+                            ss.setLine(1,"" + ChatColor.GOLD);
                             ss.setLine(2,"§2Buon Giorno");
-                            ss.setLine(3," ");
+                            ss.setLine(3,"" + ChatColor.BLUE);
                             ss.setLine(4,"" + a);
-                            ss.setLine(5,"§l  ");
-                            ss.setLine(6,"§fSie spielen hier auf");
-                            ss.setLine(7,"§c§lMEINEM");
-                            ss.setLine(8,"§r§fServer!!!");
+                            ss.setLine(5,"" + ChatColor.RED);
+                            ss.setLine(6,de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.6",getLanguage(UUIDFetcher.getUUID(all.getName()))));
+                            ss.setLine(7,de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.7",getLanguage(UUIDFetcher.getUUID(all.getName()))));
+                            ss.setLine(8,de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.8",getLanguage(UUIDFetcher.getUUID(all.getName()))));
                         }
                     }
                     if(getScoreboard.animation == 2){
-                        String a = getScoreboard.getAnimation();
                         for(Player all: getScoreboard.boards.keySet()){
                             ScoreboardSign ss = getScoreboard.boards.get(all);
+                            String a = getScoreboard.getAnimation(all);
                             ss.setLine(0,"§6" + all.getName());
-                            ss.setLine(1,"   " + ChatColor.BLUE);
+                            ss.setLine(1,"" + ChatColor.GOLD);
                             ss.setLine(2,"§2Buon Giorno");
-                            ss.setLine(3," " + ChatColor.BLACK);
-                            ss.setLine(4,"§l  " + ChatColor.RED);
+                            ss.setLine(3,"" + ChatColor.BLUE);
+                            ss.setLine(4,"" + ChatColor.RED);
                             ss.setLine(5,"" + a);
-                            ss.setLine(6,"§fSie spielen hier auf");
-                            ss.setLine(7,"§c§lMEINEM");
-                            ss.setLine(8,"§r§fServer!!!");
+                            ss.setLine(6,de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.6",getLanguage(UUIDFetcher.getUUID(all.getName()))));
+                            ss.setLine(7,de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.7",getLanguage(UUIDFetcher.getUUID(all.getName()))));
+                            ss.setLine(8,de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.8",getLanguage(UUIDFetcher.getUUID(all.getName()))));
                         }
                     }
                 }
