@@ -3,6 +3,8 @@ package de.MangoleHD.IMLobby.Listener;
 import de.MangoleHD.IMLobby.StaticClasses.getClothing;
 import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
+import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
+import de.MangoleHD.IMLobby.StaticClasses.getVisibility;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -28,6 +30,22 @@ public class JoinListener implements Listener {
 
         MySQL_UserSettings.createUserSetting(uuid,"clothing","off");
 
+        MySQL_UserSettings.createUserSetting(uuid,"visibility","all");
+
+        if(MySQL_UserSettings.getString(uuid,"clothing").equals("jumper")) {
+            p.setAllowFlight(true);
+        }else{
+            p.setAllowFlight(false);
+        }
+
+        if(MySQL_UserSettings.getString(uuid,"visibility").equals("all")){
+            getVisibility.getGreen(p);
+        }else if(MySQL_UserSettings.getString(uuid,"visibility").equals("friends and teammates")){
+            getVisibility.getPurple(p);
+        }else{
+            getVisibility.getGray(p);
+        }
+
         tablist.setPlayer(e.getPlayer());
 
         tablist.setTablist(p);
@@ -42,10 +60,6 @@ public class JoinListener implements Listener {
 
         getClothing.onCloth(p);
 
-        if(MySQL_UserSettings.getString(uuid,"clothing").equals("jumper")) {
-            p.setAllowFlight(true);
-        }else{
-            p.setAllowFlight(false);
-        }
+        getScoreboard.createScoreboard(p);
     }
 }

@@ -7,11 +7,13 @@ import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Animals;
 import org.bukkit.entity.Chicken;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
@@ -58,6 +60,14 @@ public class LobbyListener implements Listener {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if(!p.getGameMode().equals(GameMode.CREATIVE)){
+            e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onSpawn(CreatureSpawnEvent e) {
+        CreatureSpawnEvent.SpawnReason spawnreason= e.getSpawnReason();
+        if (spawnreason.equals(CreatureSpawnEvent.SpawnReason.DEFAULT)||spawnreason.equals(CreatureSpawnEvent.SpawnReason.ENDER_PEARL)||spawnreason.equals(CreatureSpawnEvent.SpawnReason.NATURAL)) {
             e.setCancelled(true);
         }
     }
