@@ -3,6 +3,7 @@ package de.MangoleHD.IMLobby.Listener;
 import de.MangoleHD.IMLobby.Listener.PopupMenus.SettingsMenu;
 import de.MangoleHD.IMLobby.Listener.PopupMenus.TeleporterMenu;
 import de.MangoleHD.IMLobby.Scheduler.Scheduler;
+import de.MangoleHD.IMLobby.StaticClasses.getVisibility;
 import org.bukkit.Material;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.EntityType;
@@ -22,12 +23,12 @@ import org.bukkit.inventory.ItemStack;
 public class StartInventoryListener implements Listener {
 
     @EventHandler
-    public void Teleporter(PlayerInteractEvent e) {
+    public void onTeleporter(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         ItemStack compass = e.getItem();
         Action click = e.getAction();
         if (click.equals(Action.RIGHT_CLICK_BLOCK) || click.equals(Action.RIGHT_CLICK_AIR)) {
-            if (compass.getType().equals(Material.COMPASS) && compass.getItemMeta().getDisplayName().equals("Teleporter")) {
+            if (compass.getType().equals(Material.COMPASS) && compass.getItemMeta().getDisplayName().equals("§rTeleporter")) {
                 e.setCancelled(true);
                 TeleporterMenu.openTeleportMenu(p);
             }
@@ -35,13 +36,13 @@ public class StartInventoryListener implements Listener {
     }
 
     @EventHandler
-    public void Settings(PlayerInteractEvent e) {
+    public void onSettings(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         ItemStack repeater = e.getItem();
         Action click = e.getAction();
 
         if (click.equals(Action.RIGHT_CLICK_BLOCK) || click.equals(Action.RIGHT_CLICK_AIR)) {
-            if (repeater.getType().equals(Material.REPEATER) && repeater.getItemMeta().getDisplayName().equals("Settings")) {
+            if (repeater.getType().equals(Material.REPEATER) && repeater.getItemMeta().getDisplayName().equals("§rSettings")) {
                 e.setCancelled(true);
                 SettingsMenu.openSettingsMenu(p);
             }
@@ -49,11 +50,11 @@ public class StartInventoryListener implements Listener {
     }
 
     @EventHandler
-    public void Enderpearl(ProjectileLaunchEvent e) {
+    public void onEnderpearl(ProjectileLaunchEvent e) {
         Projectile ender = e.getEntity();
 
         if(ender instanceof EnderPearl){
-            if(((EnderPearl) ender).getItem().getItemMeta().getDisplayName().equals("Beam")) {
+            if(((EnderPearl) ender).getItem().getItemMeta().getDisplayName().equals("§rBeam")) {
                 Player p = (Player) ender.getShooter();
                 Scheduler.EnderToClay(p);
             }
@@ -62,12 +63,12 @@ public class StartInventoryListener implements Listener {
     }
 
     @EventHandler
-    public void News(PlayerInteractEvent e) {
+    public void onNews(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         ItemStack book = e.getItem();
         Action c = e.getAction();
         if (c.equals(Action.RIGHT_CLICK_AIR) || c.equals(Action.RIGHT_CLICK_BLOCK)) {
-            if (book.getType().equals(Material.BOOK) && book.getItemMeta().getDisplayName().equalsIgnoreCase("News")) {
+            if (book.getType().equals(Material.BOOK) && book.getItemMeta().getDisplayName().equalsIgnoreCase("§rNews")) {
                 e.setCancelled(true);
                 p.chat("/news");
             }
@@ -75,9 +76,15 @@ public class StartInventoryListener implements Listener {
     }
 
     @EventHandler
-    public void Endermite(CreatureSpawnEvent e) {
-        if (e.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.ENDER_PEARL) || e.getEntityType().equals(EntityType.ENDERMITE)) {
-            e.setCancelled(true);
+    public void onVisibility(PlayerInteractEvent e) {
+        Player p = e.getPlayer();
+        ItemStack dye = e.getItem();
+        Action c = e.getAction();
+        if (c.equals(Action.RIGHT_CLICK_AIR) || c.equals(Action.RIGHT_CLICK_BLOCK)) {
+            if (dye.getType().equals(Material.LIME_DYE)||dye.getType().equals(Material.PURPLE_DYE)||dye.getType().equals(Material.GRAY_DYE)) {
+                e.setCancelled(true);
+                getVisibility.changeDye(dye,p);
+            }
         }
     }
 

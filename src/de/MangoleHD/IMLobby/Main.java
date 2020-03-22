@@ -9,6 +9,7 @@ import de.Iclipse.IMAPI.Util.Dispatching.Dispatcher;
 import de.Iclipse.IMAPI.Util.Dispatching.Language;
 import de.MangoleHD.IMLobby.Listener.*;
 import de.MangoleHD.IMLobby.Scheduler.Scheduler;
+import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
 import net.minecraft.server.v1_15_R1.Schedule;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,12 +28,14 @@ public class Main extends JavaPlugin {
         Data.tablist = new Tablist();
         Data.instance = this;
         Scheduler.GhostScheduler();
+        Scheduler.scheduleScoreboard();
     }
 
     @Override
     public void onDisable() {
         super.onDisable();
         Scheduler.stopScheduler();
+        Scheduler.stopScheduler2();
     }
 
     public void registerListener() {
