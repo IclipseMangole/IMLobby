@@ -9,6 +9,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import static de.Iclipse.IMAPI.Functions.MySQL.MySQL_User.getLanguage;
+
 public class getVisibility {
 
     public static void changeDye(ItemStack item, Player p) {
@@ -25,13 +27,15 @@ public class getVisibility {
     public static void getGreen(Player p) {
         ItemStack dye = new ItemStack(Material.LIME_DYE);
         ItemMeta dyemeta = dye.getItemMeta();
-        dyemeta.setDisplayName("§r§aVisibility: All");
+        dyemeta.setDisplayName(de.Iclipse.IMAPI.Data.dsp.get("visibility.green",getLanguage(UUIDFetcher.getUUID(p.getName()))));
         dye.setItemMeta(dyemeta);
         p.getInventory().setItem(2,dye);
         p.setCustomNameVisible(true);
 
         for(Player all: Bukkit.getOnlinePlayers()){
-            p.showPlayer(Data.instance,all);
+            if(MySQL_UserSettings.getInt(UUIDFetcher.getUUID(all.getName()),"vanish")==0) {
+                p.showPlayer(Data.instance, all);
+            }
         }
         MySQL_UserSettings.setString(UUIDFetcher.getUUID(p.getName()),"visibility","all");
     }
@@ -39,11 +43,13 @@ public class getVisibility {
     public static void getPurple(Player p){
         ItemStack dye = new ItemStack(Material.PURPLE_DYE);
         ItemMeta dyemeta = dye.getItemMeta();
-        dyemeta.setDisplayName("§r§5Visibility: Friends and Teammates");
+        dyemeta.setDisplayName(de.Iclipse.IMAPI.Data.dsp.get("visibility.green",getLanguage(UUIDFetcher.getUUID(p.getName()))));
         dye.setItemMeta(dyemeta);
         p.getInventory().setItem(2,dye);
         for(Player all: Bukkit.getOnlinePlayers()){
-            p.showPlayer(Data.instance,all);
+            if(MySQL_UserSettings.getInt(UUIDFetcher.getUUID(all.getName()),"vanish")==0) {
+                p.showPlayer(Data.instance, all);
+            }
         }
         MySQL_UserSettings.setString(UUIDFetcher.getUUID(p.getName()),"visibility","friends and teammates");
     }
@@ -51,7 +57,7 @@ public class getVisibility {
     public static void getGray(Player p){
         ItemStack dye = new ItemStack(Material.GRAY_DYE);
         ItemMeta dyemeta = dye.getItemMeta();
-        dyemeta.setDisplayName("§r§7Visibility: Nobody");
+        dyemeta.setDisplayName(de.Iclipse.IMAPI.Data.dsp.get("visibility.green",getLanguage(UUIDFetcher.getUUID(p.getName()))));
         dye.setItemMeta(dyemeta);
         p.getInventory().setItem(2,dye);
         for(Player all: Bukkit.getOnlinePlayers()){

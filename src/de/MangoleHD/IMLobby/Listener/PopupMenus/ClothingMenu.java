@@ -13,8 +13,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
-import javax.swing.plaf.basic.BasicLabelUI;
-
 import static de.Iclipse.IMAPI.Functions.MySQL.MySQL_User.getLanguage;
 
 public class ClothingMenu {

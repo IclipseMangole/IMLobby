@@ -1,5 +1,7 @@
 package de.MangoleHD.IMLobby.Listener;
 
+import de.Iclipse.IMAPI.Data;
+import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.MangoleHD.IMLobby.Listener.PopupMenus.SettingsMenu;
 import de.MangoleHD.IMLobby.Listener.PopupMenus.TeleporterMenu;
 import de.MangoleHD.IMLobby.Scheduler.Scheduler;
@@ -20,6 +22,8 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
+import static de.Iclipse.IMAPI.Functions.MySQL.MySQL_User.getLanguage;
+
 public class StartInventoryListener implements Listener {
 
     @EventHandler
@@ -28,7 +32,7 @@ public class StartInventoryListener implements Listener {
         ItemStack compass = e.getItem();
         Action click = e.getAction();
         if (click.equals(Action.RIGHT_CLICK_BLOCK) || click.equals(Action.RIGHT_CLICK_AIR)) {
-            if (compass.getType().equals(Material.COMPASS) && compass.getItemMeta().getDisplayName().equals("§rTeleporter")) {
+            if (compass.getType().equals(Material.COMPASS) && compass.getItemMeta().getDisplayName().equals(Data.dsp.get("startinventory.name.teleporter",getLanguage(UUIDFetcher.getUUID(p.getName()))))) {
                 e.setCancelled(true);
                 TeleporterMenu.openTeleportMenu(p);
             }
@@ -42,7 +46,7 @@ public class StartInventoryListener implements Listener {
         Action click = e.getAction();
 
         if (click.equals(Action.RIGHT_CLICK_BLOCK) || click.equals(Action.RIGHT_CLICK_AIR)) {
-            if (repeater.getType().equals(Material.REPEATER) && repeater.getItemMeta().getDisplayName().equals("§rSettings")) {
+            if (repeater.getType().equals(Material.REPEATER) && repeater.getItemMeta().getDisplayName().equals(Data.dsp.get("startinventory.name.settings",getLanguage(UUIDFetcher.getUUID(p.getName()))))) {
                 e.setCancelled(true);
                 SettingsMenu.openSettingsMenu(p);
             }
@@ -52,10 +56,9 @@ public class StartInventoryListener implements Listener {
     @EventHandler
     public void onEnderpearl(ProjectileLaunchEvent e) {
         Projectile ender = e.getEntity();
-
+        Player p = (Player) ender.getShooter();
         if(ender instanceof EnderPearl){
-            if(((EnderPearl) ender).getItem().getItemMeta().getDisplayName().equals("§rBeam")) {
-                Player p = (Player) ender.getShooter();
+            if(((EnderPearl) ender).getItem().getItemMeta().getDisplayName().equals(Data.dsp.get("startinventory.name.beam",getLanguage(UUIDFetcher.getUUID(p.getName()))))) {
                 Scheduler.EnderToClay(p);
             }
         }
@@ -68,7 +71,7 @@ public class StartInventoryListener implements Listener {
         ItemStack book = e.getItem();
         Action c = e.getAction();
         if (c.equals(Action.RIGHT_CLICK_AIR) || c.equals(Action.RIGHT_CLICK_BLOCK)) {
-            if (book.getType().equals(Material.BOOK) && book.getItemMeta().getDisplayName().equalsIgnoreCase("§rNews")) {
+            if (book.getType().equals(Material.BOOK) && book.getItemMeta().getDisplayName().equalsIgnoreCase(Data.dsp.get("startinventory.name.news",getLanguage(UUIDFetcher.getUUID(p.getName()))))) {
                 e.setCancelled(true);
                 p.chat("/news");
             }
