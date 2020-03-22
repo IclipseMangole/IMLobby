@@ -1,5 +1,6 @@
 package de.MangoleHD.IMLobby.Listener.PopupMenus;
 
+import de.Iclipse.IMAPI.Functions.MySQL.MySQL_Mode;
 import de.Iclipse.IMAPI.Util.menu.MenuItem;
 import de.Iclipse.IMAPI.Util.menu.PopupMenu;
 import org.bukkit.Location;
@@ -24,6 +25,16 @@ public class TeleporterMenu {
         //Menu with Items
         teleMenu.addMenuItem(spawn, 4, 2);
 
+        MySQL_Mode.getModes().forEach(mode ->{
+            MenuItem modeitem = new MenuItem(MySQL_Mode.getDisplayname(mode), MySQL_Mode.getItem(mode)) {
+                @Override
+                public void onClick(Player player) {
+                    player.teleport(MySQL_Mode.getLocation(mode));
+                    p.playSound(MySQL_Mode.getLocation(mode), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+                }
+            };
+            teleMenu.addMenuItem(modeitem, MySQL_Mode.getSlot(mode));
+        });
         teleMenu.openMenu(p);
     }
 }
