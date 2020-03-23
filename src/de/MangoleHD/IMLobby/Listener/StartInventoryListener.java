@@ -173,7 +173,7 @@ public class StartInventoryListener implements Listener {
                     if (item.getItemMeta().getDisplayName().endsWith("Boots")) {
                         p.getInventory().setBoots(item);
                     }
-                    if (item.getItemMeta().getDisplayName().endsWith("§cRocket")) {
+                    if (item.getItemMeta().getDisplayName().endsWith(Data.dsp.get("extras.rocket",getLanguage(UUIDFetcher.getUUID(p.getName()))))) {
                         p.getInventory().setItem(4,item);
                     }
                 }

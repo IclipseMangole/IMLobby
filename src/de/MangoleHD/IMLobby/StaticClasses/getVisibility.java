@@ -43,7 +43,7 @@ public class getVisibility {
     public static void getPurple(Player p){
         ItemStack dye = new ItemStack(Material.PURPLE_DYE);
         ItemMeta dyemeta = dye.getItemMeta();
-        dyemeta.setDisplayName(de.Iclipse.IMAPI.Data.dsp.get("visibility.green",getLanguage(UUIDFetcher.getUUID(p.getName()))));
+        dyemeta.setDisplayName(de.Iclipse.IMAPI.Data.dsp.get("visibility.purple",getLanguage(UUIDFetcher.getUUID(p.getName()))));
         dye.setItemMeta(dyemeta);
         p.getInventory().setItem(2,dye);
         for(Player all: Bukkit.getOnlinePlayers()){
@@ -57,7 +57,7 @@ public class getVisibility {
     public static void getGray(Player p){
         ItemStack dye = new ItemStack(Material.GRAY_DYE);
         ItemMeta dyemeta = dye.getItemMeta();
-        dyemeta.setDisplayName(de.Iclipse.IMAPI.Data.dsp.get("visibility.green",getLanguage(UUIDFetcher.getUUID(p.getName()))));
+        dyemeta.setDisplayName(de.Iclipse.IMAPI.Data.dsp.get("visibility.gray",getLanguage(UUIDFetcher.getUUID(p.getName()))));
         dye.setItemMeta(dyemeta);
         p.getInventory().setItem(2,dye);
         for(Player all: Bukkit.getOnlinePlayers()){
