@@ -85,8 +85,8 @@ public class Scheduler {
                             ss.setLine(1,"" + ChatColor.GOLD);
                             ss.setLine(2,"§2Buon Giorno");
                             ss.setLine(3,"" + a);
-                            ss.setLine(4,""  + ChatColor.BLUE);
-                            ss.setLine(5,"" + ChatColor.RED);
+                            ss.setLine(4," "  + ChatColor.BLUE);
+                            ss.setLine(5,"  " + ChatColor.RED);
                             ss.setLine(6, de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.6",getLanguage(UUIDFetcher.getUUID(all.getName()))));
                             ss.setLine(7, de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.7",getLanguage(UUIDFetcher.getUUID(all.getName()))));
                             ss.setLine(8, de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.8",getLanguage(UUIDFetcher.getUUID(all.getName()))));
@@ -99,9 +99,9 @@ public class Scheduler {
                             ss.setLine(0,"§6" + all.getName());
                             ss.setLine(1,"" + ChatColor.GOLD);
                             ss.setLine(2,"§2Buon Giorno");
-                            ss.setLine(3,"" + ChatColor.BLUE);
+                            ss.setLine(3," " + ChatColor.BLUE);
                             ss.setLine(4,"" + a);
-                            ss.setLine(5,"" + ChatColor.RED);
+                            ss.setLine(5,"  " + ChatColor.RED);
                             ss.setLine(6,de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.6",getLanguage(UUIDFetcher.getUUID(all.getName()))));
                             ss.setLine(7,de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.7",getLanguage(UUIDFetcher.getUUID(all.getName()))));
                             ss.setLine(8,de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.8",getLanguage(UUIDFetcher.getUUID(all.getName()))));
@@ -114,8 +114,8 @@ public class Scheduler {
                             ss.setLine(0,"§6" + all.getName());
                             ss.setLine(1,"" + ChatColor.GOLD);
                             ss.setLine(2,"§2Buon Giorno");
-                            ss.setLine(3,"" + ChatColor.BLUE);
-                            ss.setLine(4,"" + ChatColor.RED);
+                            ss.setLine(3," " + ChatColor.BLUE);
+                            ss.setLine(4,"  " + ChatColor.RED);
                             ss.setLine(5,"" + a);
                             ss.setLine(6,de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.6",getLanguage(UUIDFetcher.getUUID(all.getName()))));
                             ss.setLine(7,de.Iclipse.IMAPI.Data.dsp.get("scoreboard.line.7",getLanguage(UUIDFetcher.getUUID(all.getName()))));
@@ -125,6 +125,21 @@ public class Scheduler {
                 }
             }
         },0,1);
+    }
+
+    public static void onSneakJumperScheduler() {
+        scheduler = Bukkit.getScheduler().scheduleSyncRepeatingTask(Data.instance, new Runnable() {
+            @Override
+            public void run() {
+                Data.sneakjumper.forEach((player, integer) -> {
+                    if(Data.sneakjumper.get(player)!=60){
+                        int old = Data.sneakjumper.get(player);
+                        int neu = old+1;
+                        Data.sneakjumper.replace(player,old,neu);
+                    }
+                });
+            }
+        },1,1);
     }
 
     public static void stopScheduler(){

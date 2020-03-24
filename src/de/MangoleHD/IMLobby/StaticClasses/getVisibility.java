@@ -33,7 +33,7 @@ public class getVisibility {
         p.setCustomNameVisible(true);
 
         for(Player all: Bukkit.getOnlinePlayers()){
-            if(MySQL_UserSettings.getInt(UUIDFetcher.getUUID(all.getName()),"vanish")==0) {
+            if(!MySQL_UserSettings.getBoolean(UUIDFetcher.getUUID(all.getName()),"vanish")) {
                 p.showPlayer(Data.instance, all);
             }
         }
@@ -47,7 +47,7 @@ public class getVisibility {
         dye.setItemMeta(dyemeta);
         p.getInventory().setItem(2,dye);
         for(Player all: Bukkit.getOnlinePlayers()){
-            if(MySQL_UserSettings.getInt(UUIDFetcher.getUUID(all.getName()),"vanish")==0) {
+            if(!MySQL_UserSettings.getBoolean(UUIDFetcher.getUUID(all.getName()),"vanish")) {
                 p.showPlayer(Data.instance, all);
             }
         }

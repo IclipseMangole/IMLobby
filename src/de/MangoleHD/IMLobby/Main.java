@@ -29,6 +29,7 @@ public class Main extends JavaPlugin {
         Data.instance = this;
         Scheduler.GhostScheduler();
         Scheduler.scheduleScoreboard();
+        Scheduler.onSneakJumperScheduler();
     }
 
     @Override
