@@ -28,12 +28,14 @@ public class ExtrasListener implements Listener {
        ItemStack rocket = e.getItem();
 
        if(click.equals(Action.RIGHT_CLICK_AIR)||click.equals(Action.RIGHT_CLICK_BLOCK)){
-           if(rocket.getItemMeta().getDisplayName().equals(Data.dsp.get("extras.rocket", getLanguage(UUIDFetcher.getUUID(p.getName()))))){
-               e.setCancelled(true);
-               Vector v = new Vector();
-               v.setX(0).setY(50).setZ(0);
-               p.setVelocity(v);
-               p.getInventory().setItem(4,new ItemStack(Material.AIR));
+           if(p.isOnGround()) {
+               if (rocket.getItemMeta().getDisplayName().equals(Data.dsp.get("extras.rocket", getLanguage(UUIDFetcher.getUUID(p.getName()))))) {
+                   e.setCancelled(true);
+                   Vector v = new Vector();
+                   v.setX(0).setY(50).setZ(0);
+                   p.setVelocity(v);
+                   p.getInventory().setItem(4, new ItemStack(Material.AIR));
+               }
            }
        }
    }

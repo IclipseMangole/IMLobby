@@ -17,4 +17,5 @@ public class Data {
     public static String prefix = "§5IM" + symbol;
     public static HashMap<Player, Integer> doublejump = new HashMap<>();
     public static ArrayList<Player> ghost = new ArrayList<>();
+    public static HashMap<Player, Integer> sneakjumper= new HashMap<>();
 }

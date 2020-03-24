@@ -17,6 +17,8 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import java.util.UUID;
 
@@ -26,13 +28,14 @@ public class LobbyListener implements Listener {
     public void Damage(EntityDamageEvent e){
         if(e.getEntity() instanceof Player) {
             Player p = ((Player) e.getEntity()).getPlayer();
-            e.setDamage(0);
-            p.setHealth(20);
             if(e.getCause().equals(EntityDamageEvent.DamageCause.VOID)){
                 Location Spawn = new Location(p.getWorld(),0.5,4,0.5,180,0);
                 p.teleport(Spawn);
                 p.playSound(Spawn, Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-
+                e.setDamage(0);
+                p.setHealth(20);
+            }else{
+                e.setCancelled(true);
             }
         }
     }
@@ -69,6 +72,13 @@ public class LobbyListener implements Listener {
         CreatureSpawnEvent.SpawnReason spawnreason= e.getSpawnReason();
         if (spawnreason.equals(CreatureSpawnEvent.SpawnReason.DEFAULT)||spawnreason.equals(CreatureSpawnEvent.SpawnReason.ENDER_PEARL)||spawnreason.equals(CreatureSpawnEvent.SpawnReason.NATURAL)) {
             e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onLang(AsyncPlayerChatEvent e){
+        if(e.getMessage().startsWith("/lang")){
+            e.getPlayer().chat("/startinventory");
         }
     }
 }

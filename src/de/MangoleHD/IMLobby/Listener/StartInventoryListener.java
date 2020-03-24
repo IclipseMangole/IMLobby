@@ -46,7 +46,7 @@ public class StartInventoryListener implements Listener {
         Action click = e.getAction();
 
         if (click.equals(Action.RIGHT_CLICK_BLOCK) || click.equals(Action.RIGHT_CLICK_AIR)) {
-            if (repeater.getType().equals(Material.REPEATER) && repeater.getItemMeta().getDisplayName().equals(Data.dsp.get("startinventory.name.settings",getLanguage(UUIDFetcher.getUUID(p.getName()))))) {
+            if (repeater.getType().equals(Material.REPEATER)) {
                 e.setCancelled(true);
                 SettingsMenu.openSettingsMenu(p);
             }
@@ -173,7 +173,7 @@ public class StartInventoryListener implements Listener {
                     if (item.getItemMeta().getDisplayName().endsWith("Boots")) {
                         p.getInventory().setBoots(item);
                     }
-                    if (item.getItemMeta().getDisplayName().endsWith("§cRocket")) {
+                    if (item.getItemMeta().getDisplayName().endsWith(Data.dsp.get("extras.rocket",getLanguage(UUIDFetcher.getUUID(p.getName()))))) {
                         p.getInventory().setItem(4,item);
                     }
                 }

@@ -45,6 +45,28 @@ public class ClothingListener implements Listener {
     }
 
     @EventHandler
+    public void onSneakJumper(PlayerToggleSneakEvent e) {
+        Player p = e.getPlayer();
+        UUID uuid = UUIDFetcher.getUUID(p.getName());
+        if (!p.getGameMode().equals(GameMode.CREATIVE)) {
+            if (MySQL_UserSettings.getString(uuid, "clothing").equals("jumper")) {
+                if (!p.isSneaking()) {
+                    if (p.isOnGround()) {
+                        Data.sneakjumper.put(p, 0);
+                    }
+                }else{
+                    if(Data.sneakjumper.containsKey(p)){
+                        Vector v = p.getLocation().getDirection().setX(0).setZ(0).setY(Data.sneakjumper.get(p)/10);
+                        p.setVelocity(v);
+                        p.setAllowFlight(false);
+                        Data.sneakjumper.remove(p);
+                    }
+                }
+            }
+        }
+    }
+
+    @EventHandler
     public void onJumperGround(PlayerMoveEvent e){
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
@@ -56,7 +78,7 @@ public class ClothingListener implements Listener {
     }
 
     @EventHandler
-    public void onGhost(PlayerToggleSneakEvent e){
+    public void onSneakGhost(PlayerToggleSneakEvent e){
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if(MySQL_UserSettings.getString(uuid,"clothing").equals("ghost")){
