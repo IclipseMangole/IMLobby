@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import static de.Iclipse.IMAPI.Data.dsp;
+import static de.MangoleHD.IMLobby.Data.dsp;
 
 
 public class QuitListener {

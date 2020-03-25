@@ -5,12 +5,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
-import de.Iclipse.IMAPI.Data;
 
 import java.util.HashMap;
 
 /* ~Yannick on 09.06.2019 at 11:47 o´ clock
-        */
+ */
 public class Tablist {
     static String header;
     static String footer;
@@ -53,7 +52,7 @@ public class Tablist {
         if (p.hasPermission("im.tab.serversettings")) {
             p.setPlayerListHeader(header + port);
             p.setPlayerListFooter(ranks + "\n" + footer);
-        } else{
+        } else {
             p.setPlayerListHeader(header);
             p.setPlayerListFooter(ranks);
         }
@@ -66,7 +65,7 @@ public class Tablist {
             team = "1a";
         } else if (p.hasPermission("im.color.mod")) {
             team = "2b";
-        } else  {
+        } else {
             team = "3c";
         }
         if (!sb.getTeam(team).hasPlayer(Bukkit.getOfflinePlayer(p.getUniqueId())))

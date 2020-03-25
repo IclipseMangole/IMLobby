@@ -9,8 +9,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import static de.Iclipse.IMAPI.Functions.MySQL.MySQL_User.getLanguage;
-
 public class getVisibility {
 
     public static void changeDye(ItemStack item, Player p) {
@@ -27,7 +25,7 @@ public class getVisibility {
     public static void getGreen(Player p) {
         ItemStack dye = new ItemStack(Material.LIME_DYE);
         ItemMeta dyemeta = dye.getItemMeta();
-        dyemeta.setDisplayName(de.Iclipse.IMAPI.Data.dsp.get("visibility.green",getLanguage(UUIDFetcher.getUUID(p.getName()))));
+        dyemeta.setDisplayName(Data.dsp.get("visibility.green", p));
         dye.setItemMeta(dyemeta);
         p.getInventory().setItem(2,dye);
         p.setCustomNameVisible(true);
@@ -43,7 +41,7 @@ public class getVisibility {
     public static void getPurple(Player p){
         ItemStack dye = new ItemStack(Material.PURPLE_DYE);
         ItemMeta dyemeta = dye.getItemMeta();
-        dyemeta.setDisplayName(de.Iclipse.IMAPI.Data.dsp.get("visibility.purple",getLanguage(UUIDFetcher.getUUID(p.getName()))));
+        dyemeta.setDisplayName(Data.dsp.get("visibility.purple",p));
         dye.setItemMeta(dyemeta);
         p.getInventory().setItem(2,dye);
         for(Player all: Bukkit.getOnlinePlayers()){
@@ -57,7 +55,7 @@ public class getVisibility {
     public static void getGray(Player p){
         ItemStack dye = new ItemStack(Material.GRAY_DYE);
         ItemMeta dyemeta = dye.getItemMeta();
-        dyemeta.setDisplayName(de.Iclipse.IMAPI.Data.dsp.get("visibility.gray",getLanguage(UUIDFetcher.getUUID(p.getName()))));
+        dyemeta.setDisplayName(Data.dsp.get("visibility.gray",p));
         dye.setItemMeta(dyemeta);
         p.getInventory().setItem(2,dye);
         for(Player all: Bukkit.getOnlinePlayers()){

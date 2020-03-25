@@ -1,28 +1,23 @@
 package de.MangoleHD.IMLobby.Listener;
 
-import de.Iclipse.IMAPI.Data;
-import de.Iclipse.IMAPI.Util.UUIDFetcher;
+import de.MangoleHD.IMLobby.Data;
 import de.MangoleHD.IMLobby.Listener.PopupMenus.SettingsMenu;
 import de.MangoleHD.IMLobby.Listener.PopupMenus.TeleporterMenu;
 import de.MangoleHD.IMLobby.Scheduler.Scheduler;
 import de.MangoleHD.IMLobby.StaticClasses.getVisibility;
 import org.bukkit.Material;
 import org.bukkit.entity.EnderPearl;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-
-import static de.Iclipse.IMAPI.Functions.MySQL.MySQL_User.getLanguage;
 
 public class StartInventoryListener implements Listener {
 
@@ -32,7 +27,7 @@ public class StartInventoryListener implements Listener {
         ItemStack compass = e.getItem();
         Action click = e.getAction();
         if (click.equals(Action.RIGHT_CLICK_BLOCK) || click.equals(Action.RIGHT_CLICK_AIR)) {
-            if (compass.getType().equals(Material.COMPASS) && compass.getItemMeta().getDisplayName().equals(Data.dsp.get("startinventory.name.teleporter",getLanguage(UUIDFetcher.getUUID(p.getName()))))) {
+            if (compass.getType().equals(Material.COMPASS) && compass.getItemMeta().getDisplayName().equals(Data.dsp.get("startinventory.name.teleporter", p))) {
                 e.setCancelled(true);
                 TeleporterMenu.openTeleportMenu(p);
             }
@@ -57,8 +52,8 @@ public class StartInventoryListener implements Listener {
     public void onEnderpearl(ProjectileLaunchEvent e) {
         Projectile ender = e.getEntity();
         Player p = (Player) ender.getShooter();
-        if(ender instanceof EnderPearl){
-            if(((EnderPearl) ender).getItem().getItemMeta().getDisplayName().equals(Data.dsp.get("startinventory.name.beam",getLanguage(UUIDFetcher.getUUID(p.getName()))))) {
+        if (ender instanceof EnderPearl) {
+            if (((EnderPearl) ender).getItem().getItemMeta().getDisplayName().equals(Data.dsp.get("startinventory.name.beam", p))) {
                 Scheduler.EnderToClay(p);
             }
         }
@@ -71,7 +66,7 @@ public class StartInventoryListener implements Listener {
         ItemStack book = e.getItem();
         Action c = e.getAction();
         if (c.equals(Action.RIGHT_CLICK_AIR) || c.equals(Action.RIGHT_CLICK_BLOCK)) {
-            if (book.getType().equals(Material.BOOK) && book.getItemMeta().getDisplayName().equalsIgnoreCase(Data.dsp.get("startinventory.name.news",getLanguage(UUIDFetcher.getUUID(p.getName()))))) {
+            if (book.getType().equals(Material.BOOK) && book.getItemMeta().getDisplayName().equalsIgnoreCase(Data.dsp.get("startinventory.name.news", p))) {
                 e.setCancelled(true);
                 p.chat("/news");
             }
@@ -84,9 +79,9 @@ public class StartInventoryListener implements Listener {
         ItemStack dye = e.getItem();
         Action c = e.getAction();
         if (c.equals(Action.RIGHT_CLICK_AIR) || c.equals(Action.RIGHT_CLICK_BLOCK)) {
-            if (dye.getType().equals(Material.LIME_DYE)||dye.getType().equals(Material.PURPLE_DYE)||dye.getType().equals(Material.GRAY_DYE)) {
+            if (dye.getType().equals(Material.LIME_DYE) || dye.getType().equals(Material.PURPLE_DYE) || dye.getType().equals(Material.GRAY_DYE)) {
                 e.setCancelled(true);
-                getVisibility.changeDye(dye,p);
+                getVisibility.changeDye(dye, p);
             }
         }
     }
@@ -107,29 +102,29 @@ public class StartInventoryListener implements Listener {
         if (item.equals(new ItemStack(Material.REPEATER))) {
             p.getInventory().setItem(8, item);
         }
-        if(item.getItemMeta().getDisplayName().endsWith("Helmet")){
+        if (item.getItemMeta().getDisplayName().endsWith("Helmet")) {
             p.getInventory().setHelmet(item);
         }
-        if(item.getItemMeta().getDisplayName().endsWith("Hat")){
+        if (item.getItemMeta().getDisplayName().endsWith("Hat")) {
             p.getInventory().setHelmet(item);
         }
-        if(item.getItemMeta().getDisplayName().endsWith("Chestplate")){
+        if (item.getItemMeta().getDisplayName().endsWith("Chestplate")) {
             p.getInventory().setChestplate(item);
         }
-        if(item.getItemMeta().getDisplayName().endsWith("Tunic")){
+        if (item.getItemMeta().getDisplayName().endsWith("Tunic")) {
             p.getInventory().setChestplate(item);
         }
-        if(item.getItemMeta().getDisplayName().endsWith("Leggings")){
+        if (item.getItemMeta().getDisplayName().endsWith("Leggings")) {
             p.getInventory().setLeggings(item);
         }
-        if(item.getItemMeta().getDisplayName().endsWith("Trousers")){
+        if (item.getItemMeta().getDisplayName().endsWith("Trousers")) {
             p.getInventory().setLeggings(item);
         }
-        if(item.getItemMeta().getDisplayName().endsWith("Boots")){
+        if (item.getItemMeta().getDisplayName().endsWith("Boots")) {
             p.getInventory().setBoots(item);
         }
-        if(item.getItemMeta().getDisplayName().endsWith("§cRocket")){
-            p.getInventory().setItem(4,item);
+        if (item.getItemMeta().getDisplayName().endsWith("§cRocket")) {
+            p.getInventory().setItem(4, item);
         }
     }
 
@@ -138,7 +133,7 @@ public class StartInventoryListener implements Listener {
     public void onClick(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
         ItemStack item = e.getCursor();
-        if(!item.getType().equals(Material.AIR)){
+        if (!item.getType().equals(Material.AIR)) {
             ClickType c = e.getClick();
             if (c.isLeftClick() || c.isRightClick() || c.isShiftClick() || c.isKeyboardClick()) {
                 if (!c.isCreativeAction()) {
@@ -173,11 +168,11 @@ public class StartInventoryListener implements Listener {
                     if (item.getItemMeta().getDisplayName().endsWith("Boots")) {
                         p.getInventory().setBoots(item);
                     }
-                    if (item.getItemMeta().getDisplayName().endsWith(Data.dsp.get("extras.rocket",getLanguage(UUIDFetcher.getUUID(p.getName()))))) {
-                        p.getInventory().setItem(4,item);
+                    if (item.getItemMeta().getDisplayName().endsWith(Data.dsp.get("extras.rocket", p))) {
+                        p.getInventory().setItem(4, item);
                     }
-                }
                 }
             }
         }
+    }
 }

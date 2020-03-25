@@ -1,8 +1,8 @@
 package de.MangoleHD.IMLobby.Listener;
 
-import de.MangoleHD.IMLobby.StaticClasses.getClothing;
 import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
+import de.MangoleHD.IMLobby.StaticClasses.getClothing;
 import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
 import de.MangoleHD.IMLobby.StaticClasses.getVisibility;
 import org.bukkit.Bukkit;
@@ -20,29 +20,29 @@ import static de.MangoleHD.IMLobby.Data.tablist;
 public class JoinListener implements Listener {
 
     @EventHandler
-    public void JoinListener(PlayerJoinEvent e){
+    public void JoinListener(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
 
         p.chat("/startInventory");
 
-        MySQL_UserSettings.createUserSetting(uuid,"particles","off");
+        MySQL_UserSettings.createUserSetting(uuid, "particles", "off");
 
-        MySQL_UserSettings.createUserSetting(uuid,"clothing","off");
+        MySQL_UserSettings.createUserSetting(uuid, "clothing", "off");
 
-        MySQL_UserSettings.createUserSetting(uuid,"visibility","all");
+        MySQL_UserSettings.createUserSetting(uuid, "visibility", "all");
 
-        if(MySQL_UserSettings.getString(uuid,"clothing").equals("jumper")) {
+        if (MySQL_UserSettings.getString(uuid, "clothing").equals("jumper")) {
             p.setAllowFlight(true);
-        }else{
+        } else {
             p.setAllowFlight(false);
         }
 
-        if(MySQL_UserSettings.getString(uuid,"visibility").equals("all")){
+        if (MySQL_UserSettings.getString(uuid, "visibility").equals("all")) {
             getVisibility.getGreen(p);
-        }else if(MySQL_UserSettings.getString(uuid,"visibility").equals("friends and teammates")){
+        } else if (MySQL_UserSettings.getString(uuid, "visibility").equals("friends and teammates")) {
             getVisibility.getPurple(p);
-        }else{
+        } else {
             getVisibility.getGray(p);
         }
 
@@ -52,8 +52,8 @@ public class JoinListener implements Listener {
 
         e.setJoinMessage(null);
 
-        Bukkit.getOnlinePlayers().forEach(entry ->{
-            if(!entry.equals(p)){
+        Bukkit.getOnlinePlayers().forEach(entry -> {
+            if (!entry.equals(p)) {
                 dsp.send(entry, "join.message", p.getDisplayName());
             }
         });
