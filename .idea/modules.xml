@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../IMAPI/IMAPI.iml" filepath="$PROJECT_DIR$/../IMAPI/IMAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../IMBungeeCord/IMBungeeCord.iml" filepath="$PROJECT_DIR$/../IMBungeeCord/IMBungeeCord.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/IMLobby.iml" filepath="$PROJECT_DIR$/.idea/IMLobby.iml" />
     </modules>
   </component>
