@@ -27,7 +27,7 @@ public class StartInventoryListener implements Listener {
         ItemStack compass = e.getItem();
         Action click = e.getAction();
         if (click.equals(Action.RIGHT_CLICK_BLOCK) || click.equals(Action.RIGHT_CLICK_AIR)) {
-            if (compass.getType().equals(Material.COMPASS) && compass.getItemMeta().getDisplayName().equals(Data.dsp.get("startinventory.name.teleporter", p))) {
+            if (compass.getType().equals(Material.COMPASS) && compass.getItemMeta().getDisplayName().equalsIgnoreCase(Data.dsp.get("startinventory.name.teleporter", p))) {
                 e.setCancelled(true);
                 TeleporterMenu.openTeleportMenu(p);
             }
@@ -53,7 +53,7 @@ public class StartInventoryListener implements Listener {
         Projectile ender = e.getEntity();
         Player p = (Player) ender.getShooter();
         if (ender instanceof EnderPearl) {
-            if (((EnderPearl) ender).getItem().getItemMeta().getDisplayName().equals(Data.dsp.get("startinventory.name.beam", p))) {
+            if (((EnderPearl) ender).getItem().getItemMeta().getDisplayName().equalsIgnoreCase(Data.dsp.get("startinventory.name.beam", p))) {
                 Scheduler.EnderToClay(p);
             }
         }

@@ -1,6 +1,7 @@
 package de.MangoleHD.IMLobby.Listener;
 
 import de.MangoleHD.IMLobby.Data;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,8 +10,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
-
-import java.util.Random;
 
 public class ExtrasListener implements Listener {
 
@@ -25,16 +24,8 @@ public class ExtrasListener implements Listener {
                 if (rocket.getItemMeta().getDisplayName().equals(Data.dsp.get("extras.rocket", p))) {
                     e.setCancelled(true);
                     Vector v = new Vector();
-                    v.setX(0).setY(100).setZ(0);
+                    v.setX(0).setY(50).setZ(0);
                     p.setVelocity(v);
-                    if (new Random().nextInt(2) == 1) {
-                        try {
-                            wait(1000);
-                            v.setX(0).setY(150).setZ(0);
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-                        }
-                    }
                     p.getInventory().setItem(4, new ItemStack(Material.AIR));
                 }
             }

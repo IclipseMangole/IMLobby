@@ -22,12 +22,12 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         super.onEnable();
+        Data.instance = this;
         loadResourceBundles();
         registerListener();
         registerCommands();
         createTables();
         Data.tablist = new Tablist();
-        Data.instance = this;
         Scheduler.GhostScheduler();
         Scheduler.scheduleScoreboard();
         Scheduler.onSneakJumperScheduler();
