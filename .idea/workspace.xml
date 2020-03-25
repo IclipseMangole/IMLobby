@@ -7,19 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00c0d32a-bf1e-4d95-999b-bdd75047cd6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../IMBungeeCord/src/de/Iclipse/IMBungee/Functions/Commands/cmd_friend.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../IMBungeeCord/src/de/Iclipse/IMBungee/Functions/MySQL/MySQL_Friend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../IMBungeeCord/IMBungeeCord.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../IMBungeeCord/IMBungeeCord.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../IMBungeeCord/src/de/Iclipse/IMBungee/IMBungeeCord.java" beforeDir="false" afterPath="$PROJECT_DIR$/../IMBungeeCord/src/de/Iclipse/IMBungee/IMBungeeCord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IMBungeeCord/src/de/Iclipse/IMBungee/Functions/Commands/cmd_friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/../IMBungeeCord/src/de/Iclipse/IMBungee/Functions/Commands/cmd_friend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IMBungeeCord/src/de/Iclipse/IMBungee/Functions/MySQL/MySQL_Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/../IMBungeeCord/src/de/Iclipse/IMBungee/Functions/MySQL/MySQL_Friend.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../IMBungeeCord/src/i18n/langDE.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../IMBungeeCord/src/i18n/langDE.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../IMBungeeCord/src/i18n/langEN.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../IMBungeeCord/src/i18n/langEN.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Commands/cmd_friend.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/i18n/langDE.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/langDE.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/i18n/langEN.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/langEN.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +27,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../IMBungeeCord" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -190,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585077666994</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="IMLobby Version 324323.0, die Yannick nicht checkt">
+      <created>1585172582070</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1585172582071</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -208,6 +207,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="IMLobby LOL XD" />
-    <option name="LAST_COMMIT_MESSAGE" value="IMLobby LOL XD" />
+    <MESSAGE value="IMLobby Version 324323.0, die Yannick nicht checkt" />
+    <option name="LAST_COMMIT_MESSAGE" value="IMLobby Version 324323.0, die Yannick nicht checkt" />
   </component>
 </project>
