@@ -7,17 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00c0d32a-bf1e-4d95-999b-bdd75047cd6e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../IMBungeeCord/src/de/Iclipse/IMBungee/Functions/Commands/cmd_friend.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../IMBungeeCord/src/de/Iclipse/IMBungee/Functions/MySQL/MySQL_Friend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IMBungeeCord/IMBungeeCord.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../IMBungeeCord/IMBungeeCord.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IMBungeeCord/src/de/Iclipse/IMBungee/IMBungeeCord.java" beforeDir="false" afterPath="$PROJECT_DIR$/../IMBungeeCord/src/de/Iclipse/IMBungee/IMBungeeCord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IMBungeeCord/src/i18n/langDE.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../IMBungeeCord/src/i18n/langDE.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IMBungeeCord/src/i18n/langEN.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../IMBungeeCord/src/i18n/langEN.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Commands/cmd_friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Commands/cmd_friend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Listener/ClothingListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Listener/ClothingListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Listener/ExtrasListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Listener/ExtrasListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Listener/LobbyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Listener/LobbyListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Listener/ParticleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Listener/ParticleListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Listener/StartInventoryListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Listener/StartInventoryListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Commands/cmd_friend.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Scheduler/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/Scheduler/Scheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/StaticClasses/getVisibility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/MangoleHD/IMLobby/StaticClasses/getVisibility.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/i18n/langDE.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/langDE.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/i18n/langEN.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/langEN.properties" afterDir="false" />
     </list>
@@ -35,7 +35,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../IMBungeeCord" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -49,7 +49,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PXSimcity/TestPlugin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../libs/libIMLobby/BungeeCord.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -183,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584966486396</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="IMLobby LOL XD">
+      <created>1585077666994</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1585077666994</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
