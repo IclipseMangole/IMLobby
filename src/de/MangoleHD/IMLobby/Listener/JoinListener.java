@@ -13,7 +13,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.UUID;
 
-import static de.Iclipse.IMAPI.Data.dsp;
+import static de.MangoleHD.IMLobby.Data.dsp;
 import static de.MangoleHD.IMLobby.Data.tablist;
 
 

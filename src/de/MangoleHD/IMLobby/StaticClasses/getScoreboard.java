@@ -12,9 +12,8 @@ import org.bukkit.scoreboard.Scoreboard;
 import java.util.HashMap;
 
 public class getScoreboard {
-    public static int ticks = 0;
     public static int animation = 0;
-    public static HashMap<Player, ScoreboardSign> boards;
+    public static HashMap<Player, ScoreboardSign> boards = new HashMap<>();
 
     public static void createScoreboard(Player p) {
         int max = 15;

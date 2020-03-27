@@ -28,15 +28,12 @@ public class Main extends JavaPlugin {
         registerCommands();
         createTables();
         Data.tablist = new Tablist();
-        Scheduler.GhostScheduler();
         Scheduler.scheduleScoreboard();
-        Scheduler.onSneakJumperScheduler();
     }
 
     @Override
     public void onDisable() {
         super.onDisable();
-        Scheduler.stopScheduler();
         Scheduler.stopScheduler2();
     }
 

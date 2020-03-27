@@ -11,6 +11,7 @@ public class QuitListener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent e){
+        e.setQuitMessage(null);
         Bukkit.getOnlinePlayers().forEach(entry ->{
                 dsp.send(entry, "quit.message", e.getPlayer().getDisplayName());
         });
