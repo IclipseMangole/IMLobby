@@ -1,6 +1,5 @@
 package de.MangoleHD.IMLobby.Scheduler;
 
-import de.Iclipse.IMAPI.Util.ScoreboardSign;
 import de.MangoleHD.IMLobby.Data;
 import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
 import org.bukkit.Bukkit;
@@ -65,7 +64,7 @@ public class Scheduler {
             @Override
             public void run() {
                 getScoreboard.ticks++;
-                if (getScoreboard.ticks == 21) {
+                if (getScoreboard.ticks == 5) {
                     getScoreboard.ticks = 0;
                 }
                 if (getScoreboard.ticks == 0) {
@@ -73,54 +72,12 @@ public class Scheduler {
                     if (getScoreboard.animation == 3) {
                         getScoreboard.animation = 0;
                     }
-                    if (getScoreboard.animation == 0) {
-                        for (Player all : getScoreboard.boards.keySet()) {
-                            ScoreboardSign ss = getScoreboard.boards.get(all);
-                            String a = getScoreboard.getAnimation(all);
-                            ss.setLine(0, "§6" + all.getName());
-                            ss.setLine(1, "" + ChatColor.GOLD);
-                            ss.setLine(2, "§2Buon Giorno");
-                            ss.setLine(3, "" + a);
-                            ss.setLine(4, " " + ChatColor.BLUE);
-                            ss.setLine(5, "  " + ChatColor.RED);
-                            ss.setLine(6, Data.dsp.get("scoreboard.line.6", all));
-                            ss.setLine(7, Data.dsp.get("scoreboard.line.7", all));
-                            ss.setLine(8, Data.dsp.get("scoreboard.line.8", all));
-                        }
-                    }
-                    if (getScoreboard.animation == 1) {
-                        for (Player all : getScoreboard.boards.keySet()) {
-                            ScoreboardSign ss = getScoreboard.boards.get(all);
-                            String a = getScoreboard.getAnimation(all);
-                            ss.setLine(0, "§6" + all.getName());
-                            ss.setLine(1, "" + ChatColor.GOLD);
-                            ss.setLine(2, "§2Buon Giorno");
-                            ss.setLine(3, " " + ChatColor.BLUE);
-                            ss.setLine(4, "" + a);
-                            ss.setLine(5, "  " + ChatColor.RED);
-                            ss.setLine(6, Data.dsp.get("scoreboard.line.6", all));
-                            ss.setLine(7, Data.dsp.get("scoreboard.line.7", all));
-                            ss.setLine(8, Data.dsp.get("scoreboard.line.8", all));
-                        }
-                    }
-                    if (getScoreboard.animation == 2) {
-                        for (Player all : getScoreboard.boards.keySet()) {
-                            ScoreboardSign ss = getScoreboard.boards.get(all);
-                            String a = getScoreboard.getAnimation(all);
-                            ss.setLine(0, "§6" + all.getName());
-                            ss.setLine(1, "" + ChatColor.GOLD);
-                            ss.setLine(2, "§2Buon Giorno");
-                            ss.setLine(3, " " + ChatColor.BLUE);
-                            ss.setLine(4, "  " + ChatColor.RED);
-                            ss.setLine(5, "" + a);
-                            ss.setLine(6, Data.dsp.get("scoreboard.line.6", all));
-                            ss.setLine(7, Data.dsp.get("scoreboard.line.7", all));
-                            ss.setLine(8, Data.dsp.get("scoreboard.line.8", all));
-                        }
-                    }
+                    Bukkit.getOnlinePlayers().forEach(entry ->{
+                        getScoreboard.updateScoreboard(entry);
+                    });
                 }
             }
-        }, 0, 1);
+        }, 0, 4);
     }
 
     public static void onSneakJumperScheduler() {
