@@ -6,6 +6,7 @@ import de.MangoleHD.IMLobby.StaticClasses.getClothing;
 import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
 import de.MangoleHD.IMLobby.StaticClasses.getVisibility;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -61,5 +62,6 @@ public class JoinListener implements Listener {
         getClothing.onCloth(p);
 
         getScoreboard.createScoreboard(p);
+        p.teleport(new Location(p.getWorld(), 0.5, 55, 0.5, 180, 0));
     }
 }

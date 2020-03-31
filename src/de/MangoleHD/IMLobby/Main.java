@@ -2,7 +2,6 @@ package de.MangoleHD.IMLobby;
 
 import de.Iclipse.IMAPI.Util.Dispatching.Dispatcher;
 import de.MangoleHD.IMLobby.Commands.cmd_startInventory;
-import de.Iclipse.IMAPI.Functions.Listener.QuitListener;
 import de.Iclipse.IMAPI.IMAPI;
 import de.MangoleHD.IMLobby.Listener.*;
 import de.MangoleHD.IMLobby.Scheduler.Scheduler;

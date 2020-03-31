@@ -39,6 +39,9 @@ public class Tablist {
         this.a.setPrefix("§7[§4Admin§7]§4 ");
         this.b.setPrefix("§7[§cMod§7]§c ");
         this.c.setPrefix("§3 ");
+        this.a.setColor(ChatColor.getByChar('4'));
+        this.b.setColor(ChatColor.getByChar('c'));
+        this.c.setColor(ChatColor.getByChar('3'));
     }
 
 

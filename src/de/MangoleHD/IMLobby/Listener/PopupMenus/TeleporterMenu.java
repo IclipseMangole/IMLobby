@@ -17,7 +17,7 @@ public class TeleporterMenu {
         MenuItem spawn = new MenuItem(Data.dsp.get("teleporter.spawn", p), new ItemStack(Material.DIAMOND)) {
             @Override
             public void onClick(Player player) {
-                Location spawn = new Location(player.getWorld(), 0.5, 4, 0.5, 180, 0);
+                Location spawn = new Location(player.getWorld(), 0.5, 55, 0.5, 180, 0);
                 player.teleport(spawn);
                 p.playSound(spawn, Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
             }
