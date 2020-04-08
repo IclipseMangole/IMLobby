@@ -75,4 +75,5 @@ public class LobbyListener implements Listener {
             e.getPlayer().chat("/startinventory");
         }
     }
+
 }

@@ -1,9 +1,9 @@
 package de.MangoleHD.IMLobby.Scheduler;
 
+import de.Iclipse.IMAPI.Util.TickParser;
 import de.MangoleHD.IMLobby.Data;
 import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -12,7 +12,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitTask;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 
 public class Scheduler {
     public static BukkitTask scheduler2;
@@ -48,11 +50,11 @@ public class Scheduler {
         }, 5 * 20);
     }
 
+    static int seconds;
     public static void scheduleScoreboard() {
         scheduler2 = Bukkit.getScheduler().runTaskTimer(Data.instance, new Runnable() {
             @Override
             public void run() {
-
                     getScoreboard.animation++;
                     if (getScoreboard.animation == 3) {
                         getScoreboard.animation = 0;
@@ -72,7 +74,10 @@ public class Scheduler {
                         Data.sneakjumper.replace(player, old, neu);
                     }
                 });
-
+                if (seconds == 59) {
+                    Bukkit.getWorlds().forEach(world -> world.setTime(TickParser.parse(new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()))));
+                }
+                seconds = seconds % 60 + 1;
             }
         }, 0, 20);
     }

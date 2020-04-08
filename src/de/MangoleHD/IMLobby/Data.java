@@ -14,7 +14,7 @@ public class Data {
     public static HashMap <String, Long> enderCooldown = new HashMap<>();
     public static Tablist tablist;
     public static String symbol = "§8 » §7";
-    public static String prefix = "§5IM" + symbol;
+    public static String prefix = "§5IMLobby" + symbol;
     public static HashMap<Player, Integer> doublejump = new HashMap<>();
     public static ArrayList<Player> ghost = new ArrayList<>();
     public static HashMap<Player, Integer> sneakjumper= new HashMap<>();

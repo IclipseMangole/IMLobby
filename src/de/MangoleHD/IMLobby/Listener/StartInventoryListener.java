@@ -27,9 +27,11 @@ public class StartInventoryListener implements Listener {
         ItemStack compass = e.getItem();
         Action click = e.getAction();
         if (click.equals(Action.RIGHT_CLICK_BLOCK) || click.equals(Action.RIGHT_CLICK_AIR)) {
-            if (compass.getType().equals(Material.COMPASS) && compass.getItemMeta().getDisplayName().equalsIgnoreCase(Data.dsp.get("startinventory.name.teleporter", p))) {
-                e.setCancelled(true);
-                TeleporterMenu.openTeleportMenu(p);
+            if (e.getItem() != null) {
+                if (compass.getType().equals(Material.COMPASS) && compass.getItemMeta().getDisplayName().equalsIgnoreCase(Data.dsp.get("startinventory.name.teleporter", p))) {
+                    e.setCancelled(true);
+                    TeleporterMenu.openTeleportMenu(p);
+                }
             }
         }
     }
@@ -41,9 +43,11 @@ public class StartInventoryListener implements Listener {
         Action click = e.getAction();
 
         if (click.equals(Action.RIGHT_CLICK_BLOCK) || click.equals(Action.RIGHT_CLICK_AIR)) {
-            if (repeater.getType().equals(Material.REPEATER)) {
-                e.setCancelled(true);
-                SettingsMenu.openSettingsMenu(p);
+            if (e.getItem() != null) {
+                if (repeater.getType().equals(Material.REPEATER)) {
+                    e.setCancelled(true);
+                    SettingsMenu.openSettingsMenu(p);
+                }
             }
         }
     }
@@ -66,9 +70,11 @@ public class StartInventoryListener implements Listener {
         ItemStack book = e.getItem();
         Action c = e.getAction();
         if (c.equals(Action.RIGHT_CLICK_AIR) || c.equals(Action.RIGHT_CLICK_BLOCK)) {
-            if (book.getType().equals(Material.BOOK) && book.getItemMeta().getDisplayName().equalsIgnoreCase(Data.dsp.get("startinventory.name.news", p))) {
-                e.setCancelled(true);
-                p.chat("/news");
+            if (e.getItem() != null) {
+                if (book.getType().equals(Material.BOOK) && book.getItemMeta().getDisplayName().equalsIgnoreCase(Data.dsp.get("startinventory.name.news", p))) {
+                    e.setCancelled(true);
+                    p.chat("/news");
+                }
             }
         }
     }
@@ -79,9 +85,11 @@ public class StartInventoryListener implements Listener {
         ItemStack dye = e.getItem();
         Action c = e.getAction();
         if (c.equals(Action.RIGHT_CLICK_AIR) || c.equals(Action.RIGHT_CLICK_BLOCK)) {
-            if (dye.getType().equals(Material.LIME_DYE) || dye.getType().equals(Material.PURPLE_DYE) || dye.getType().equals(Material.GRAY_DYE)) {
-                e.setCancelled(true);
-                getVisibility.changeDye(dye, p);
+            if (e.getItem() != null) {
+                if (dye.getType().equals(Material.LIME_DYE) || dye.getType().equals(Material.PURPLE_DYE) || dye.getType().equals(Material.GRAY_DYE)) {
+                    e.setCancelled(true);
+                    getVisibility.changeDye(dye, p);
+                }
             }
         }
     }
