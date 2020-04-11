@@ -1,6 +1,6 @@
 package de.MangoleHD.IMLobby.StaticClasses;
 
-import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
+import de.Iclipse.IMAPI.Database.UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -39,67 +39,67 @@ public class getClothing implements Listener {
     }
 
     public static void onCloth(Player p) {
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("black_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("black_leather")) {
             onCloth(p, Color.BLACK);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("gray_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("gray_leather")) {
             onCloth(p, Color.GRAY);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("white_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("white_leather")) {
             onCloth(p, Color.WHITE);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("red_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("red_leather")) {
             onCloth(p, Color.RED);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("blue_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("blue_leather")) {
             onCloth(p, Color.BLUE);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("green_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("green_leather")) {
             onCloth(p, Color.GREEN);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("purple_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("purple_leather")) {
             onCloth(p, Color.PURPLE);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("aqua_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("aqua_leather")) {
             onCloth(p, Color.AQUA);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("orange_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("orange_leather")) {
             onCloth(p, Color.ORANGE);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("yellow_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("yellow_leather")) {
             onCloth(p, Color.YELLOW);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("olive_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("olive_leather")) {
             onCloth(p, Color.OLIVE);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("navy_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("navy_leather")) {
             onCloth(p, Color.NAVY);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("fuchsia_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("fuchsia_leather")) {
             onCloth(p, Color.FUCHSIA);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("maroon_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("maroon_leather")) {
             onCloth(p, Color.MAROON);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("silver_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("silver_leather")) {
             onCloth(p, Color.SILVER);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("teal_leather")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("teal_leather")) {
             onCloth(p, Color.TEAL);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("king")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("king")) {
             onClothKing(p);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("thief")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("thief")) {
             onClothThief(p);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("jumper")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("jumper")) {
             onCloth(p, Color.LIME);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("ghost")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("ghost")) {
             onClothGhost(p);
         }
-        if (MySQL_UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("off")) {
+        if (UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "clothing").equals("off")) {
             p.getInventory().setHelmet(new ItemStack(Material.AIR));
             p.getInventory().setChestplate(new ItemStack(Material.AIR));
             p.getInventory().setLeggings(new ItemStack(Material.AIR));

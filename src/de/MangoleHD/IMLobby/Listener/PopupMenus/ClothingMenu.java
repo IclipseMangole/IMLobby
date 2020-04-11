@@ -1,6 +1,6 @@
 package de.MangoleHD.IMLobby.Listener.PopupMenus;
 
-import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
+import de.Iclipse.IMAPI.Database.UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.Iclipse.IMAPI.Util.menu.MenuItem;
 import de.Iclipse.IMAPI.Util.menu.PopupMenu;
@@ -26,7 +26,7 @@ public class ClothingMenu {
         MenuItem Black_Leather = new MenuItem(Data.dsp.get("clothing.black", p), blackleather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "black_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "black_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -42,7 +42,7 @@ public class ClothingMenu {
         MenuItem Gray_Leather = new MenuItem(Data.dsp.get("clothing.gray", p), grayleather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "gray_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "gray_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -57,7 +57,7 @@ public class ClothingMenu {
         MenuItem White_Leather = new MenuItem(Data.dsp.get("clothing.white", p), whiteleather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "white_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "white_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -72,7 +72,7 @@ public class ClothingMenu {
         MenuItem Red_Leather = new MenuItem(Data.dsp.get("clothing.red", p), redleather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "red_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "red_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -87,7 +87,7 @@ public class ClothingMenu {
         MenuItem Blue_Leather = new MenuItem(Data.dsp.get("clothing.blue", p), blueleather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "blue_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "blue_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -102,7 +102,7 @@ public class ClothingMenu {
         MenuItem Green_Leather = new MenuItem(Data.dsp.get("clothing.green", p), greenleather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "green_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "green_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -117,7 +117,7 @@ public class ClothingMenu {
         MenuItem Purple_Leather = new MenuItem(Data.dsp.get("clothing.purple", p), purpleleather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "purple_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "purple_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -132,7 +132,7 @@ public class ClothingMenu {
         MenuItem Aqua_Leather = new MenuItem(Data.dsp.get("clothing.aqua", p), aqualeather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "aqua_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "aqua_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -147,7 +147,7 @@ public class ClothingMenu {
         MenuItem Orange_Leather = new MenuItem(Data.dsp.get("clothing.orange", p), orangeleather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "orange_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "orange_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -162,7 +162,7 @@ public class ClothingMenu {
         MenuItem Yellow_Leather = new MenuItem(Data.dsp.get("clothing.yellow", p), yellowleather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "yellow_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "yellow_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -177,7 +177,7 @@ public class ClothingMenu {
         MenuItem Olive_Leather = new MenuItem(Data.dsp.get("clothing.olive", p), oliveleather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "olive_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "olive_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -192,7 +192,7 @@ public class ClothingMenu {
         MenuItem Navy_Leather = new MenuItem(Data.dsp.get("clothing.navy", p), navyleather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "navy_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "navy_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -207,7 +207,7 @@ public class ClothingMenu {
         MenuItem Fuchsia_Leather = new MenuItem(Data.dsp.get("clothing.fuchsia", p), fuchsialeather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "fuchsia_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "fuchsia_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -222,7 +222,7 @@ public class ClothingMenu {
         MenuItem Maroon_Leather = new MenuItem(Data.dsp.get("clothing.maroon", p), maroonleather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "maroon_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "maroon_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -237,7 +237,7 @@ public class ClothingMenu {
         MenuItem Silver_Leather = new MenuItem(Data.dsp.get("clothing.silver", p), silverleather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "silver_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "silver_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -252,7 +252,7 @@ public class ClothingMenu {
         MenuItem Teal_Leather = new MenuItem(Data.dsp.get("clothing.teal", p), tealleather) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "teal_leather");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "teal_leather");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -264,7 +264,7 @@ public class ClothingMenu {
         MenuItem King = new MenuItem(Data.dsp.get("clothing.king", p), goldchest) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "king");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "king");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -276,7 +276,7 @@ public class ClothingMenu {
         MenuItem Thief = new MenuItem(Data.dsp.get("clothing.thief", p), chainchest) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "thief");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "thief");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -288,7 +288,7 @@ public class ClothingMenu {
         MenuItem Jumper = new MenuItem(Data.dsp.get("clothing.jumper", p), slime) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "jumper");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "jumper");
                 getClothing.onCloth(player);
                 player.setAllowFlight(true);
                 clothing.closeMenu(player);
@@ -300,7 +300,7 @@ public class ClothingMenu {
         MenuItem Ghost = new MenuItem(Data.dsp.get("clothing.ghost", p), ghost) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "ghost");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "ghost");
                 getClothing.onCloth(player);
                 player.setAllowFlight(false);
                 clothing.closeMenu(player);
@@ -311,7 +311,7 @@ public class ClothingMenu {
         MenuItem Off = new MenuItem(Data.dsp.get("clothing.off", p), new ItemStack(Material.BARRIER)) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "off");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "clothing", "off");
                 player.setAllowFlight(false);
 
                 player.getInventory().setHelmet(new ItemStack(Material.AIR));

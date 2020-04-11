@@ -1,6 +1,6 @@
 package de.MangoleHD.IMLobby.StaticClasses;
 
-import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
+import de.Iclipse.IMAPI.Database.UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.MangoleHD.IMLobby.Data;
 import org.bukkit.Bukkit;
@@ -31,11 +31,11 @@ public class getVisibility {
         p.setCustomNameVisible(true);
 
         for(Player all: Bukkit.getOnlinePlayers()){
-            if(!MySQL_UserSettings.getBoolean(UUIDFetcher.getUUID(all.getName()),"vanish")) {
+            if (!UserSettings.getBoolean(UUIDFetcher.getUUID(all.getName()), "vanish")) {
                 p.showPlayer(Data.instance, all);
             }
         }
-        MySQL_UserSettings.setString(UUIDFetcher.getUUID(p.getName()),"visibility","all");
+        UserSettings.setString(UUIDFetcher.getUUID(p.getName()), "visibility", "all");
     }
 
     public static void getPurple(Player p){
@@ -45,11 +45,11 @@ public class getVisibility {
         dye.setItemMeta(dyemeta);
         p.getInventory().setItem(2,dye);
         for(Player all: Bukkit.getOnlinePlayers()){
-            if(!MySQL_UserSettings.getBoolean(UUIDFetcher.getUUID(all.getName()),"vanish")) {
+            if (!UserSettings.getBoolean(UUIDFetcher.getUUID(all.getName()), "vanish")) {
                 p.showPlayer(Data.instance, all);
             }
         }
-        MySQL_UserSettings.setString(UUIDFetcher.getUUID(p.getName()),"visibility","friends and teammates");
+        UserSettings.setString(UUIDFetcher.getUUID(p.getName()), "visibility", "friends and teammates");
     }
 
     public static void getGray(Player p){
@@ -61,6 +61,6 @@ public class getVisibility {
         for(Player all: Bukkit.getOnlinePlayers()){
             p.hidePlayer(Data.instance,all);
         }
-        MySQL_UserSettings.setString(UUIDFetcher.getUUID(p.getName()),"visibility","nobody");
+        UserSettings.setString(UUIDFetcher.getUUID(p.getName()), "visibility", "nobody");
     }
 }

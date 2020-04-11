@@ -1,6 +1,6 @@
 package de.MangoleHD.IMLobby.Listener;
 
-import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
+import de.Iclipse.IMAPI.Database.UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.MangoleHD.IMLobby.Data;
 import org.bukkit.GameMode;
@@ -22,7 +22,7 @@ public class ClothingListener implements Listener {
     public void onThief(PlayerMoveEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
-        if (MySQL_UserSettings.getString(uuid, "clothing").equals("thief")) {
+        if (UserSettings.getString(uuid, "clothing").equals("thief")) {
             PotionEffect speed = new PotionEffect(PotionEffectType.SPEED, 20, 4);
             p.addPotionEffect(speed);
         }
@@ -34,7 +34,7 @@ public class ClothingListener implements Listener {
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if (!p.getGameMode().equals(GameMode.CREATIVE)) {
             e.setCancelled(true);
-            if (MySQL_UserSettings.getString(uuid, "clothing").equals("jumper")) {
+            if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
                 Vector v = p.getLocation().getDirection().multiply(1).setY(1);
                 p.setVelocity(v);
                 p.setAllowFlight(false);
@@ -47,7 +47,7 @@ public class ClothingListener implements Listener {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if (!p.getGameMode().equals(GameMode.CREATIVE)) {
-            if (MySQL_UserSettings.getString(uuid, "clothing").equals("jumper")) {
+            if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
                 if (!p.isSneaking()) {
                     if (p.isOnGround()) {
                         Data.sneakjumper.put(p, 0);
@@ -69,7 +69,7 @@ public class ClothingListener implements Listener {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if (p.isOnGround()) {
-            if (MySQL_UserSettings.getString(uuid, "clothing").equals("jumper")) {
+            if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
                 p.setAllowFlight(true);
             }
         }
@@ -79,7 +79,7 @@ public class ClothingListener implements Listener {
     public void onSneakGhost(PlayerToggleSneakEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
-        if (MySQL_UserSettings.getString(uuid, "clothing").equals("ghost")) {
+        if (UserSettings.getString(uuid, "clothing").equals("ghost")) {
             if (!p.isSneaking()) {
                 Data.ghost.add(p);
             } else {

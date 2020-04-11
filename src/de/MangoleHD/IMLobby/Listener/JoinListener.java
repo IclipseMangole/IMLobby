@@ -1,6 +1,6 @@
 package de.MangoleHD.IMLobby.Listener;
 
-import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
+import de.Iclipse.IMAPI.Database.UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.MangoleHD.IMLobby.StaticClasses.getClothing;
 import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
@@ -27,21 +27,21 @@ public class JoinListener implements Listener {
 
         p.chat("/startInventory");
 
-        MySQL_UserSettings.createUserSetting(uuid, "particles", "off");
+        UserSettings.createUserSetting(uuid, "particles", "off");
 
-        MySQL_UserSettings.createUserSetting(uuid, "clothing", "off");
+        UserSettings.createUserSetting(uuid, "clothing", "off");
 
-        MySQL_UserSettings.createUserSetting(uuid, "visibility", "all");
+        UserSettings.createUserSetting(uuid, "visibility", "all");
 
-        if (MySQL_UserSettings.getString(uuid, "clothing").equals("jumper")) {
+        if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
             p.setAllowFlight(true);
         } else {
             p.setAllowFlight(false);
         }
 
-        if (MySQL_UserSettings.getString(uuid, "visibility").equals("all")) {
+        if (UserSettings.getString(uuid, "visibility").equals("all")) {
             getVisibility.getGreen(p);
-        } else if (MySQL_UserSettings.getString(uuid, "visibility").equals("friends and teammates")) {
+        } else if (UserSettings.getString(uuid, "visibility").equals("friends and teammates")) {
             getVisibility.getPurple(p);
         } else {
             getVisibility.getGray(p);

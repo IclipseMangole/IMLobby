@@ -1,6 +1,6 @@
 package de.MangoleHD.IMLobby.Listener.PopupMenus;
 
-import de.Iclipse.IMAPI.Functions.MySQL.MySQL_UserSettings;
+import de.Iclipse.IMAPI.Database.UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.Iclipse.IMAPI.Util.menu.MenuItem;
 import de.Iclipse.IMAPI.Util.menu.PopupMenu;
@@ -19,7 +19,7 @@ public class ParticleMenu {
         MenuItem flames = new MenuItem(Data.dsp.get("particle.flames", p), new ItemStack(Material.BLAZE_POWDER)) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "flames");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "flames");
                 Data.dsp.send(player, "particle.flames.text");
 
                 particles.closeMenu(player);
@@ -30,7 +30,7 @@ public class ParticleMenu {
         MenuItem water = new MenuItem(Data.dsp.get("particle.water", p), new ItemStack(Material.WATER_BUCKET)) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "water");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "water");
                 Data.dsp.send(player, "particle.water.text");
 
                 particles.closeMenu(player);
@@ -41,7 +41,7 @@ public class ParticleMenu {
         MenuItem lava = new MenuItem(Data.dsp.get("particle.lava", p), new ItemStack(Material.LAVA_BUCKET)) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "lava");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "lava");
                 Data.dsp.send(player, "particle.lava.text");
 
                 particles.closeMenu(player);
@@ -52,7 +52,7 @@ public class ParticleMenu {
         MenuItem love = new MenuItem(Data.dsp.get("particle.love", p), new ItemStack(Material.POPPY)) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "love");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "love");
                 Data.dsp.send(player, "particle.love.text");
                 particles.closeMenu(player);
             }
@@ -62,7 +62,7 @@ public class ParticleMenu {
         MenuItem music = new MenuItem(Data.dsp.get("particle.music", p), new ItemStack(Material.JUKEBOX)) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "music");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "music");
                 Data.dsp.send(player, "particle.music.text");
                 particles.closeMenu(player);
             }
@@ -72,7 +72,7 @@ public class ParticleMenu {
         MenuItem boom = new MenuItem(Data.dsp.get("particle.boom", p), new ItemStack(Material.TNT)) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "boom");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "boom");
                 Data.dsp.send(player, "particle.boom.text");
                 particles.closeMenu(player);
             }
@@ -82,7 +82,7 @@ public class ParticleMenu {
         MenuItem smoke = new MenuItem(Data.dsp.get("particle.smoke", p), new ItemStack(Material.BONE_MEAL)) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "smoke");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "smoke");
                 Data.dsp.send(player, "particle.smoke.text");
                 particles.closeMenu(player);
             }
@@ -92,7 +92,7 @@ public class ParticleMenu {
         MenuItem slime = new MenuItem(Data.dsp.get("particle.slime", p), new ItemStack(Material.SLIME_BALL)) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "slime");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "slime");
                 Data.dsp.send(player, "particle.slime.text");
                 particles.closeMenu(player);
             }
@@ -102,7 +102,7 @@ public class ParticleMenu {
         MenuItem off = new MenuItem(Data.dsp.get("particle.off", p), new ItemStack(Material.BARRIER)) {
             @Override
             public void onClick(Player player) {
-                MySQL_UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "off");
+                UserSettings.setString(UUIDFetcher.getUUID(player.getName()), "particles", "off");
                 Data.dsp.send(player, "particle.off.text");
                 particles.closeMenu(player);
             }
