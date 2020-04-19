@@ -2,12 +2,8 @@ package de.MangoleHD.IMLobby.StaticClasses;
 
 import de.Iclipse.IMAPI.Util.ScoreboardSign;
 import de.MangoleHD.IMLobby.Data;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.HashMap;
 
@@ -16,7 +12,6 @@ public class getScoreboard {
     public static HashMap<Player, ScoreboardSign> boards = new HashMap<>();
 
     public static void createScoreboard(Player p) {
-        int max = 15;
         /*
         Scoreboard board = p.getScoreboard();
         Objective obj = board.getObjective("Lobby") != null ? board.getObjective("Lobby") : board.registerNewObjective("Lobby", "aaa", "§5§lIM§r§fLobby");
