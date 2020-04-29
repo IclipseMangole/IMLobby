@@ -2,6 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../IMAPI" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../IMBattleRoyale" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../IMBuildServer" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../IMBungeeCord" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
