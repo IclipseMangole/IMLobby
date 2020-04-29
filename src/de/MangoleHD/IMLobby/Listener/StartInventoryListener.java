@@ -13,8 +13,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
-import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -96,49 +96,27 @@ public class StartInventoryListener implements Listener {
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent e) {
-        Player p = e.getPlayer();
-        ItemStack item = e.getItemDrop().getItemStack();
         e.setCancelled(true);
-        if (item.equals(new ItemStack(Material.COMPASS))) {
-            p.getInventory().setItem(0, item);
-        }
-        if (item.equals(new ItemStack(Material.ENDER_PEARL))) {
-            if (!p.getInventory().getItem(1).equals(Material.ENDER_PEARL)) {
-                p.getInventory().setItem(1, item);
+    }
+
+    @EventHandler
+    public void onDrag(InventoryDragEvent e) {
+        if (e.getWhoClicked() != null) {
+            if (e.getInventory().equals(e.getWhoClicked().getInventory())) {
+                e.setCancelled(true);
             }
-        }
-        if (item.equals(new ItemStack(Material.REPEATER))) {
-            p.getInventory().setItem(8, item);
-        }
-        if (item.getItemMeta().getDisplayName().endsWith("Helmet")) {
-            p.getInventory().setHelmet(item);
-        }
-        if (item.getItemMeta().getDisplayName().endsWith("Hat")) {
-            p.getInventory().setHelmet(item);
-        }
-        if (item.getItemMeta().getDisplayName().endsWith("Chestplate")) {
-            p.getInventory().setChestplate(item);
-        }
-        if (item.getItemMeta().getDisplayName().endsWith("Tunic")) {
-            p.getInventory().setChestplate(item);
-        }
-        if (item.getItemMeta().getDisplayName().endsWith("Leggings")) {
-            p.getInventory().setLeggings(item);
-        }
-        if (item.getItemMeta().getDisplayName().endsWith("Trousers")) {
-            p.getInventory().setLeggings(item);
-        }
-        if (item.getItemMeta().getDisplayName().endsWith("Boots")) {
-            p.getInventory().setBoots(item);
-        }
-        if (item.getItemMeta().getDisplayName().endsWith("§cRocket")) {
-            p.getInventory().setItem(4, item);
         }
     }
 
 
     @EventHandler
     public void onClick(InventoryClickEvent e) {
+        if (e.getClickedInventory() != null) {
+            if (e.getClickedInventory().equals(e.getWhoClicked().getInventory())) {
+                e.setCancelled(true);
+            }
+        }
+        /*
         Player p = (Player) e.getWhoClicked();
         ItemStack item = e.getCursor();
         if (!item.getType().equals(Material.AIR)) {
@@ -182,5 +160,6 @@ public class StartInventoryListener implements Listener {
                 }
             }
         }
+         */
     }
 }

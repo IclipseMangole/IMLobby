@@ -7,6 +7,7 @@ import de.MangoleHD.IMLobby.Listener.*;
 import de.MangoleHD.IMLobby.Scheduler.Scheduler;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
+import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -18,8 +19,7 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import static de.Iclipse.IMAPI.IMAPI.copyFilesInDirectory;
-import static de.MangoleHD.IMLobby.Data.langDE;
-import static de.MangoleHD.IMLobby.Data.langEN;
+import static de.MangoleHD.IMLobby.Data.*;
 
 
 public class Main extends JavaPlugin {
@@ -40,6 +40,7 @@ public class Main extends JavaPlugin {
         Data.tablist = new Tablist();
         Scheduler.scheduleScoreboard();
         Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false));
+        spawn = new Location(Bukkit.getWorld("world"), 0.5, 55, 0.5, 180, 0);
     }
 
     @Override
@@ -49,12 +50,12 @@ public class Main extends JavaPlugin {
     }
 
     public void registerListener() {
-        Bukkit.getPluginManager().registerEvents(new ParticleListener(),this);
-        Bukkit.getPluginManager().registerEvents(new JoinListener(),this);
-        Bukkit.getPluginManager().registerEvents(new LobbyListener(),this);
-        Bukkit.getPluginManager().registerEvents(new StartInventoryListener(),this);
-        Bukkit.getPluginManager().registerEvents(new QuitListener(),this);
-        Bukkit.getPluginManager().registerEvents(new ClothingListener(),this);
+        Bukkit.getPluginManager().registerEvents(new ParticleListener(), this);
+        Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
+        Bukkit.getPluginManager().registerEvents(new LobbyListener(), this);
+        Bukkit.getPluginManager().registerEvents(new StartInventoryListener(), this);
+        Bukkit.getPluginManager().registerEvents(new QuitListener(), this);
+        Bukkit.getPluginManager().registerEvents(new ClothingListener(), this);
         Bukkit.getPluginManager().registerEvents(new ExtrasListener(), this);
         Bukkit.getPluginManager().registerEvents(new LangListener(), this);
     }
@@ -63,9 +64,10 @@ public class Main extends JavaPlugin {
         IMAPI.register(new cmd_startInventory(), this);
     }
 
-    public void createTables() {}
+    public void createTables() {
+    }
 
-    public void loadResourceBundles(){
+    public void loadResourceBundles() {
         try {
             HashMap<String, ResourceBundle> langs = new HashMap<>();
             langDE = ResourceBundle.getBundle("i18n.langDE");
@@ -85,17 +87,33 @@ public class Main extends JavaPlugin {
     }
 
     public void loadWorld() {
+        //if (mapUpdate) {
         File from = new File("/home/IMNetzwerk/BuildServer/IMLobby_world/region");
         File to = new File(Data.instance.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + "/world/region");
+
         if (to.exists()) {
-            to.delete();
+            IMAPI.deleteFile(new File(Data.instance.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + "/world"));
         }
+        //if (to.getTotalSpace() != from.getTotalSpace()) {
+
         try {
             copyFilesInDirectory(from, to);
             Files.copy(new File("/home/IMNetzwerk/BuildServer/IMLobby_world/level.dat").toPath(), new File(Data.instance.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + "/world/level.dat").toPath(), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //}
+        /*
+            } else {
+                try {
+                    copyFilesInDirectory(from, to);
+                    Files.copy(new File("/home/IMNetzwerk/BuildServer/IMLobby_world/level.dat").toPath(), new File(Data.instance.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + "/world/level.dat").toPath(), StandardCopyOption.REPLACE_EXISTING);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+         */
     }
 
 }

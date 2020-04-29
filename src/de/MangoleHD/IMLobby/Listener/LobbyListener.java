@@ -1,8 +1,8 @@
 package de.MangoleHD.IMLobby.Listener;
 
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
+import de.MangoleHD.IMLobby.Data;
 import org.bukkit.GameMode;
-import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,9 +23,8 @@ public class LobbyListener implements Listener {
         if (e.getEntity() instanceof Player) {
             Player p = ((Player) e.getEntity()).getPlayer();
             if (e.getCause().equals(EntityDamageEvent.DamageCause.VOID)) {
-                Location Spawn = new Location(p.getWorld(), 0.5, 4, 0.5, 180, 0);
-                p.teleport(Spawn);
-                p.playSound(Spawn, Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+                p.teleport(Data.spawn);
+                p.playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
                 e.setDamage(0);
                 p.setHealth(20);
             } else {

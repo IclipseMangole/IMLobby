@@ -3,7 +3,6 @@ package de.MangoleHD.IMLobby.Listener.PopupMenus;
 import de.Iclipse.IMAPI.Util.menu.MenuItem;
 import de.Iclipse.IMAPI.Util.menu.PopupMenu;
 import de.MangoleHD.IMLobby.Data;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -17,9 +16,8 @@ public class TeleporterMenu {
         MenuItem spawn = new MenuItem(Data.dsp.get("teleporter.spawn", p), new ItemStack(Material.DIAMOND)) {
             @Override
             public void onClick(Player player) {
-                Location spawn = new Location(player.getWorld(), 0.5, 55, 0.5, 180, 0);
-                player.teleport(spawn);
-                p.playSound(spawn, Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+                player.teleport(Data.spawn);
+                p.playSound(Data.spawn, Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
             }
         };
         spawn.setLore(Data.dsp.get("teleporter.spawn.lore", p));

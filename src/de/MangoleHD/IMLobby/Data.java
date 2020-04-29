@@ -2,6 +2,7 @@ package de.MangoleHD.IMLobby;
 
 
 import de.Iclipse.IMAPI.Util.Dispatching.Dispatcher;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -15,10 +16,12 @@ public class Data {
     public static Tablist tablist;
     public static String symbol = "§8 » §7";
     public static String prefix = "§5IMLobby" + symbol;
+    public static boolean mapUpdate = true;
     public static HashMap<Player, Integer> doublejump = new HashMap<>();
     public static ArrayList<Player> ghost = new ArrayList<>();
     public static HashMap<Player, Integer> sneakjumper= new HashMap<>();
     public static Dispatcher dsp;
     public static ResourceBundle langDE;
     public static ResourceBundle langEN;
+    public static Location spawn;
 }
