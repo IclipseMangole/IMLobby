@@ -13,6 +13,7 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
 
 import java.util.UUID;
 
@@ -73,6 +74,11 @@ public class LobbyListener implements Listener {
         if (e.getMessage().startsWith("/lang")) {
             e.getPlayer().chat("/startinventory");
         }
+    }
+
+    @EventHandler
+    public void onArmorstand(PlayerArmorStandManipulateEvent e) {
+        e.setCancelled(true);
     }
 
 }
