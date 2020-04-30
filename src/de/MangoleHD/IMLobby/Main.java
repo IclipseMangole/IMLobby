@@ -3,6 +3,7 @@ package de.MangoleHD.IMLobby;
 import de.Iclipse.IMAPI.IMAPI;
 import de.Iclipse.IMAPI.Util.Dispatching.Dispatcher;
 import de.MangoleHD.IMLobby.Commands.cmd_startInventory;
+import de.MangoleHD.IMLobby.Extras.GroßesDorfhaus;
 import de.MangoleHD.IMLobby.Extras.Treppe;
 import de.MangoleHD.IMLobby.Listener.*;
 import de.MangoleHD.IMLobby.Scheduler.Scheduler;
@@ -60,6 +61,7 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ExtrasListener(), this);
         Bukkit.getPluginManager().registerEvents(new LangListener(), this);
         Bukkit.getPluginManager().registerEvents(new Treppe(), this);
+        Bukkit.getPluginManager().registerEvents(new GroßesDorfhaus(), this);
     }
 
     public void registerCommands() {
