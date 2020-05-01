@@ -1,7 +1,9 @@
 package de.MangoleHD.IMLobby.Extras;
 
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
+import de.Iclipse.IMAPI.Database.UserSettings;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -10,7 +12,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.util.Vector;
 
 import java.util.UUID;
 
@@ -22,16 +23,17 @@ public class Treppe implements Listener {
         Player p = event.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         Location loc = p.getLocation();
+        Location from = event.getFrom();
+        Location to = event.getTo();
 
 
-        if(loc.getX() >= 56.300  && loc.getX() <= 58.700){
-            if(loc.getZ() >= -191.700 && loc.getZ() <= -190.300){
-            if(loc.getY() >= 46 && loc.getY() <= 50) {
-                Location newLoc = loc;
+        if(from.getX() >= 56.300  && from.getX() <= 58.700){
+            if(from.getZ() >= -191.700 && from.getZ() <= -190.300){
+            if(from.getY() >= 46 && from.getY() <= 50) {
+                Location newLoc = to;
 
-                newLoc.setY(loc.getY() - 24);
+                newLoc.setY(from.getY() - 24);
 
-                Vector oldVelocity = p.getVelocity();
                 p.teleport(newLoc);
                 if (p.isSneaking()) {
                     p.setSneaking(true);
@@ -39,7 +41,7 @@ public class Treppe implements Listener {
                 if (p.isSprinting()) {
                     p.setSprinting(true);
                 }
-                p.setVelocity(oldVelocity);
+                p.setVelocity(p.getVelocity());
             }
             }
         }
@@ -51,15 +53,17 @@ public class Treppe implements Listener {
         Player p = event.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         Location loc = p.getLocation();
+        Location from = event.getFrom();
+        Location to = event.getTo();
 
 
-        if(loc.getX() >= 53.300  && loc.getX() <= 54.700){
-            if(loc.getZ() >= -186.700 && loc.getZ() <= -185.300){
-                if(loc.getY() >= 26 && loc.getY() <= 29) {
-                    Location newLoc = loc;
+        if(from.getX() >= 53.300  && from.getX() <= 54.700){
+            if(from.getZ() >= -186.700 && from.getZ() <= -185.300){
+                if(from.getY() >= 26 && from.getY() <= 29) {
+                    Location newLoc = to;
 
-                    newLoc.setY(loc.getY() + 12);
-                    Vector oldVelocity = p.getVelocity();
+                    newLoc.setY(from.getY() + 12);
+
                     p.teleport(newLoc);
                     if (p.isSneaking()) {
                         p.setSneaking(true);
@@ -67,7 +71,7 @@ public class Treppe implements Listener {
                     if (p.isSprinting()) {
                         p.setSprinting(true);
                     }
-                    p.setVelocity(oldVelocity);
+                    p.setVelocity(p.getVelocity());
                 }
             }
         }
@@ -79,16 +83,16 @@ public class Treppe implements Listener {
         Player p = event.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         Location loc = p.getLocation();
+        Location from = event.getFrom();
+        Location to = event.getTo();
 
+        if(from.getX() >= 56.300  && from.getX() <= 58.700){
+            if(from.getZ() >= -186.700 && from.getZ() <= -185.300){
+                if(from.getY() >= 20 && from.getY() <= 23) {
+                    Location newLoc = to;
 
-        if(loc.getX() >= 57.300  && loc.getX() <= 58.700){
-            if(loc.getZ() >= -186.700 && loc.getZ() <= -185.300){
-                if(loc.getY() >= 20 && loc.getY() <= 23) {
-                    Location newLoc = loc;
+                    newLoc.setY(from.getY() +12);
 
-                    newLoc.setY(loc.getY() +12);
-
-                    Vector oldVelocity = p.getVelocity();
                     p.teleport(newLoc);
                     if (p.isSneaking()) {
                         p.setSneaking(true);
@@ -96,7 +100,7 @@ public class Treppe implements Listener {
                     if (p.isSprinting()) {
                         p.setSprinting(true);
                     }
-                    p.setVelocity(oldVelocity);
+                    p.setVelocity(p.getVelocity());
                 }
             }
         }
