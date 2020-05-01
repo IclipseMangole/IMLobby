@@ -1,9 +1,7 @@
 package de.MangoleHD.IMLobby.Extras;
 
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
-import de.Iclipse.IMAPI.Database.UserSettings;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -12,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.util.Vector;
 
 import java.util.UUID;
 
@@ -32,6 +31,7 @@ public class Treppe implements Listener {
 
                 newLoc.setY(loc.getY() - 24);
 
+                Vector oldVelocity = p.getVelocity();
                 p.teleport(newLoc);
                 if (p.isSneaking()) {
                     p.setSneaking(true);
@@ -39,7 +39,7 @@ public class Treppe implements Listener {
                 if (p.isSprinting()) {
                     p.setSprinting(true);
                 }
-                p.setVelocity(p.getVelocity());
+                p.setVelocity(oldVelocity);
             }
             }
         }
@@ -59,7 +59,7 @@ public class Treppe implements Listener {
                     Location newLoc = loc;
 
                     newLoc.setY(loc.getY() + 12);
-
+                    Vector oldVelocity = p.getVelocity();
                     p.teleport(newLoc);
                     if (p.isSneaking()) {
                         p.setSneaking(true);
@@ -67,7 +67,7 @@ public class Treppe implements Listener {
                     if (p.isSprinting()) {
                         p.setSprinting(true);
                     }
-                    p.setVelocity(p.getVelocity());
+                    p.setVelocity(oldVelocity);
                 }
             }
         }
@@ -88,6 +88,7 @@ public class Treppe implements Listener {
 
                     newLoc.setY(loc.getY() +12);
 
+                    Vector oldVelocity = p.getVelocity();
                     p.teleport(newLoc);
                     if (p.isSneaking()) {
                         p.setSneaking(true);
@@ -95,7 +96,7 @@ public class Treppe implements Listener {
                     if (p.isSprinting()) {
                         p.setSprinting(true);
                     }
-                    p.setVelocity(p.getVelocity());
+                    p.setVelocity(oldVelocity);
                 }
             }
         }
