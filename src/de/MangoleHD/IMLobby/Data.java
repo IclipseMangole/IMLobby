@@ -24,4 +24,5 @@ public class Data {
     public static ResourceBundle langDE;
     public static ResourceBundle langEN;
     public static Location spawn;
+    public static boolean killlag = false;
 }

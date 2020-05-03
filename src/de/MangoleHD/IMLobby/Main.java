@@ -2,7 +2,13 @@ package de.MangoleHD.IMLobby;
 
 import de.Iclipse.IMAPI.IMAPI;
 import de.Iclipse.IMAPI.Util.Dispatching.Dispatcher;
+import de.MangoleHD.IMLobby.Commands.cmd_killlag;
 import de.MangoleHD.IMLobby.Commands.cmd_startInventory;
+import de.MangoleHD.IMLobby.Extras.Animations.Flag;
+import de.MangoleHD.IMLobby.Extras.Animations.Grave;
+import de.MangoleHD.IMLobby.Extras.Animations.Vent;
+import de.MangoleHD.IMLobby.Extras.Animations.Windmill;
+import de.MangoleHD.IMLobby.Extras.Bell;
 import de.MangoleHD.IMLobby.Extras.GroßesDorfhaus;
 import de.MangoleHD.IMLobby.Extras.Treppe;
 import de.MangoleHD.IMLobby.Listener.*;
@@ -40,15 +46,16 @@ public class Main extends JavaPlugin {
         registerCommands();
         createTables();
         Data.tablist = new Tablist();
-        Scheduler.scheduleScoreboard();
+        createExtras();
         Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false));
         spawn = new Location(Bukkit.getWorld("world"), 0.5, 55, 0.5, 180, 0);
+        Scheduler.startScheduler();
     }
 
     @Override
     public void onDisable() {
         super.onDisable();
-        Scheduler.stopScheduler2();
+        Scheduler.stopScheduler();
     }
 
     public void registerListener() {
@@ -66,6 +73,7 @@ public class Main extends JavaPlugin {
 
     public void registerCommands() {
         IMAPI.register(new cmd_startInventory(), this);
+        IMAPI.register(new cmd_killlag(), this);
     }
 
     public void createTables() {
@@ -118,6 +126,14 @@ public class Main extends JavaPlugin {
             }
 
          */
+    }
+
+    public static void createExtras() {
+        Vent.createVents();
+        Windmill.createWindmills();
+        Flag.createFlags();
+        Grave.createGraves();
+        Bell.createBells();
     }
 
 }

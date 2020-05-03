@@ -2,6 +2,11 @@ package de.MangoleHD.IMLobby.Scheduler;
 
 import de.Iclipse.IMAPI.Util.TickParser;
 import de.MangoleHD.IMLobby.Data;
+import de.MangoleHD.IMLobby.Extras.Animations.Flag;
+import de.MangoleHD.IMLobby.Extras.Animations.Grave;
+import de.MangoleHD.IMLobby.Extras.Animations.Vent;
+import de.MangoleHD.IMLobby.Extras.Animations.Windmill;
+import de.MangoleHD.IMLobby.Extras.Bell;
 import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -51,17 +56,18 @@ public class Scheduler {
     }
 
     static int seconds;
-    public static void scheduleScoreboard() {
+
+    public static void startScheduler() {
         scheduler2 = Bukkit.getScheduler().runTaskTimer(Data.instance, new Runnable() {
             @Override
             public void run() {
-                    getScoreboard.animation++;
-                    if (getScoreboard.animation == 3) {
-                        getScoreboard.animation = 0;
-                    }
-                    Bukkit.getOnlinePlayers().forEach(entry ->{
-                        getScoreboard.updateScoreboard(entry);
-                    });
+                getScoreboard.animation++;
+                if (getScoreboard.animation == 3) {
+                    getScoreboard.animation = 0;
+                }
+                Bukkit.getOnlinePlayers().forEach(entry -> {
+                    getScoreboard.updateScoreboard(entry);
+                });
 
                 Data.ghost.forEach(player -> {
                     player.addPotionEffect(ghost);
@@ -78,13 +84,19 @@ public class Scheduler {
                     Bukkit.getWorlds().forEach(world -> world.setTime(TickParser.parse(new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()))));
                 }
                 seconds = seconds % 60 + 1;
+                if (!Data.killlag) {
+                    Vent.vent();
+                    Windmill.windmill();
+                    Flag.flag();
+                    Grave.grave();
+                    Bell.bell();
+                }
             }
         }, 0, 20);
     }
 
 
-
-    public static void stopScheduler2() {
+    public static void stopScheduler() {
         scheduler2.cancel();
     }
 }
