@@ -23,7 +23,7 @@ import java.util.Calendar;
 
 public class Scheduler {
     public static BukkitTask scheduler2;
-    private static PotionEffect ghost = new PotionEffect(PotionEffectType.INVISIBILITY, 20, 1, true, false);
+    private static PotionEffect ghost = new PotionEffect(PotionEffectType.INVISIBILITY, 25, 1, true, false);
 
 
     public static void EnderToClay(Player p) {
