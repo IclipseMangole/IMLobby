@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../IMAPI/IMAPI.iml" filepath="$PROJECT_DIR$/../IMAPI/IMAPI.iml" />
       <module fileurl="file://$PROJECT_DIR$/../IMBattleRoyale/IMBattleRoyale.iml" filepath="$PROJECT_DIR$/../IMBattleRoyale/IMBattleRoyale.iml" />
-      <module fileurl="file://$PROJECT_DIR$/IMBedwars/IMBedwars.iml" filepath="$PROJECT_DIR$/IMBedwars/IMBedwars.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../IMBedwars/IMBedwars.iml" filepath="$PROJECT_DIR$/../IMBedwars/IMBedwars.iml" />
       <module fileurl="file://$PROJECT_DIR$/../IMBuildServer/IMBuildServer.iml" filepath="$PROJECT_DIR$/../IMBuildServer/IMBuildServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/../IMBungeeCord/IMBungeeCord.iml" filepath="$PROJECT_DIR$/../IMBungeeCord/IMBungeeCord.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/IMLobby.iml" filepath="$PROJECT_DIR$/.idea/IMLobby.iml" />
