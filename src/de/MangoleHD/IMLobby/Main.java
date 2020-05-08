@@ -3,6 +3,7 @@ package de.MangoleHD.IMLobby;
 import de.Iclipse.IMAPI.IMAPI;
 import de.Iclipse.IMAPI.Util.Dispatching.Dispatcher;
 import de.MangoleHD.IMLobby.Commands.cmd_killlag;
+import de.MangoleHD.IMLobby.Commands.cmd_miniArena;
 import de.MangoleHD.IMLobby.Commands.cmd_startInventory;
 import de.MangoleHD.IMLobby.Extras.Animations.Flag;
 import de.MangoleHD.IMLobby.Extras.Animations.Grave;
@@ -10,6 +11,7 @@ import de.MangoleHD.IMLobby.Extras.Animations.Vent;
 import de.MangoleHD.IMLobby.Extras.Animations.Windmill;
 import de.MangoleHD.IMLobby.Extras.Bell;
 import de.MangoleHD.IMLobby.Extras.GroßesDorfhaus;
+import de.MangoleHD.IMLobby.Extras.Minigames.MiniArena;
 import de.MangoleHD.IMLobby.Extras.Treppe;
 import de.MangoleHD.IMLobby.Listener.*;
 import de.MangoleHD.IMLobby.Scheduler.Scheduler;
@@ -69,11 +71,13 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new LangListener(), this);
         Bukkit.getPluginManager().registerEvents(new Treppe(), this);
         Bukkit.getPluginManager().registerEvents(new GroßesDorfhaus(), this);
+        Bukkit.getPluginManager().registerEvents(new MiniArena(), this);
     }
 
     public void registerCommands() {
         IMAPI.register(new cmd_startInventory(), this);
         IMAPI.register(new cmd_killlag(), this);
+        IMAPI.register(new cmd_miniArena(), this);
     }
 
     public void createTables() {

@@ -22,9 +22,11 @@ public class ClothingListener implements Listener {
     public void onThief(PlayerMoveEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
-        if (UserSettings.getString(uuid, "clothing").equals("thief")) {
-            PotionEffect speed = new PotionEffect(PotionEffectType.SPEED, 20, 4);
-            p.addPotionEffect(speed);
+        if(!Data.miniArena.containsKey(p)) {
+            if (UserSettings.getString(uuid, "clothing").equals("thief")) {
+                PotionEffect speed = new PotionEffect(PotionEffectType.SPEED, 20, 4);
+                p.addPotionEffect(speed);
+            }
         }
     }
 
@@ -32,6 +34,7 @@ public class ClothingListener implements Listener {
     public void onJumper(PlayerToggleFlightEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
+        if(!Data.miniArena.containsKey(p)){
         if (!p.getGameMode().equals(GameMode.CREATIVE)) {
             e.setCancelled(true);
             if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
@@ -40,6 +43,7 @@ public class ClothingListener implements Listener {
                 p.setAllowFlight(false);
             }
         }
+        }
     }
 
     @EventHandler
@@ -47,17 +51,19 @@ public class ClothingListener implements Listener {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if (!p.getGameMode().equals(GameMode.CREATIVE)) {
-            if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
-                if (!p.isSneaking()) {
-                    if (p.isOnGround()) {
-                        Data.sneakjumper.put(p, 0);
-                    }
-                } else {
-                    if (Data.sneakjumper.containsKey(p)) {
-                        Vector v = p.getLocation().getDirection().setX(0).setZ(0).setY(Data.sneakjumper.get(p) / 10);
-                        p.setVelocity(v);
-                        p.setAllowFlight(false);
-                        Data.sneakjumper.remove(p);
+            if (!Data.miniArena.containsKey(p)) {
+                if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
+                    if (!p.isSneaking()) {
+                        if (p.isOnGround()) {
+                            Data.sneakjumper.put(p, 0);
+                        }
+                    } else {
+                        if (Data.sneakjumper.containsKey(p)) {
+                            Vector v = p.getLocation().getDirection().setX(0).setZ(0).setY(Data.sneakjumper.get(p) / 10);
+                            p.setVelocity(v);
+                            p.setAllowFlight(false);
+                            Data.sneakjumper.remove(p);
+                        }
                     }
                 }
             }
@@ -68,10 +74,10 @@ public class ClothingListener implements Listener {
     public void onJumperGround(PlayerMoveEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
-        if (p.isOnGround()) {
-            if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
-                p.setAllowFlight(true);
-            }
+            if (p.isOnGround()) {
+                if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
+                    p.setAllowFlight(true);
+                }
         }
     }
 
@@ -79,11 +85,13 @@ public class ClothingListener implements Listener {
     public void onSneakGhost(PlayerToggleSneakEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
-        if (UserSettings.getString(uuid, "clothing").equals("ghost")) {
-            if (!p.isSneaking()) {
-                Data.ghost.add(p);
-            } else {
-                Data.ghost.remove(p);
+        if (!Data.miniArena.containsKey(p)) {
+            if (UserSettings.getString(uuid, "clothing").equals("ghost")) {
+                if (!p.isSneaking()) {
+                    Data.ghost.add(p);
+                } else {
+                    Data.ghost.remove(p);
+                }
             }
         }
     }

@@ -8,7 +8,7 @@ public class LangListener implements Listener {
     @EventHandler
     public void onChange(AsyncPlayerChatEvent e) {
         if (e.getMessage().contains("/lang ")) {
-            e.getPlayer().chat("/startinventory");
+            e.getPlayer().chat("/startInventory");
         }
     }
 }

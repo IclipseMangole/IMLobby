@@ -3,6 +3,7 @@ package de.MangoleHD.IMLobby.Commands;
 import de.Iclipse.IMAPI.Util.Command.IMCommand;
 import de.MangoleHD.IMLobby.Data;
 import de.MangoleHD.IMLobby.StaticClasses.getVisibility;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -66,6 +67,7 @@ public class cmd_startInventory {
         p.setFoodLevel(20);
         p.setHealth(20);
         getVisibility.getGreen(p);
-
+        p.setGameMode(GameMode.SURVIVAL);
+        p.setAllowFlight(false);
     }
 }

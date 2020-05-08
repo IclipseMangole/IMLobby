@@ -3,6 +3,7 @@ package de.MangoleHD.IMLobby.Listener;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.MangoleHD.IMLobby.Data;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,6 +16,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
 
+import javax.swing.*;
 import java.util.UUID;
 
 public class LobbyListener implements Listener {
@@ -23,13 +25,15 @@ public class LobbyListener implements Listener {
     public void Damage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player) {
             Player p = ((Player) e.getEntity()).getPlayer();
-            if (e.getCause().equals(EntityDamageEvent.DamageCause.VOID)) {
-                p.teleport(Data.spawn);
-                p.playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
-                e.setDamage(0);
-                p.setHealth(20);
-            } else {
-                e.setCancelled(true);
+            if (!Data.miniArena.containsKey(p)) {
+                if (e.getCause().equals(EntityDamageEvent.DamageCause.VOID)) {
+                    p.teleport(Data.spawn);
+                    p.playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+                    e.setDamage(0);
+                    p.setHealth(20);
+                } else {
+                    e.setCancelled(true);
+                }
             }
         }
     }
@@ -38,8 +42,10 @@ public class LobbyListener implements Listener {
     public void Hunger(FoodLevelChangeEvent e) {
         if (e.getEntity() instanceof Player) {
             Player p = ((Player) e.getEntity()).getPlayer();
-            e.setCancelled(true);
-            p.setFoodLevel(20);
+            if (!Data.miniArena.containsKey(p)) {
+                e.setCancelled(true);
+                p.setFoodLevel(20);
+            }
         }
     }
 
@@ -48,7 +54,13 @@ public class LobbyListener implements Listener {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if (!p.getGameMode().equals(GameMode.CREATIVE)) {
-            e.setCancelled(true);
+            if(!Data.miniArena.containsKey(p)) {
+                e.setCancelled(true);
+            }else if(Data.miniArena.containsKey(p) && Data.miniArena.get(p) != 0){
+                e.setCancelled(true);
+            }else if(Data.miniArena.containsKey(p) && !e.getBlock().getType().equals(Material.COBWEB) && !e.getBlock().getType().equals(Material.LAVA)&& !e.getBlock().getType().equals(Material.WATER)){
+                e.setCancelled(true);
+            }
         }
     }
 
@@ -57,7 +69,13 @@ public class LobbyListener implements Listener {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if (!p.getGameMode().equals(GameMode.CREATIVE)) {
-            e.setCancelled(true);
+            if(!Data.miniArena.containsKey(p)) {
+                e.setCancelled(true);
+            }else if(Data.miniArena.containsKey(p) && Data.miniArena.get(p) != 0){
+                e.setCancelled(true);
+            }else if(Data.miniArena.containsKey(p) && !e.getBlock().getType().equals(Material.COBWEB) && !e.getBlock().getType().equals(Material.LAVA)&& !e.getBlock().getType().equals(Material.WATER)){
+                e.setCancelled(true);
+            }
         }
     }
 

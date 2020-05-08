@@ -7,6 +7,7 @@ import de.MangoleHD.IMLobby.Extras.Animations.Grave;
 import de.MangoleHD.IMLobby.Extras.Animations.Vent;
 import de.MangoleHD.IMLobby.Extras.Animations.Windmill;
 import de.MangoleHD.IMLobby.Extras.Bell;
+import de.MangoleHD.IMLobby.Extras.Minigames.MiniArena;
 import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -20,6 +21,9 @@ import org.bukkit.scheduler.BukkitTask;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Random;
+
+import static de.MangoleHD.IMLobby.Data.*;
 
 public class Scheduler {
     public static BukkitTask scheduler2;
@@ -32,8 +36,8 @@ public class Scheduler {
             public void run() {
                 ItemStack clay = new ItemStack(Material.CLAY_BALL);
                 ItemMeta claymeta = clay.getItemMeta();
-                claymeta.setDisplayName(Data.dsp.get("scheduler.clay", p));
-                claymeta.setLore(Arrays.asList(new String[]{Data.dsp.get("scheduler.clay.lore", p)}));
+                claymeta.setDisplayName(dsp.get("scheduler.clay", p));
+                claymeta.setLore(Arrays.asList(new String[]{dsp.get("scheduler.clay.lore", p)}));
                 clay.setItemMeta(claymeta);
                 p.getInventory().setItem(1, clay);
                 ClayToEnder(p);
@@ -47,8 +51,8 @@ public class Scheduler {
             public void run() {
                 ItemStack ender = new ItemStack(Material.ENDER_PEARL);
                 ItemMeta endermeta = ender.getItemMeta();
-                endermeta.setDisplayName(Data.dsp.get("startinventory.name.beam", p));
-                endermeta.setLore(Arrays.asList(new String[]{Data.dsp.get("startinventory.lore.beam", p)}));
+                endermeta.setDisplayName(dsp.get("startinventory.name.beam", p));
+                endermeta.setLore(Arrays.asList(new String[]{dsp.get("startinventory.lore.beam", p)}));
                 ender.setItemMeta(endermeta);
                 p.getInventory().setItem(1, ender);
             }
@@ -90,6 +94,26 @@ public class Scheduler {
                     Flag.flag();
                     Grave.grave();
                     Bell.bell();
+                }
+                Random random = new Random();
+                int mode = random.nextInt(4);
+                if(Data.miniArena.size() == 2){
+                  Data.miniArena.forEach((player, aInteger) -> {
+                      //waiting
+                      if(Data.miniArena.get(player) == 1){
+                          Data.miniArena.replace(player,1,0);
+                          MiniArena.startArena(player,1, mode);
+                      }else if(Data.miniArena.get(player) == 2){
+                          Data.miniArena.replace(player,2,0);
+                          MiniArena.startArena(player,2,mode);
+                          //fighting
+                      }else if(Data.miniArena.get(player) == 0) {
+                        if(arenaCountdown > 0){
+                            dsp.send(player,"miniArena.countdown", "" + arenaCountdown, dsp.get("miniArena.unit", player));
+                            arenaCountdown--;
+                        }
+                      }
+                  });
                 }
             }
         }, 0, 20);

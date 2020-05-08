@@ -3,6 +3,7 @@ package de.MangoleHD.IMLobby;
 
 import de.Iclipse.IMAPI.Util.Dispatching.Dispatcher;
 import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -25,4 +26,7 @@ public class Data {
     public static ResourceBundle langEN;
     public static Location spawn;
     public static boolean killlag = false;
+    public static HashMap<Player, Integer> miniArena = new HashMap<Player, Integer>();
+    public static int arenaCountdown = 0;
+    public static ArrayList<Block> placed;
 }

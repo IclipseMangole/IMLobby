@@ -62,6 +62,7 @@ public class JoinListener implements Listener {
         getClothing.onCloth(p);
 
         getScoreboard.createScoreboard(p);
-        p.teleport(new Location(p.getWorld(), 0.5, 55, 0.5, 180, 0));
+        p.teleport(new Location(p.getWorld(), 0.5, 55, 0.5, 0, 0));
+        p.getActivePotionEffects().clear();
     }
 }
