@@ -18,15 +18,13 @@ public class cmd_miniArena {
             maxArgs = 1
     )
     public void execute(CommandSender sender, Player player){
-        if(!Data.miniArena.containsKey(player)) {
-            if (Data.miniArena.size() == 0) {
-                Data.miniArena.put(player, 1);
-                dsp.send(player, "miniArena.join");
-            } else if (Data.miniArena.size() == 1) {
-                Data.miniArena.put(player, 2);
+        if(!Data.waiting.contains(player)) {
+            if (Data.waiting.size() < 2) {
+                Data.waiting.add(player);
                 dsp.send(player, "miniArena.join");
             } else {
                 dsp.send(player, "miniArena.full");
+                dsp.send(sender, "miniArena.full");
             }
         }
     }

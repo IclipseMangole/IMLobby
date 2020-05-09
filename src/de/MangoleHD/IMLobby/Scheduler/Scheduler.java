@@ -11,6 +11,7 @@ import de.MangoleHD.IMLobby.Extras.Minigames.MiniArena;
 import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -24,6 +25,7 @@ import java.util.Calendar;
 import java.util.Random;
 
 import static de.MangoleHD.IMLobby.Data.*;
+import static de.MangoleHD.IMLobby.Extras.Minigames.MiniArena.startArena;
 
 public class Scheduler {
     public static BukkitTask scheduler2;
@@ -49,14 +51,25 @@ public class Scheduler {
         Bukkit.getScheduler().runTaskLater(Data.instance, new Runnable() {
             @Override
             public void run() {
-                ItemStack ender = new ItemStack(Material.ENDER_PEARL);
-                ItemMeta endermeta = ender.getItemMeta();
-                endermeta.setDisplayName(dsp.get("startinventory.name.beam", p));
-                endermeta.setLore(Arrays.asList(new String[]{dsp.get("startinventory.lore.beam", p)}));
-                ender.setItemMeta(endermeta);
-                p.getInventory().setItem(1, ender);
+                if(!fighting.contains(p)) {
+                    ItemStack ender = new ItemStack(Material.ENDER_PEARL);
+                    ItemMeta endermeta = ender.getItemMeta();
+                    endermeta.setDisplayName(dsp.get("startinventory.name.beam", p));
+                    endermeta.setLore(Arrays.asList(new String[]{dsp.get("startinventory.lore.beam", p)}));
+                    ender.setItemMeta(endermeta);
+                    p.getInventory().setItem(1, ender);
+                }
             }
         }, 5 * 20);
+    }
+
+    public static void KingGold(Block changed, Material old){
+        Bukkit.getScheduler().runTaskLater(instance, new Runnable() {
+            @Override
+            public void run() {
+                changed.setType(old);
+            }
+        },3*20);
     }
 
     static int seconds;
@@ -95,25 +108,25 @@ public class Scheduler {
                     Grave.grave();
                     Bell.bell();
                 }
+
                 Random random = new Random();
                 int mode = random.nextInt(4);
-                if(Data.miniArena.size() == 2){
-                  Data.miniArena.forEach((player, aInteger) -> {
-                      //waiting
-                      if(Data.miniArena.get(player) == 1){
-                          Data.miniArena.replace(player,1,0);
-                          MiniArena.startArena(player,1, mode);
-                      }else if(Data.miniArena.get(player) == 2){
-                          Data.miniArena.replace(player,2,0);
-                          MiniArena.startArena(player,2,mode);
-                          //fighting
-                      }else if(Data.miniArena.get(player) == 0) {
-                        if(arenaCountdown > 0){
-                            dsp.send(player,"miniArena.countdown", "" + arenaCountdown, dsp.get("miniArena.unit", player));
-                            arenaCountdown--;
-                        }
-                      }
-                  });
+
+                if (waiting.size() == 2 && fighting.size() == 0) {
+                    waiting.forEach(player -> {
+                        startArena(player, waiting.indexOf(player), mode);
+                    });
+                    fighting.addAll(waiting);
+                }
+
+                if(fighting.size() == 2){
+                    if(arenaCountdown > 0){
+                        fighting.forEach(player -> {
+                            dsp.send(player,"miniArena.countdown","" + arenaCountdown, dsp.get("miniArena.unit", player));
+                            player.setAllowFlight(false);
+                        });
+                        arenaCountdown--;
+                    }
                 }
             }
         }, 0, 20);

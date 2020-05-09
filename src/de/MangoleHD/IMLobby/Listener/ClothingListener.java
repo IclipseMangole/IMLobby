@@ -3,7 +3,11 @@ package de.MangoleHD.IMLobby.Listener;
 import de.Iclipse.IMAPI.Database.UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.MangoleHD.IMLobby.Data;
-import org.bukkit.GameMode;
+import de.MangoleHD.IMLobby.Scheduler.Scheduler;
+import org.bukkit.*;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,7 +26,7 @@ public class ClothingListener implements Listener {
     public void onThief(PlayerMoveEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
-        if(!Data.miniArena.containsKey(p)) {
+        if(!Data.fighting.contains(p)) {
             if (UserSettings.getString(uuid, "clothing").equals("thief")) {
                 PotionEffect speed = new PotionEffect(PotionEffectType.SPEED, 20, 4);
                 p.addPotionEffect(speed);
@@ -34,7 +38,7 @@ public class ClothingListener implements Listener {
     public void onJumper(PlayerToggleFlightEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
-        if(!Data.miniArena.containsKey(p)){
+        if(!Data.fighting.contains(p)){
         if (!p.getGameMode().equals(GameMode.CREATIVE)) {
             e.setCancelled(true);
             if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
@@ -51,7 +55,7 @@ public class ClothingListener implements Listener {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if (!p.getGameMode().equals(GameMode.CREATIVE)) {
-            if (!Data.miniArena.containsKey(p)) {
+            if (!Data.fighting.contains(p)) {
                 if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
                     if (!p.isSneaking()) {
                         if (p.isOnGround()) {
@@ -85,12 +89,43 @@ public class ClothingListener implements Listener {
     public void onSneakGhost(PlayerToggleSneakEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
-        if (!Data.miniArena.containsKey(p)) {
+        if (!Data.fighting.contains(p)) {
             if (UserSettings.getString(uuid, "clothing").equals("ghost")) {
                 if (!p.isSneaking()) {
                     Data.ghost.add(p);
                 } else {
                     Data.ghost.remove(p);
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onKing(PlayerMoveEvent event){
+        Player player = event.getPlayer();
+        UUID uuid = UUIDFetcher.getUUID(player.getName());
+        if(!Data.fighting.contains(player)){
+            if(UserSettings.getString(uuid, "clothing").equals("king")){
+                if(!event.getTo().getBlock().getType().equals(Material.AIR) && player.isOnGround() && !event.getFrom().getBlock().getType().equals(Material.AIR)) {
+                    Location change = player.getLocation();
+                    change.setY(change.getY() - 1);
+                    Block changed = change.getBlock();
+                    Material old = changed.getType();
+                    Scheduler.KingGold(changed, old);
+                    changed.setType(Material.GOLD_BLOCK);
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onKingSneak(PlayerToggleSneakEvent event){
+        Player player = event.getPlayer();
+        UUID uuid = UUIDFetcher.getUUID(player.getName());
+        if(!Data.fighting.contains(player)){
+            if(UserSettings.getString(uuid,"clothing").equals("king")){
+                if(!player.isSneaking()){
+                    Location loc = player.getLocation();
                 }
             }
         }

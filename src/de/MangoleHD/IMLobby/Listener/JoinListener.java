@@ -14,8 +14,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.UUID;
 
-import static de.MangoleHD.IMLobby.Data.dsp;
-import static de.MangoleHD.IMLobby.Data.tablist;
+import static de.MangoleHD.IMLobby.Data.*;
 
 
 public class JoinListener implements Listener {
@@ -59,10 +58,9 @@ public class JoinListener implements Listener {
             }
         });
 
-        getClothing.onCloth(p);
-
         getScoreboard.createScoreboard(p);
         p.teleport(new Location(p.getWorld(), 0.5, 55, 0.5, 0, 0));
         p.getActivePotionEffects().clear();
+        p.teleport(spawn);
     }
 }

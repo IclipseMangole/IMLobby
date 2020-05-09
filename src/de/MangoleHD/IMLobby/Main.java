@@ -52,6 +52,7 @@ public class Main extends JavaPlugin {
         Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false));
         spawn = new Location(Bukkit.getWorld("world"), 0.5, 55, 0.5, 180, 0);
         Scheduler.startScheduler();
+        Bukkit.getWorld("world").setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
     }
 
     @Override

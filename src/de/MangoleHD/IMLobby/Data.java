@@ -26,7 +26,10 @@ public class Data {
     public static ResourceBundle langEN;
     public static Location spawn;
     public static boolean killlag = false;
-    public static HashMap<Player, Integer> miniArena = new HashMap<Player, Integer>();
+
+    //MiniArena
+    public static ArrayList<Player> waiting = new ArrayList<>();
+    public static ArrayList<Player> fighting = new ArrayList<>();
     public static int arenaCountdown = 0;
-    public static ArrayList<Block> placed;
+    public static ArrayList<Block> placed = new ArrayList<>();
 }

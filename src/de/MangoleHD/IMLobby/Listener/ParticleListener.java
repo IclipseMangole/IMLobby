@@ -20,14 +20,14 @@ public class ParticleListener implements Listener {
     public void Particles(PlayerMoveEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
-        if (!Data.miniArena.containsKey(p)) {
+        if (!Data.fighting.contains(p)) {
             if (e.getTo().getX() != e.getFrom().getX() || e.getTo().getY() != e.getFrom().getY() || e.getTo().getY() != e.getFrom().getZ()) {
                 if (!Data.killlag) {
                     if (!UserSettings.getString(uuid, "particles").equals("off")) {
                         if (UserSettings.getString(uuid, "particles").equals("flames")) {
                             Bukkit.getOnlinePlayers().forEach(player -> {
                                 if (player.canSee(p)) {
-                                    player.spawnParticle(Particle.FLAME, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 5);
+                                    player.spawnParticle(Particle.FLAME, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 3);
                                 }
                             });
                         }
@@ -43,7 +43,7 @@ public class ParticleListener implements Listener {
                         if (UserSettings.getString(uuid, "particles").equals("lava")) {
                             Bukkit.getOnlinePlayers().forEach(player -> {
                                 if (player.canSee(p)) {
-                                    player.spawnParticle(Particle.LAVA, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 5);
+                                    player.spawnParticle(Particle.LAVA, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 3);
                                 }
                             });
                         }
@@ -51,7 +51,7 @@ public class ParticleListener implements Listener {
                         if (UserSettings.getString(uuid, "particles").equals("love")) {
                             Bukkit.getOnlinePlayers().forEach(player -> {
                                 if (player.canSee(p)) {
-                                    player.spawnParticle(Particle.HEART, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 5);
+                                    player.spawnParticle(Particle.HEART, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 3);
                                 }
                             });
                         }
@@ -59,7 +59,7 @@ public class ParticleListener implements Listener {
                         if (UserSettings.getString(uuid, "particles").equals("music")) {
                             Bukkit.getOnlinePlayers().forEach(player -> {
                                 if (player.canSee(p)) {
-                                    player.spawnParticle(Particle.NOTE, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 5);
+                                    player.spawnParticle(Particle.NOTE, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 3);
                                 }
                             });
                         }
@@ -75,7 +75,7 @@ public class ParticleListener implements Listener {
                         if (UserSettings.getString(uuid, "particles").equals("smoke")) {
                             Bukkit.getOnlinePlayers().forEach(player -> {
                                 if (player.canSee(p)) {
-                                    player.spawnParticle(Particle.SMOKE_LARGE, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 5);
+                                    player.spawnParticle(Particle.SMOKE_LARGE, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 3);
                                 }
                             });
                         }
@@ -83,7 +83,7 @@ public class ParticleListener implements Listener {
                         if (UserSettings.getString(uuid, "particles").equals("slime")) {
                             Bukkit.getOnlinePlayers().forEach(player -> {
                                 if (player.canSee(p)) {
-                                    player.spawnParticle(Particle.SLIME, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 5);
+                                    player.spawnParticle(Particle.SLIME, p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), 3);
                                 }
                             });
                         }

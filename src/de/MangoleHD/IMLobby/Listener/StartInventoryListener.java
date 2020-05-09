@@ -19,6 +19,8 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
+import static de.MangoleHD.IMLobby.Data.dsp;
+
 public class StartInventoryListener implements Listener {
 
     @EventHandler
@@ -28,7 +30,7 @@ public class StartInventoryListener implements Listener {
         Action click = e.getAction();
         if (click.equals(Action.RIGHT_CLICK_BLOCK) || click.equals(Action.RIGHT_CLICK_AIR)) {
             if (e.getItem() != null) {
-                if (compass.getType().equals(Material.COMPASS) && compass.getItemMeta().getDisplayName().equalsIgnoreCase(Data.dsp.get("startinventory.name.teleporter", p))) {
+                if (compass.getType().equals(Material.COMPASS) && compass.getItemMeta().getDisplayName().equalsIgnoreCase(dsp.get("startinventory.name.teleporter", p))) {
                     e.setCancelled(true);
                     TeleporterMenu.openTeleportMenu(p);
                 }
@@ -57,11 +59,10 @@ public class StartInventoryListener implements Listener {
         Projectile ender = e.getEntity();
         Player p = (Player) ender.getShooter();
         if (ender instanceof EnderPearl) {
-            if (((EnderPearl) ender).getItem().getItemMeta().getDisplayName().equalsIgnoreCase(Data.dsp.get("startinventory.name.beam", p))) {
+            if (((EnderPearl) ender).getItem().getItemMeta().getDisplayName().equalsIgnoreCase(dsp.get("startinventory.name.beam", p))) {
                 Scheduler.EnderToClay(p);
             }
         }
-
     }
 
     @EventHandler
@@ -71,7 +72,7 @@ public class StartInventoryListener implements Listener {
         Action c = e.getAction();
         if (c.equals(Action.RIGHT_CLICK_AIR) || c.equals(Action.RIGHT_CLICK_BLOCK)) {
             if (e.getItem() != null) {
-                if (book.getType().equals(Material.BOOK) && book.getItemMeta().getDisplayName().equalsIgnoreCase(Data.dsp.get("startinventory.name.news", p))) {
+                if (book.getType().equals(Material.BOOK) && book.getItemMeta().getDisplayName().equalsIgnoreCase(dsp.get("startinventory.name.news", p))) {
                     e.setCancelled(true);
                     p.chat("/news");
                 }
@@ -111,55 +112,13 @@ public class StartInventoryListener implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent e) {
+        Player player = (Player) e.getClickedInventory().getHolder();
         if (e.getClickedInventory() != null) {
             if (e.getClickedInventory().equals(e.getWhoClicked().getInventory())) {
-                e.setCancelled(true);
-            }
-        }
-        /*
-        Player p = (Player) e.getWhoClicked();
-        ItemStack item = e.getCursor();
-        if (!item.getType().equals(Material.AIR)) {
-            ClickType c = e.getClick();
-            if (c.isLeftClick() || c.isRightClick() || c.isShiftClick() || c.isKeyboardClick()) {
-                if (!c.isCreativeAction()) {
+                if (!Data.fighting.contains(player)) {
                     e.setCancelled(true);
-                    if (item.equals(new ItemStack(Material.COMPASS))) {
-                        p.getInventory().setItem(0, item);
-                    }
-                    if (item.equals(new ItemStack(Material.ENDER_PEARL))) {
-                        p.getInventory().setItem(1, item);
-                    }
-                    if (item.equals(new ItemStack(Material.REPEATER))) {
-                        p.getInventory().setItem(8, item);
-                    }
-                    if (item.getItemMeta().getDisplayName().endsWith("Helmet")) {
-                        p.getInventory().setHelmet(item);
-                    }
-                    if (item.getItemMeta().getDisplayName().endsWith("Hat")) {
-                        p.getInventory().setHelmet(item);
-                    }
-                    if (item.getItemMeta().getDisplayName().endsWith("Chestplate")) {
-                        p.getInventory().setChestplate(item);
-                    }
-                    if (item.getItemMeta().getDisplayName().endsWith("Tunic")) {
-                        p.getInventory().setChestplate(item);
-                    }
-                    if (item.getItemMeta().getDisplayName().endsWith("Leggings")) {
-                        p.getInventory().setLeggings(item);
-                    }
-                    if (item.getItemMeta().getDisplayName().endsWith("Trousers")) {
-                        p.getInventory().setLeggings(item);
-                    }
-                    if (item.getItemMeta().getDisplayName().endsWith("Boots")) {
-                        p.getInventory().setBoots(item);
-                    }
-                    if (item.getItemMeta().getDisplayName().endsWith(Data.dsp.get("extras.rocket", p))) {
-                        p.getInventory().setItem(4, item);
-                    }
                 }
             }
         }
-         */
     }
 }

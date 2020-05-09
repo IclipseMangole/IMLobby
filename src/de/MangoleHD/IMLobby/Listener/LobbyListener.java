@@ -25,7 +25,7 @@ public class LobbyListener implements Listener {
     public void Damage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player) {
             Player p = ((Player) e.getEntity()).getPlayer();
-            if (!Data.miniArena.containsKey(p)) {
+            if (!Data.fighting.contains(p)) {
                 if (e.getCause().equals(EntityDamageEvent.DamageCause.VOID)) {
                     p.teleport(Data.spawn);
                     p.playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
@@ -42,7 +42,7 @@ public class LobbyListener implements Listener {
     public void Hunger(FoodLevelChangeEvent e) {
         if (e.getEntity() instanceof Player) {
             Player p = ((Player) e.getEntity()).getPlayer();
-            if (!Data.miniArena.containsKey(p)) {
+            if (!Data.fighting.contains(p)) {
                 e.setCancelled(true);
                 p.setFoodLevel(20);
             }
@@ -54,11 +54,7 @@ public class LobbyListener implements Listener {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if (!p.getGameMode().equals(GameMode.CREATIVE)) {
-            if(!Data.miniArena.containsKey(p)) {
-                e.setCancelled(true);
-            }else if(Data.miniArena.containsKey(p) && Data.miniArena.get(p) != 0){
-                e.setCancelled(true);
-            }else if(Data.miniArena.containsKey(p) && !e.getBlock().getType().equals(Material.COBWEB) && !e.getBlock().getType().equals(Material.LAVA)&& !e.getBlock().getType().equals(Material.WATER)){
+            if(!Data.fighting.contains(p)) {
                 e.setCancelled(true);
             }
         }
@@ -69,11 +65,7 @@ public class LobbyListener implements Listener {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if (!p.getGameMode().equals(GameMode.CREATIVE)) {
-            if(!Data.miniArena.containsKey(p)) {
-                e.setCancelled(true);
-            }else if(Data.miniArena.containsKey(p) && Data.miniArena.get(p) != 0){
-                e.setCancelled(true);
-            }else if(Data.miniArena.containsKey(p) && !e.getBlock().getType().equals(Material.COBWEB) && !e.getBlock().getType().equals(Material.LAVA)&& !e.getBlock().getType().equals(Material.WATER)){
+            if(!Data.fighting.contains(p)) {
                 e.setCancelled(true);
             }
         }
@@ -84,13 +76,6 @@ public class LobbyListener implements Listener {
         CreatureSpawnEvent.SpawnReason spawnreason = e.getSpawnReason();
         if (spawnreason.equals(CreatureSpawnEvent.SpawnReason.DEFAULT) || spawnreason.equals(CreatureSpawnEvent.SpawnReason.ENDER_PEARL) || spawnreason.equals(CreatureSpawnEvent.SpawnReason.NATURAL)) {
             e.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void onLang(AsyncPlayerChatEvent e) {
-        if (e.getMessage().startsWith("/lang")) {
-            e.getPlayer().chat("/startinventory");
         }
     }
 

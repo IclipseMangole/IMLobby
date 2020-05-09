@@ -2,6 +2,7 @@ package de.MangoleHD.IMLobby.Commands;
 
 import de.Iclipse.IMAPI.Util.Command.IMCommand;
 import de.MangoleHD.IMLobby.Data;
+import de.MangoleHD.IMLobby.StaticClasses.getClothing;
 import de.MangoleHD.IMLobby.StaticClasses.getVisibility;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -63,6 +64,7 @@ public class cmd_startInventory {
         i.setItem(1,enderpearl);
         i.setItem(7,news);
         i.setItem(2,visibility);
+        getClothing.onCloth(p);
 
         p.setFoodLevel(20);
         p.setHealth(20);
