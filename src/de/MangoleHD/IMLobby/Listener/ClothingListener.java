@@ -78,6 +78,7 @@ public class ClothingListener implements Listener {
     public void onJumperGround(PlayerMoveEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
+        if(!Data.fighting.contains(p))
             if (p.isOnGround()) {
                 if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
                     p.setAllowFlight(true);
