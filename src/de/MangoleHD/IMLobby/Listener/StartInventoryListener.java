@@ -31,7 +31,6 @@ public class StartInventoryListener implements Listener {
         if (click.equals(Action.RIGHT_CLICK_BLOCK) || click.equals(Action.RIGHT_CLICK_AIR)) {
             if (e.getItem() != null) {
                 if (compass.getType().equals(Material.COMPASS) && compass.getItemMeta().getDisplayName().equalsIgnoreCase(dsp.get("startinventory.name.teleporter", p))) {
-                    e.setCancelled(true);
                     TeleporterMenu.openTeleportMenu(p);
                 }
             }
@@ -47,7 +46,6 @@ public class StartInventoryListener implements Listener {
         if (click.equals(Action.RIGHT_CLICK_BLOCK) || click.equals(Action.RIGHT_CLICK_AIR)) {
             if (e.getItem() != null) {
                 if (repeater.getType().equals(Material.REPEATER)) {
-                    e.setCancelled(true);
                     SettingsMenu.openSettingsMenu(p);
                 }
             }
@@ -73,7 +71,6 @@ public class StartInventoryListener implements Listener {
         if (c.equals(Action.RIGHT_CLICK_AIR) || c.equals(Action.RIGHT_CLICK_BLOCK)) {
             if (e.getItem() != null) {
                 if (book.getType().equals(Material.BOOK) && book.getItemMeta().getDisplayName().equalsIgnoreCase(dsp.get("startinventory.name.news", p))) {
-                    e.setCancelled(true);
                     p.chat("/news");
                 }
             }
@@ -88,7 +85,6 @@ public class StartInventoryListener implements Listener {
         if (c.equals(Action.RIGHT_CLICK_AIR) || c.equals(Action.RIGHT_CLICK_BLOCK)) {
             if (e.getItem() != null) {
                 if (dye.getType().equals(Material.LIME_DYE) || dye.getType().equals(Material.PURPLE_DYE) || dye.getType().equals(Material.GRAY_DYE)) {
-                    e.setCancelled(true);
                     getVisibility.changeDye(dye, p);
                 }
             }

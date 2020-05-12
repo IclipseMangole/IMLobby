@@ -22,7 +22,6 @@ public class ExtrasListener implements Listener {
             if (p.isOnGround()) {
                 if (e.hasItem()) {
                     if (rocket.getItemMeta().getDisplayName().equals(Data.dsp.get("extras.rocket", p))) {
-                        e.setCancelled(true);
                         Vector v = new Vector();
                         v.setX(0).setY(50).setZ(0);
                         p.setVelocity(v);
