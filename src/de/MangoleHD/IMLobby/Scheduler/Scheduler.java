@@ -93,7 +93,7 @@ public class Scheduler {
                     }
                 });
                 if (seconds == 59) {
-                    Bukkit.getScheduler().runTaskAsynchronously(Data.instance, () -> Bukkit.getWorlds().forEach(world -> world.setTime(TickParser.parse(new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime())))));
+                    Bukkit.getScheduler().runTask(Data.instance, () -> Bukkit.getWorlds().forEach(world -> world.setTime(TickParser.parse(new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime())))));
                 }
                 seconds = seconds % 60 + 1;
                 /*

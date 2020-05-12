@@ -112,7 +112,7 @@ public class StartInventoryListener implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent e) {
-        Player player = (Player) e.getClickedInventory().getHolder();
+        Player player = (Player) e.getWhoClicked();
         if (e.getClickedInventory() != null) {
             if (e.getClickedInventory().equals(e.getWhoClicked().getInventory())) {
                 if (!Data.fighting.contains(player)) {
