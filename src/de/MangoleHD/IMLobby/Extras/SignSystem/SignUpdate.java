@@ -2,6 +2,7 @@ package de.MangoleHD.IMLobby.Extras.SignSystem;
 
 import de.Iclipse.IMAPI.Database.Server;
 import de.Iclipse.IMAPI.Database.Sign;
+import de.Iclipse.IMAPI.Functions.Servers.State;
 import org.bukkit.block.Block;
 
 public class SignUpdate {
@@ -12,9 +13,9 @@ public class SignUpdate {
                 org.bukkit.block.Sign sign = (org.bukkit.block.Sign) b.getState();
                 String mode = Sign.getMode(id);
                 if (Sign.getServer(id) != null) {
-                    if (!Server.getState(Sign.getServer(id)).equals("Lobby")) {
+                    if (!Server.getState(Sign.getServer(id)).equals(State.Lobby)) {
                         for (String server : Server.getServers(mode)) {
-                            if (Server.getState(server).equals("Lobby") && !Sign.hasOtherSignThisServer(server)) {
+                            if (Server.getState(server).equals(State.Lobby) && !Sign.hasOtherSignThisServer(server)) {
                                 Sign.setServer(id, server);
                                 break;
                             }
@@ -22,7 +23,7 @@ public class SignUpdate {
                     }
                 } else {
                     for (String server : Server.getServers(mode)) {
-                        if (Server.getState(server).equals("Lobby") && !Sign.hasOtherSignThisServer(server)) {
+                        if (Server.getState(server).equals(State.Lobby) && !Sign.hasOtherSignThisServer(server)) {
                             Sign.setServer(id, server);
                             break;
                         }
