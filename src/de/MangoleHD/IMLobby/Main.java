@@ -1,5 +1,7 @@
 package de.MangoleHD.IMLobby;
 
+import de.Iclipse.IMAPI.Database.Server;
+import de.Iclipse.IMAPI.Functions.Servers.State;
 import de.Iclipse.IMAPI.IMAPI;
 import de.Iclipse.IMAPI.Util.Dispatching.Dispatcher;
 import de.MangoleHD.IMLobby.Commands.cmd_killlag;
@@ -12,6 +14,7 @@ import de.MangoleHD.IMLobby.Extras.Animations.Windmill;
 import de.MangoleHD.IMLobby.Extras.Bell;
 import de.MangoleHD.IMLobby.Extras.GroßesDorfhaus;
 import de.MangoleHD.IMLobby.Extras.Minigames.MiniArena;
+import de.MangoleHD.IMLobby.Extras.SignSystem.SignClick;
 import de.MangoleHD.IMLobby.Extras.Treppe;
 import de.MangoleHD.IMLobby.Listener.*;
 import de.MangoleHD.IMLobby.Scheduler.Scheduler;
@@ -29,6 +32,7 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import static de.Iclipse.IMAPI.IMAPI.copyFilesInDirectory;
+import static de.Iclipse.IMAPI.IMAPI.getServerName;
 import static de.MangoleHD.IMLobby.Data.*;
 
 
@@ -42,7 +46,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        super.onEnable();
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         loadResourceBundles();
         registerListener();
         registerCommands();
@@ -53,6 +57,7 @@ public class Main extends JavaPlugin {
         spawn = new Location(Bukkit.getWorld("world"), 0.5, 55, 0.5, 180, 0);
         Scheduler.startScheduler();
         Bukkit.getWorld("world").setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
+        Server.setState(getServerName(), State.Lobby);
     }
 
     @Override
@@ -73,6 +78,7 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new Treppe(), this);
         Bukkit.getPluginManager().registerEvents(new GroßesDorfhaus(), this);
         Bukkit.getPluginManager().registerEvents(new MiniArena(), this);
+        Bukkit.getPluginManager().registerEvents(new SignClick(), this);
     }
 
     public void registerCommands() {

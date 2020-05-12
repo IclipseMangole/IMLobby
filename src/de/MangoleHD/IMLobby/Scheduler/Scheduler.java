@@ -2,12 +2,7 @@ package de.MangoleHD.IMLobby.Scheduler;
 
 import de.Iclipse.IMAPI.Util.TickParser;
 import de.MangoleHD.IMLobby.Data;
-import de.MangoleHD.IMLobby.Extras.Animations.Flag;
-import de.MangoleHD.IMLobby.Extras.Animations.Grave;
-import de.MangoleHD.IMLobby.Extras.Animations.Vent;
-import de.MangoleHD.IMLobby.Extras.Animations.Windmill;
-import de.MangoleHD.IMLobby.Extras.Bell;
-import de.MangoleHD.IMLobby.Extras.Minigames.MiniArena;
+import de.MangoleHD.IMLobby.Extras.SignSystem.SignUpdate;
 import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -75,7 +70,7 @@ public class Scheduler {
     static int seconds;
 
     public static void startScheduler() {
-        scheduler2 = Bukkit.getScheduler().runTaskTimer(Data.instance, new Runnable() {
+        scheduler2 = Bukkit.getScheduler().runTaskTimerAsynchronously(Data.instance, new Runnable() {
             @Override
             public void run() {
                 getScoreboard.animation++;
@@ -98,9 +93,10 @@ public class Scheduler {
                     }
                 });
                 if (seconds == 59) {
-                    Bukkit.getWorlds().forEach(world -> world.setTime(TickParser.parse(new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()))));
+                    Bukkit.getScheduler().runTaskAsynchronously(Data.instance, () -> Bukkit.getWorlds().forEach(world -> world.setTime(TickParser.parse(new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime())))));
                 }
                 seconds = seconds % 60 + 1;
+                /*
                 if (!Data.killlag) {
                     Vent.vent();
                     Windmill.windmill();
@@ -108,6 +104,7 @@ public class Scheduler {
                     Grave.grave();
                     Bell.bell();
                 }
+                 */
 
                 Random random = new Random();
                 int mode = random.nextInt(4);
@@ -128,6 +125,7 @@ public class Scheduler {
                         arenaCountdown--;
                     }
                 }
+                SignUpdate.update();
             }
         }, 0, 20);
     }
