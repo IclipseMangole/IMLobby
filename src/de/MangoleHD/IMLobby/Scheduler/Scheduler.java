@@ -70,7 +70,7 @@ public class Scheduler {
     static int seconds;
 
     public static void startScheduler() {
-        scheduler2 = Bukkit.getScheduler().runTaskTimerAsynchronously(Data.instance, new Runnable() {
+        scheduler2 = Bukkit.getScheduler().runTaskTimer(Data.instance, new Runnable() {
             @Override
             public void run() {
                 getScoreboard.animation++;
