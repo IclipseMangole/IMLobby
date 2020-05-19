@@ -32,6 +32,7 @@ public class StartInventoryListener implements Listener {
             if (e.getItem() != null) {
                 if (compass.getType().equals(Material.COMPASS) && compass.getItemMeta().getDisplayName().equalsIgnoreCase(dsp.get("startinventory.name.teleporter", p))) {
                     TeleporterMenu.openTeleportMenu(p);
+                    e.setCancelled(true);
                 }
             }
         }
@@ -47,6 +48,7 @@ public class StartInventoryListener implements Listener {
             if (e.getItem() != null) {
                 if (repeater.getType().equals(Material.REPEATER)) {
                     SettingsMenu.openSettingsMenu(p);
+                    e.setCancelled(true);
                 }
             }
         }
@@ -72,6 +74,7 @@ public class StartInventoryListener implements Listener {
             if (e.getItem() != null) {
                 if (book.getType().equals(Material.BOOK) && book.getItemMeta().getDisplayName().equalsIgnoreCase(dsp.get("startinventory.name.news", p))) {
                     p.chat("/news");
+                    e.setCancelled(true);
                 }
             }
         }
@@ -86,6 +89,7 @@ public class StartInventoryListener implements Listener {
             if (e.getItem() != null) {
                 if (dye.getType().equals(Material.LIME_DYE) || dye.getType().equals(Material.PURPLE_DYE) || dye.getType().equals(Material.GRAY_DYE)) {
                     getVisibility.changeDye(dye, p);
+                    e.setCancelled(true);
                 }
             }
         }
