@@ -1,14 +1,15 @@
-package de.MangoleHD.IMLobby.Listener;
+package de.MangoleHD.IMLobby.StartInventory;
 
 import de.MangoleHD.IMLobby.Data;
-import de.MangoleHD.IMLobby.Listener.PopupMenus.SettingsMenu;
-import de.MangoleHD.IMLobby.Listener.PopupMenus.TeleporterMenu;
+import de.MangoleHD.IMLobby.PopupMenus.ProfileMenu.ProfileMenu;
+import de.MangoleHD.IMLobby.PopupMenus.TeleporterMenu;
 import de.MangoleHD.IMLobby.Scheduler.Scheduler;
 import de.MangoleHD.IMLobby.StaticClasses.getVisibility;
 import org.bukkit.Material;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.entity.ThrowableProjectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -22,6 +23,7 @@ import org.bukkit.inventory.ItemStack;
 import static de.MangoleHD.IMLobby.Data.dsp;
 
 public class StartInventoryListener implements Listener {
+
 
     @EventHandler
     public void onTeleporter(PlayerInteractEvent e) {
@@ -39,15 +41,15 @@ public class StartInventoryListener implements Listener {
     }
 
     @EventHandler
-    public void onSettings(PlayerInteractEvent e) {
+    public void onProfile(PlayerInteractEvent e) {
         Player p = e.getPlayer();
-        ItemStack repeater = e.getItem();
+        ItemStack item = e.getItem();
         Action click = e.getAction();
 
         if (click.equals(Action.RIGHT_CLICK_BLOCK) || click.equals(Action.RIGHT_CLICK_AIR)) {
             if (e.getItem() != null) {
-                if (repeater.getType().equals(Material.REPEATER)) {
-                    SettingsMenu.openSettingsMenu(p);
+                if (item.getType().equals(StartInventoryItems.getProfile(p).getType()) && item.getItemMeta().getDisplayName().equalsIgnoreCase(StartInventoryItems.getProfile(p).getItemMeta().getDisplayName())) {
+                    ProfileMenu.openProfileMenu(p);
                     e.setCancelled(true);
                 }
             }
@@ -59,7 +61,7 @@ public class StartInventoryListener implements Listener {
         Projectile ender = e.getEntity();
         Player p = (Player) ender.getShooter();
         if (ender instanceof EnderPearl) {
-            if (((EnderPearl) ender).getItem().getItemMeta().getDisplayName().equalsIgnoreCase(dsp.get("startinventory.name.beam", p))) {
+            if (((ThrowableProjectile) ender).getItem().getItemMeta().getDisplayName().equalsIgnoreCase(dsp.get("startinventory.name.beam", p))) {
                 Scheduler.EnderToClay(p);
             }
         }

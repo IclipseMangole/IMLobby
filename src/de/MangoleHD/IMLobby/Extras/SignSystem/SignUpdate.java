@@ -7,13 +7,23 @@ import org.bukkit.block.Block;
 
 public class SignUpdate {
     public static void update() {
-        Sign.getSigns().forEach(id -> {
-            Block b = Sign.getLocation(id).getBlock();
-            if (b.getType().name().contains("SIGN")) {
-                org.bukkit.block.Sign sign = (org.bukkit.block.Sign) b.getState();
-                String mode = Sign.getMode(id);
-                if (Sign.getServer(id) != null) {
-                    if (!Server.getState(Sign.getServer(id)).equals(State.Lobby)) {
+        if (Sign.getSigns().size() > 0) {
+            Sign.getSigns().forEach(id -> {
+                Block b = Sign.getLocation(id).getBlock();
+                if (b.getType().name().contains("SIGN")) {
+                    org.bukkit.block.Sign sign = (org.bukkit.block.Sign) b.getState();
+                    String mode = Sign.getMode(id);
+                    if (Sign.getServer(id) != null) {
+                        if (!Server.getState(Sign.getServer(id)).equals(State.Lobby)) {
+                            Sign.setServer(id, "NONE");
+                            for (String server : Server.getServers(mode)) {
+                                if (Server.getState(server).equals(State.Lobby) && !Sign.hasOtherSignThisServer(server)) {
+                                    Sign.setServer(id, server);
+                                    break;
+                                }
+                            }
+                        }
+                    } else {
                         for (String server : Server.getServers(mode)) {
                             if (Server.getState(server).equals(State.Lobby) && !Sign.hasOtherSignThisServer(server)) {
                                 Sign.setServer(id, server);
@@ -21,20 +31,13 @@ public class SignUpdate {
                             }
                         }
                     }
-                } else {
-                    for (String server : Server.getServers(mode)) {
-                        if (Server.getState(server).equals(State.Lobby) && !Sign.hasOtherSignThisServer(server)) {
-                            Sign.setServer(id, server);
-                            break;
-                        }
-                    }
-                }
 
-                updateSign(id, sign);
-            } else {
-                System.out.println("No sign at (" + b.getLocation().getBlockX() + "|" + b.getLocation().getBlockY() + "|" + b.getLocation().getBlockZ() + ")");
-            }
-        });
+                    updateSign(id, sign);
+                } else {
+                    System.out.println("No sign at (" + b.getLocation().getBlockX() + "|" + b.getLocation().getBlockY() + "|" + b.getLocation().getBlockZ() + ")");
+                }
+            });
+        }
     }
 
     public static void updateSign(int id, org.bukkit.block.Sign sign) {
@@ -46,7 +49,11 @@ public class SignUpdate {
             } else {
                 sign.setLine(1, "§0[§6Full§0]");
             }
-            sign.setLine(2, "");
+            if (Server.getMap(server) != null) {
+                sign.setLine(2, Server.getMap(server));
+            } else {
+                sign.setLine(2, "");
+            }
             sign.setLine(3, Server.getPlayers(server) + "/" + Server.getMaxPlayers(server));
         } else {
             sign.setLine(0, Sign.getMode(id));
