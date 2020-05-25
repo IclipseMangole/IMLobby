@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Challenges/Challenges.iml" filepath="$PROJECT_DIR$/Challenges/Challenges.iml" />
       <module fileurl="file://$PROJECT_DIR$/../IMAPI/IMAPI.iml" filepath="$PROJECT_DIR$/../IMAPI/IMAPI.iml" />
       <module fileurl="file://$PROJECT_DIR$/../IMBattleRoyale/IMBattleRoyale.iml" filepath="$PROJECT_DIR$/../IMBattleRoyale/IMBattleRoyale.iml" />
       <module fileurl="file://$PROJECT_DIR$/../IMBedwars/IMBedwars.iml" filepath="$PROJECT_DIR$/../IMBedwars/IMBedwars.iml" />
