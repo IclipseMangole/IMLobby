@@ -1,11 +1,11 @@
-package de.MangoleHD.IMLobby.Listener.PopupMenus;
+package de.MangoleHD.IMLobby.PopupMenus.ProfileMenu.LobbyInventory;
 
 import de.Iclipse.IMAPI.Database.UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.Iclipse.IMAPI.Util.menu.MenuItem;
 import de.Iclipse.IMAPI.Util.menu.PopupMenu;
-import de.Iclipse.IMAPI.Util.menu.PopupMenuAPI;
 import de.MangoleHD.IMLobby.Data;
+import de.MangoleHD.IMLobby.PopupMenus.ProfileMenu.ProfileMenu;
 import de.MangoleHD.IMLobby.StaticClasses.getClothing;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -17,7 +17,7 @@ public class ClothingMenu {
 
     public static void openClothingMenu(Player p, PopupMenu old) {
         //Menu
-        PopupMenu clothing = new PopupMenu(Data.dsp.get("clothing.menu", p), 3);
+        PopupMenu clothing = ProfileMenu.createSubProfileMenu(Data.dsp.get("clothing.title", p), old, p, 3);
         //MenuItems
         ItemStack blackleather = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta blackmeta = (LeatherArmorMeta) blackleather.getItemMeta();
@@ -324,28 +324,28 @@ public class ClothingMenu {
         };
         Off.setLore(Data.dsp.get("clothing.off.lore", p));
         //Menu with Items
-        clothing.addMenuItem(Black_Leather, 0);
-        clothing.addMenuItem(Gray_Leather, 1);
-        clothing.addMenuItem(Silver_Leather, 2);
-        clothing.addMenuItem(Red_Leather, 3);
-        clothing.addMenuItem(Maroon_Leather, 4);
-        clothing.addMenuItem(Orange_Leather, 5);
-        clothing.addMenuItem(Yellow_Leather, 6);
-        clothing.addMenuItem(White_Leather, 7);
-        clothing.addMenuItem(Olive_Leather, 8);
-        clothing.addMenuItem(Green_Leather, 9);
-        clothing.addMenuItem(Aqua_Leather, 10);
-        clothing.addMenuItem(Teal_Leather, 11);
-        clothing.addMenuItem(Blue_Leather, 12);
-        clothing.addMenuItem(Navy_Leather, 13);
-        clothing.addMenuItem(Fuchsia_Leather, 14);
-        clothing.addMenuItem(Purple_Leather, 15);
-        clothing.addMenuItem(King, 0, 2);
-        clothing.addMenuItem(Thief, 1, 2);
-        clothing.addMenuItem(Jumper, 2, 2);
-        clothing.addMenuItem(Ghost, 3, 2);
-        clothing.addMenuItem(Off, 26);
+        clothing.addMenuItem(Black_Leather, 9);
+        clothing.addMenuItem(Gray_Leather, 10);
+        clothing.addMenuItem(Silver_Leather, 11);
+        clothing.addMenuItem(Red_Leather, 12);
+        clothing.addMenuItem(Maroon_Leather, 13);
+        clothing.addMenuItem(Orange_Leather, 14);
+        clothing.addMenuItem(Yellow_Leather, 15);
+        clothing.addMenuItem(White_Leather, 16);
+        clothing.addMenuItem(Olive_Leather, 17);
+        clothing.addMenuItem(Green_Leather, 18);
+        clothing.addMenuItem(Aqua_Leather, 19);
+        clothing.addMenuItem(Teal_Leather, 20);
+        clothing.addMenuItem(Blue_Leather, 21);
+        clothing.addMenuItem(Navy_Leather, 22);
+        clothing.addMenuItem(Fuchsia_Leather, 23);
+        clothing.addMenuItem(Purple_Leather, 24);
+        clothing.addMenuItem(King, 0, 3);
+        clothing.addMenuItem(Thief, 1, 3);
+        clothing.addMenuItem(Jumper, 2, 3);
+        clothing.addMenuItem(Ghost, 3, 3);
+        clothing.addMenuItem(Off, 35);
 
-        PopupMenuAPI.switchMenu(p, old, clothing);
+        clothing.openMenu(p);
     }
 }

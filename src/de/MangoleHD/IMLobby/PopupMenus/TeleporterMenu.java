@@ -1,4 +1,4 @@
-package de.MangoleHD.IMLobby.Listener.PopupMenus;
+package de.MangoleHD.IMLobby.PopupMenus;
 
 import de.Iclipse.IMAPI.Util.menu.MenuItem;
 import de.Iclipse.IMAPI.Util.menu.PopupMenu;

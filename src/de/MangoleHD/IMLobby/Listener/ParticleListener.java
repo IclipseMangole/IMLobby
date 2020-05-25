@@ -21,7 +21,7 @@ public class ParticleListener implements Listener {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if (!Data.fighting.contains(p)) {
-            if (e.getTo().getX() != e.getFrom().getX() || e.getTo().getY() != e.getFrom().getY() || e.getTo().getY() != e.getFrom().getZ()) {
+            if (e.getTo().getX() != e.getFrom().getX() || e.getTo().getY() != e.getFrom().getY() || e.getTo().getZ() != e.getFrom().getZ()) {
                 if (!Data.killlag) {
                     if (!UserSettings.getString(uuid, "particles").equals("off")) {
                         if (UserSettings.getString(uuid, "particles").equals("flames")) {

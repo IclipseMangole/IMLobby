@@ -2,6 +2,7 @@ package de.MangoleHD.IMLobby;
 
 
 import de.Iclipse.IMAPI.Util.Dispatching.Dispatcher;
+import de.MangoleHD.IMLobby.Extras.Broadcasts.BossBar;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -13,11 +14,9 @@ import java.util.ResourceBundle;
 
 public class Data {
     public static Plugin instance;
-    public static HashMap <String, Long> enderCooldown = new HashMap<>();
-    public static Tablist tablist;
+    public static BossBar bossBar;
     public static String symbol = "§8 » §7";
     public static String prefix = "§5IMLobby" + symbol;
-    public static boolean mapUpdate = true;
     public static HashMap<Player, Integer> doublejump = new HashMap<>();
     public static ArrayList<Player> ghost = new ArrayList<>();
     public static HashMap<Player, Integer> sneakjumper= new HashMap<>();

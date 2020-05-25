@@ -23,6 +23,7 @@ import static de.MangoleHD.IMLobby.Data.*;
 import static de.MangoleHD.IMLobby.Extras.Minigames.MiniArena.startArena;
 
 public class Scheduler {
+    public static BukkitTask scheduler;
     public static BukkitTask scheduler2;
     private static PotionEffect ghost = new PotionEffect(PotionEffectType.INVISIBILITY, 25, 1, true, false);
 
@@ -70,16 +71,10 @@ public class Scheduler {
     static int seconds;
 
     public static void startScheduler() {
-        scheduler2 = Bukkit.getScheduler().runTaskTimer(Data.instance, new Runnable() {
+        scheduler = Bukkit.getScheduler().runTaskTimer(Data.instance, new Runnable() {
             @Override
             public void run() {
-                getScoreboard.animation++;
-                if (getScoreboard.animation == 3) {
-                    getScoreboard.animation = 0;
-                }
-                Bukkit.getOnlinePlayers().forEach(entry -> {
-                    getScoreboard.updateScoreboard(entry);
-                });
+                getScoreboard.updateScoreboard();
 
                 Data.ghost.forEach(player -> {
                     player.addPotionEffect(ghost);
@@ -130,8 +125,19 @@ public class Scheduler {
         }, 0, 20);
     }
 
-
     public static void stopScheduler() {
+        scheduler.cancel();
+    }
+
+    public static void startTickScheduler() {
+        scheduler2 = Bukkit.getScheduler().runTaskTimerAsynchronously(instance, () -> {
+            bossBar.update();
+        }, 0, 2);
+    }
+
+    public static void stopTickScheduler() {
         scheduler2.cancel();
     }
+
+
 }

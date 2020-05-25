@@ -4,6 +4,7 @@ import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import de.Iclipse.IMAPI.Database.Server;
 import de.Iclipse.IMAPI.Database.Sign;
+import de.Iclipse.IMAPI.Functions.Servers.State;
 import de.MangoleHD.IMLobby.Data;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,14 +20,19 @@ public class SignClick implements Listener {
             if (e.getClickedBlock().getType().name().contains("SIGN")) {
                 if (Sign.isSign(e.getClickedBlock().getLocation())) {
                     String server = Sign.getServer(Sign.getId(e.getClickedBlock().getLocation()));
-                    if (Server.getPlayers(server) < Server.getMaxPlayers(server)) {
-                        dsp.send(e.getPlayer(), "sign.allow");
-                        ByteArrayDataOutput out = ByteStreams.newDataOutput();
-                        out.writeUTF("Connect");
-                        out.writeUTF(server);
-                        e.getPlayer().sendPluginMessage(Data.instance, "BungeeCord", out.toByteArray());
+                    if (Server.getState(server) == State.Lobby) {
+                        if (Server.getPlayers(server) < Server.getMaxPlayers(server)) {
+                            dsp.send(e.getPlayer(), "sign.allow");
+                            SignUpdate.update();
+                            ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                            out.writeUTF("Connect");
+                            out.writeUTF(server);
+                            e.getPlayer().sendPluginMessage(Data.instance, "BungeeCord", out.toByteArray());
+                        } else {
+                            dsp.send(e.getPlayer(), "sign.disallow");
+                        }
                     } else {
-                        dsp.send(e.getPlayer(), "sign.disallow");
+                        dsp.send(e.getPlayer(), "sign.offline");
                     }
                 }
             }

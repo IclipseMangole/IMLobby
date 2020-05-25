@@ -2,7 +2,6 @@ package de.MangoleHD.IMLobby.Listener;
 
 import de.Iclipse.IMAPI.Database.UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
-import de.MangoleHD.IMLobby.StaticClasses.getClothing;
 import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
 import de.MangoleHD.IMLobby.StaticClasses.getVisibility;
 import org.bukkit.Bukkit;
@@ -24,7 +23,7 @@ public class JoinListener implements Listener {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
 
-        p.chat("/startInventory");
+        e.getPlayer().chat("/startInventory");
 
         UserSettings.createUserSetting(uuid, "particles", "off");
 
@@ -46,10 +45,6 @@ public class JoinListener implements Listener {
             getVisibility.getGray(p);
         }
 
-        tablist.setPlayer(e.getPlayer());
-
-        tablist.setTablist(p);
-
         e.setJoinMessage(null);
 
         Bukkit.getOnlinePlayers().forEach(entry -> {
@@ -62,5 +57,6 @@ public class JoinListener implements Listener {
         p.teleport(new Location(p.getWorld(), 0.5, 55, 0.5, 0, 0));
         p.getActivePotionEffects().clear();
         p.teleport(spawn);
+        bossBar.addPlayer(p);
     }
 }
