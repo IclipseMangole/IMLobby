@@ -48,7 +48,7 @@ public class ProfileMenu {
         return menu;
     }
 
-    public static PopupMenu createSubProfileMenu(String title, PopupMenu lastMenu, Player p, int lines) {
+    public static PopupMenu createSubProfileMenu(String title, Player p, int lines, BackAction action) {
         PopupMenu menu = createProfileMenu(title, p);
         for (int i = 0; i < 4 - lines; i++) {
             for (int x = 0; x < 9; x++) {
@@ -56,7 +56,7 @@ public class ProfileMenu {
             }
         }
         menu.removeMenuItem(8, 0);
-        menu.addMenuItem(closeItem(p, lastMenu), 8, 0);
+        menu.addMenuItem(closeItem(p, action), 8, 0);
         return menu;
     }
 

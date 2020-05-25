@@ -2,6 +2,7 @@ package de.MangoleHD.IMLobby.PopupMenus.ProfileMenu.LobbyInventory;
 
 import de.Iclipse.IMAPI.Util.menu.PopupMenu;
 import de.MangoleHD.IMLobby.Data;
+import de.MangoleHD.IMLobby.PopupMenus.ProfileMenu.BackAction;
 import de.MangoleHD.IMLobby.PopupMenus.ProfileMenu.ProfileMenu;
 import org.bukkit.entity.Player;
 
@@ -9,7 +10,12 @@ public class ParticleMenu {
 
     public static void openParticleMenu(Player p, PopupMenu old) {
         //Menu
-        PopupMenu particles = ProfileMenu.createSubProfileMenu(Data.dsp.get("particle.title", p), old, p, 3);
+        PopupMenu particles = ProfileMenu.createSubProfileMenu(Data.dsp.get("particle.title", p), p, 3, new BackAction() {
+            @Override
+            public void onBack(Player player) {
+                InventoryMenu.openInventoryMenu(p);
+            }
+        });
 
 
         //Menu with Items

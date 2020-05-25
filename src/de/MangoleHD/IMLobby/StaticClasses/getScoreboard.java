@@ -1,10 +1,14 @@
 package de.MangoleHD.IMLobby.StaticClasses;
 
+import de.Iclipse.IMAPI.Database.Friend;
 import de.Iclipse.IMAPI.Database.User;
 import de.Iclipse.IMAPI.Util.ScoreboardSign;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 
@@ -25,12 +29,14 @@ public class getScoreboard {
         ss.setLine(5, "§f" + (int) ((User.getOnlinetime(UUIDFetcher.getUUID(p.getName())) + (System.currentTimeMillis() - de.Iclipse.IMAPI.Data.onlinetime.get(p))) / (1000 * 60 * 60)) + " " + dsp.get("unit.hours", p));
         ss.setLine(6, "" + ChatColor.DARK_BLUE);
         ss.setLine(7, dsp.get("scoreboard.friends", p));
-        ss.setLine(8, "§f0/0");
+        ss.setLine(8, "§f" + Friend.getFriends(UUIDFetcher.getUUID(p.getName())).size() + "/" + Friend.getOnlineFriends(UUIDFetcher.getUUID(p.getName())).size());
         ss.setLine(9, "" + ChatColor.DARK_AQUA);
         ss.setLine(10, "§7 ——————————" + ChatColor.LIGHT_PURPLE);
         ss.setLine(11, "§7| §5§lIclipse§r§fMangole§7 |");
         ss.setLine(12, "§7 ——————————" + ChatColor.DARK_GREEN);
         boards.put(p, ss);
+        new ItemStack(Material.ACACIA_BOAT).getItemMeta().addEnchant(Enchantment.LUCK, 1, false);
+
 
     }
 
@@ -59,7 +65,7 @@ public class getScoreboard {
             ss.setLine(5, "§f" + (int) ((User.getOnlinetime(UUIDFetcher.getUUID(p.getName())) + (System.currentTimeMillis() - de.Iclipse.IMAPI.Data.onlinetime.get(p))) / (1000 * 60 * 60)) + " " + dsp.get("unit.hours", p));
             ss.setLine(6, "" + ChatColor.DARK_BLUE);
             ss.setLine(7, dsp.get("scoreboard.friends", p));
-            ss.setLine(8, "§f0/0");
+            ss.setLine(8, "§f" + Friend.getOnlineFriends(UUIDFetcher.getUUID(p.getName())).size() + "/" + Friend.getFriends(UUIDFetcher.getUUID(p.getName())).size());
             ss.setLine(9, "" + ChatColor.DARK_AQUA);
             ss.setLine(10, "§7 ——————————" + ChatColor.LIGHT_PURPLE);
             ss.setLine(11, "§7| §5§lIclipse§r§fMangole§7 |");

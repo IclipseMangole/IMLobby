@@ -122,17 +122,29 @@ public class ProfileItems {
         };
     }
 
+    public static MenuItem closeItem(Player p, BackAction action) {
+        ItemStackBuilder builder = new ItemStackBuilder(Material.BARRIER);
+        builder.withName(dsp.get("profile.close", p));
+        builder.withLore(" ");
+        return new MenuItem(builder.buildStack()) {
+            @Override
+            public void onClick(Player player) {
+                action.onBack(player);
+            }
+        };
+    }
+
     public static ItemStack previousPage(Player p, int page, int maxPage) {
         ItemStackBuilder builder = ItemStackBuilder.fromItemStack(Data.heads.get("arrowLeft" + UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "design_secondary")));
         builder.withName(dsp.get("profile.previousPage", p));
-        builder.withLore("§8" + dsp.get("profile.page", p) + " " + page + "/" + maxPage);
+        builder.withLore("§8" + dsp.get("profile.page", p) + " " + (page - 1) + "/" + maxPage);
         return builder.buildStack();
     }
 
     public static ItemStack nextPage(Player p, int page, int maxPage) {
         ItemStackBuilder builder = ItemStackBuilder.fromItemStack(Data.heads.get("arrowRight" + UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "design_secondary")));
         builder.withName(dsp.get("profile.nextPage", p));
-        builder.withLore("§8" + dsp.get("profile.page", p) + " " + page + "/" + maxPage);
+        builder.withLore("§8" + dsp.get("profile.page", p) + " " + (page + 1) + "/" + maxPage);
         return builder.buildStack();
     }
 

@@ -2,6 +2,7 @@ package de.MangoleHD.IMLobby;
 
 
 import de.Iclipse.IMAPI.Util.Dispatching.Dispatcher;
+import de.MangoleHD.IMLobby.Extras.Animations.Animation;
 import de.MangoleHD.IMLobby.Extras.Broadcasts.BossBar;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -19,7 +20,8 @@ public class Data {
     public static String prefix = "§5IMLobby" + symbol;
     public static HashMap<Player, Integer> doublejump = new HashMap<>();
     public static ArrayList<Player> ghost = new ArrayList<>();
-    public static HashMap<Player, Integer> sneakjumper= new HashMap<>();
+    public static HashMap<Player, Integer> sneakjumper = new HashMap<>();
+    public static ArrayList<Animation> animations = new ArrayList<>();
     public static Dispatcher dsp;
     public static ResourceBundle langDE;
     public static ResourceBundle langEN;

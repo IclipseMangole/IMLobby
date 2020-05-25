@@ -8,10 +8,9 @@ import de.Iclipse.IMAPI.Util.SkullUtils;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.MangoleHD.IMLobby.Commands.cmd_killlag;
 import de.MangoleHD.IMLobby.Commands.cmd_miniArena;
+import de.MangoleHD.IMLobby.Extras.Animations.Casino;
 import de.MangoleHD.IMLobby.Extras.Animations.Flag;
-import de.MangoleHD.IMLobby.Extras.Animations.Grave;
 import de.MangoleHD.IMLobby.Extras.Animations.Vent;
-import de.MangoleHD.IMLobby.Extras.Animations.Windmill;
 import de.MangoleHD.IMLobby.Extras.Bell;
 import de.MangoleHD.IMLobby.Extras.Broadcasts.BossBar;
 import de.MangoleHD.IMLobby.Extras.GroßesDorfhaus;
@@ -19,6 +18,7 @@ import de.MangoleHD.IMLobby.Extras.Minigames.MiniArena;
 import de.MangoleHD.IMLobby.Extras.SignSystem.SignClick;
 import de.MangoleHD.IMLobby.Extras.Treppe;
 import de.MangoleHD.IMLobby.Listener.*;
+import de.MangoleHD.IMLobby.PopupMenus.ProfileMenu.Settings.Status.StatusMenu;
 import de.MangoleHD.IMLobby.Scheduler.Scheduler;
 import de.MangoleHD.IMLobby.StartInventory.StartInventoryCMD;
 import de.MangoleHD.IMLobby.StartInventory.StartInventoryListener;
@@ -59,7 +59,7 @@ public class Main extends JavaPlugin {
         createExtras();
         Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false));
         spawn = new Location(Bukkit.getWorld("world"), 0.5, 55, 0.5, 180, 0);
-        bossBar = new BossBar();
+        bossBar = new BossBar(false);
         Scheduler.startScheduler();
         Scheduler.startTickScheduler();
         Bukkit.getWorld("world").setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
@@ -87,6 +87,7 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new GroßesDorfhaus(), this);
         Bukkit.getPluginManager().registerEvents(new MiniArena(), this);
         Bukkit.getPluginManager().registerEvents(new SignClick(), this);
+        Bukkit.getPluginManager().registerEvents(new StatusMenu(), this);
     }
 
     public void registerCommands() {
@@ -148,10 +149,12 @@ public class Main extends JavaPlugin {
     }
 
     public static void createExtras() {
+        //Animations
         Vent.createVents();
-        Windmill.createWindmills();
         Flag.createFlags();
-        Grave.createGraves();
+        Casino.createCasinos();
+
+        //Bell
         Bell.createBells();
     }
 

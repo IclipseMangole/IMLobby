@@ -25,7 +25,7 @@ public class InventoryItems {
         MenuItem clothing = new MenuItem(Data.dsp.get("clothing.title", p), new ItemStack(Material.LEATHER_CHESTPLATE)) {
             @Override
             public void onClick(Player player) {
-                ClothingMenu.openClothingMenu(player, last);
+                ClothingMenu.openClothingMenu(player);
             }
         };
         clothing.setLore(Data.dsp.get("clothing.lore", p));

@@ -17,6 +17,7 @@ import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -53,6 +54,15 @@ public class StartInventoryListener implements Listener {
                     e.setCancelled(true);
                 }
             }
+        }
+    }
+
+    @EventHandler
+    public void onFriendRequest(PlayerInteractAtEntityEvent e) {
+        Player p = e.getPlayer();
+        if (e.getRightClicked() instanceof Player) {
+            Player f = (Player) e.getRightClicked();
+            p.chat("/friend add " + f.getName());
         }
     }
 

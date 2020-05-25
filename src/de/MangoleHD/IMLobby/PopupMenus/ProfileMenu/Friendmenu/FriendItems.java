@@ -5,15 +5,13 @@ import com.google.common.io.ByteStreams;
 import de.Iclipse.IMAPI.Database.Friend;
 import de.Iclipse.IMAPI.Database.User;
 import de.Iclipse.IMAPI.Database.UserSettings;
-import de.Iclipse.IMAPI.IMAPI;
 import de.Iclipse.IMAPI.Util.ItemStackBuilder;
 import de.Iclipse.IMAPI.Util.SkullUtils;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.Iclipse.IMAPI.Util.menu.MenuItem;
-import de.Iclipse.IMAPI.Util.menu.PopupMenu;
 import de.MangoleHD.IMLobby.Data;
+import de.MangoleHD.IMLobby.PopupMenus.ProfileMenu.BackAction;
 import de.MangoleHD.IMLobby.PopupMenus.ProfileMenu.ProfileItems;
-import net.alpenblock.bungeeperms.BungeePermsAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -22,18 +20,19 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 import static de.Iclipse.IMAPI.Data.heads;
 import static de.MangoleHD.IMLobby.Data.dsp;
 
 public class FriendItems {
-    public static MenuItem onlineHead(Player p, UUID friend, PopupMenu menu) {
+    public static MenuItem onlineHead(Player p, UUID friend, int page) {
         ItemStackBuilder builder = ItemStackBuilder.fromItemStack(SkullUtils.getPlayerSkull(friend));
         if (Friend.isFavorite(UUIDFetcher.getUUID(p.getName()), friend)) {
-            builder.withName(dsp.get("friend_menu.head.favorite_name", p, BungeePermsAPI.userPrefix(friend.toString(), IMAPI.getServerName(), null) + UUIDFetcher.getName(friend)));
+            builder.withName(dsp.get("friend_menu.head.favorite_name", p, de.Iclipse.IMAPI.Data.tablist.getPrefix(friend) + UUIDFetcher.getName(friend)));
         } else {
-            builder.withName(dsp.get("friend_menu.head.name", p, BungeePermsAPI.userPrefix(friend.toString(), IMAPI.getServerName(), null) + UUIDFetcher.getName(friend)));
+            builder.withName(dsp.get("friend_menu.head.name", p, de.Iclipse.IMAPI.Data.tablist.getPrefix(friend) + UUIDFetcher.getName(friend)));
         }
         ArrayList<String> lores = new ArrayList<>();
         lores.add(dsp.get("friend_menu.head.online.lore", p, User.getServer(friend)));
@@ -42,24 +41,29 @@ public class FriendItems {
         String status2 = UserSettings.getString(friend, "status_line2");
         if (!status1.equalsIgnoreCase("") || !status2.equalsIgnoreCase("")) {
             lores.add("");
-            lores.add(dsp.get("friend_menu.head.status", p, ChatColor.translateAlternateColorCodes('&', status1)));
-            lores.add(dsp.get("friend_menu.head.status", p, ChatColor.translateAlternateColorCodes('&', status2)));
+            if (!status1.equalsIgnoreCase("")) {
+                lores.add(dsp.get("friend_menu.head.status", p, ChatColor.translateAlternateColorCodes('&', status1)));
+            }
+            if (!status2.equalsIgnoreCase("")) {
+                lores.add(dsp.get("friend_menu.head.status", p, ChatColor.translateAlternateColorCodes('&', status2)));
+            }
         }
+        builder.withLore(lores);
 
         return new MenuItem(builder.buildStack()) {
             @Override
             public void onClick(Player player) {
-                FriendheadMenu.openFriendheadMenu(player, friend, menu);
+                FriendheadMenu.openFriendheadMenu(player, friend, page);
             }
         };
     }
 
-    public static MenuItem offlineHead(Player p, UUID friend, PopupMenu menu) {
+    public static MenuItem offlineHead(Player p, UUID friend, int page) {
         ItemStackBuilder builder = new ItemStackBuilder(Material.SKELETON_SKULL);
         if (Friend.isFavorite(UUIDFetcher.getUUID(p.getName()), friend)) {
-            builder.withName(dsp.get("friend_menu.head.favorite_name", p, UUIDFetcher.getName(friend)));
+            builder.withName("§e" + dsp.get("friend_menu.head.favorite_name", p, UUIDFetcher.getName(friend)));
         } else {
-            builder.withName(dsp.get("friend_menu.head.name", p, UUIDFetcher.getName(friend)));
+            builder.withName("§7" + dsp.get("friend_menu.head.name", p, UUIDFetcher.getName(friend)));
         }
         ArrayList<String> lores = new ArrayList<>();
 
@@ -69,30 +73,35 @@ public class FriendItems {
         String status2 = UserSettings.getString(friend, "status_line2");
         if (!status1.equalsIgnoreCase("") || !status2.equalsIgnoreCase("")) {
             lores.add("");
-            lores.add(dsp.get("friend_menu.head.status", p, ChatColor.translateAlternateColorCodes('&', status1)));
-            lores.add(dsp.get("friend_menu.head.status", p, ChatColor.translateAlternateColorCodes('&', status2)));
+            if (!status1.equalsIgnoreCase("")) {
+                lores.add(dsp.get("friend_menu.head.status", p, ChatColor.translateAlternateColorCodes('&', status1)));
+            }
+            if (!status2.equalsIgnoreCase("")) {
+                lores.add(dsp.get("friend_menu.head.status", p, ChatColor.translateAlternateColorCodes('&', status2)));
+            }
         }
+        builder.withLore(lores);
 
         return new MenuItem(builder.buildStack()) {
             @Override
             public void onClick(Player player) {
-                FriendheadMenu.openFriendheadMenu(player, friend, menu);
+                FriendheadMenu.openFriendheadMenu(player, friend, page);
             }
         };
     }
 
-    public static MenuItem requestHead(Player p, UUID request, PopupMenu menu) {
+    public static MenuItem requestHead(Player p, UUID request, int friendPage) {
         ItemStackBuilder builder = ItemStackBuilder.fromItemStack(SkullUtils.getPlayerSkull(request));
-        builder.withName(BungeePermsAPI.userPrefix(request.toString(), IMAPI.getServerName(), null) + UUIDFetcher.getName(request));
+        builder.withName(de.Iclipse.IMAPI.Data.tablist.getPrefix(request) + UUIDFetcher.getName(request));
         return new MenuItem(builder.buildStack()) {
             @Override
             public void onClick(Player player) {
-                RequestheadMenu.openRequestheadMenu(p, UUID.randomUUID(), menu);
+                RequestheadMenu.openRequestheadMenu(p, request, friendPage);
             }
         };
     }
 
-    public static MenuItem addFavoriteItem(Player p, UUID uuid) {
+    public static MenuItem addFavoriteItem(Player p, UUID uuid, BackAction action) {
         /*
         ItemStackBuilder builder = ItemStackBuilder.fromItemStack(heads.get("friend_nonfavorite"));
         builder.withName(dsp.get("friend_menu.head_menu.addFavorite", p));
@@ -108,19 +117,19 @@ public class FriendItems {
         ItemStack item = heads.get("friend_nonfavorite");
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(dsp.get("friend_menu.head_menu.addFavorite", p));
-        ArrayList<String> list = (ArrayList<String>) Arrays.asList(new String[]{dsp.get("friend_menu.head_menu.addFavorite.lore", p, UUIDFetcher.getName(uuid))});
+        List<String> list = Arrays.asList(new String[]{dsp.get("friend_menu.head_menu.addFavorite.lore", p, UUIDFetcher.getName(uuid))});
         meta.setLore(list);
         item.setItemMeta(meta);
         return new MenuItem(item) {
             @Override
             public void onClick(Player player) {
                 Friend.setFavorite(UUIDFetcher.getUUID(p.getName()), uuid, true);
-                player.updateInventory();
+                action.onBack(player);
             }
         };
     }
 
-    public static MenuItem removeFavoriteItem(Player p, UUID uuid) {
+    public static MenuItem removeFavoriteItem(Player p, UUID uuid, BackAction action) {
         ItemStackBuilder builder = ItemStackBuilder.fromItemStack(heads.get("friend_favorite"));
         builder.withName(dsp.get("friend_menu.head_menu.removeFavorite", p));
         builder.withLore(dsp.get("friend_menu.head_menu.removeFavorite.lore", p, UUIDFetcher.getName(uuid)));
@@ -128,7 +137,7 @@ public class FriendItems {
             @Override
             public void onClick(Player player) {
                 Friend.setFavorite(UUIDFetcher.getUUID(p.getName()), uuid, false);
-                player.updateInventory();
+                action.onBack(player);
             }
         };
     }
@@ -148,7 +157,7 @@ public class FriendItems {
         };
     }
 
-    public static MenuItem removeFriendItem(Player p, UUID uuid, PopupMenu menu) {
+    public static MenuItem removeFriendItem(Player p, UUID uuid, int page) {
         ItemStackBuilder builder = new ItemStackBuilder(Material.BARRIER);
         builder.withName(dsp.get("friend_menu.head_menu.remove", p));
         builder.withLore(dsp.get("friend_menu.head_menu.remove.lore", p, UUIDFetcher.getName(uuid)));
@@ -156,6 +165,7 @@ public class FriendItems {
             @Override
             public void onClick(Player player) {
                 Friend.deleteFriend(UUIDFetcher.getUUID(p.getName()), uuid);
+                FriendMenu.openFriendMenu(p, page);
             }
         };
     }
@@ -171,14 +181,14 @@ public class FriendItems {
     }
 
 
-    public static MenuItem requestItem(Player p, int amount, PopupMenu menu) {
+    public static MenuItem requestItem(Player p, int amount, int page) {
         ItemStackBuilder builder = new ItemStackBuilder(Material.BOOK);
         builder.withName(dsp.get("friend_menu.requests", p, amount + ""));
         builder.withLore(dsp.get("friend_menu.requests.lore0", p), dsp.get("friend_menu.requests.lore1", p));
         return new MenuItem(builder.buildStack()) {
             @Override
             public void onClick(Player player) {
-                RequestMenu.openRequestMenu(p, menu, 0);
+                RequestMenu.openRequestMenu(p, 0, page);
             }
         };
     }
@@ -217,32 +227,32 @@ public class FriendItems {
         };
     }
 
-    public static MenuItem acceptRequestItem(Player p, UUID uuid, PopupMenu last) {
+    public static MenuItem acceptRequestItem(Player p, UUID uuid, int friendPage) {
         ItemStackBuilder builder = new ItemStackBuilder(Material.GREEN_CONCRETE);
         builder.withName(dsp.get("friend_menu.requesthead_menu.accept", p));
         return new MenuItem(builder.buildStack()) {
             @Override
             public void onClick(Player player) {
                 Friend.accept(UUIDFetcher.getUUID(p.getName()), uuid);
-                last.openMenu(player);
+                RequestMenu.openRequestMenu(p, 0, friendPage);
             }
         };
     }
 
-    public static MenuItem denyRequestItem(Player p, UUID uuid, PopupMenu last) {
+    public static MenuItem denyRequestItem(Player p, UUID uuid, int friendPage) {
         ItemStackBuilder builder = new ItemStackBuilder(Material.RED_CONCRETE);
         builder.withName(dsp.get("friend_menu.requesthead_menu.deny", p));
         return new MenuItem(builder.buildStack()) {
             @Override
             public void onClick(Player player) {
                 Friend.deleteFriend(UUIDFetcher.getUUID(p.getName()), uuid);
-                last.openMenu(player);
+                RequestMenu.openRequestMenu(p, 0, friendPage);
             }
         };
     }
 
 
-    public static MenuItem sortItem(Player p, PopupMenu last) {
+    public static MenuItem sortItem(Player p, int page) {
         ItemStackBuilder builder = new ItemStackBuilder(Material.COMPARATOR);
 
         int option = UserSettings.getInt(UUIDFetcher.getUUID(p.getName()), "friend_sort");
@@ -252,7 +262,7 @@ public class FriendItems {
         return new MenuItem(builder.buildStack()) {
             @Override
             public void onClick(Player player) {
-                FriendSortMenu.openFriendSortMenu(player, last);
+                FriendSortMenu.openFriendSortMenu(player, page);
             }
         };
     }
@@ -275,20 +285,20 @@ public class FriendItems {
         };
     }
 
-    public static MenuItem previousRequestPageItem(Player p, PopupMenu last, int page, int maxPage) {
+    public static MenuItem previousRequestPageItem(Player p, int page, int maxPage, int friendPage) {
         return new MenuItem(ProfileItems.previousPage(p, page, maxPage)) {
             @Override
             public void onClick(Player player) {
-                RequestMenu.openRequestMenu(player, last, page - 1);
+                RequestMenu.openRequestMenu(player, page - 1, friendPage);
             }
         };
     }
 
-    public static MenuItem nextRequestPageItem(Player p, PopupMenu last, int page, int maxPage) {
+    public static MenuItem nextRequestPageItem(Player p, int page, int maxPage, int friendPage) {
         return new MenuItem(ProfileItems.previousPage(p, page, maxPage)) {
             @Override
             public void onClick(Player player) {
-                RequestMenu.openRequestMenu(player, last, page + 1);
+                RequestMenu.openRequestMenu(player, page + 1, friendPage);
             }
         };
     }
@@ -410,14 +420,14 @@ public class FriendItems {
         };
     }
 
-    public static MenuItem toggleItem(Player p, int option, PopupMenu menu) {
+    public static MenuItem toggleItem(Player p, int option, int page) {
         boolean toggled = option == UserSettings.getInt(UUIDFetcher.getUUID(p.getName()), "friend_sort");
         return new MenuItem(ProfileItems.toggleItem(p, toggled)) {
             @Override
             public void onClick(Player player) {
                 if (!toggled) {
                     UserSettings.setInt(UUIDFetcher.getUUID(p.getName()), "friend_sort", option);
-                    FriendSortMenu.openFriendSortMenu(p, menu);
+                    FriendSortMenu.openFriendSortMenu(p, page);
                 }
             }
         };
@@ -426,23 +436,23 @@ public class FriendItems {
     public static String getLastSeen(Player p, UUID uuid) {
         String s = "";
         long seconds = (System.currentTimeMillis() - User.getLastTime(uuid)) / 1000;
-        if (seconds / 60 > 1) {
-            if ((seconds / (60 * 60)) > 1) {
-                if (seconds / (60 * 60 * 24) > 1) {
-                    if (seconds / (60 * 60 * 24 * 7) > 1) {
-                        if (seconds / (60 * 60 * 24 * 30) > 1) {
-                            if (seconds / (60 * 60 * 24 * 365) > 1) {
-                                return seconds / (60 * 60 * 24 * 365) + " " + dsp.get("unit.years", p);
+        if (seconds / 60.0 > 1) {
+            if ((seconds / (60.0 * 60.0)) > 1) {
+                if (seconds / (60.0 * 60.0 * 24) > 1) {
+                    if (seconds / (60.0 * 60.0 * 24 * 7) > 1) {
+                        if (seconds / (60.0 * 60.0 * 24 * 30) > 1) {
+                            if (seconds / (60.0 * 60.0 * 24 * 365) > 1) {
+                                return (int) (seconds / (60.0 * 60.0 * 24 * 365)) + " " + dsp.get("unit.years", p);
                             }
-                            return seconds / (60 * 60 * 24 * 30) + " " + dsp.get("unit.months", p);
+                            return (int) (seconds / (60.0 * 60.0 * 24 * 30)) + " " + dsp.get("unit.months", p);
                         }
-                        return seconds / (60 * 60 * 24 * 7) + " " + dsp.get("unit.weeks", p);
+                        return (int) (seconds / (60.0 * 60.0 * 24 * 7)) + " " + dsp.get("unit.weeks", p);
                     }
-                    return seconds / (60 * 60 * 24) + " " + dsp.get("unit.days", p);
+                    return (int) (seconds / (60.0 * 60.0 * 24)) + " " + dsp.get("unit.days", p);
                 }
-                return seconds / (60 * 60) + " " + dsp.get("unit.hours", p);
+                return (int) (seconds / (60.0 * 60.0)) + " " + dsp.get("unit.hours", p);
             }
-            return seconds / 60 + " " + dsp.get("unit.minutes", p);
+            return (int) (seconds / 60.0) + " " + dsp.get("unit.minutes", p);
         }
         return seconds + " " + dsp.get("unit.seconds", p);
     }

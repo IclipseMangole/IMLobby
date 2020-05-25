@@ -49,7 +49,7 @@ public class Bell {
 
     public static void createBells() {
         bells = new ArrayList<>();
-        bells.add(new Location(Bukkit.getWorld("world"), -13, 68, -127));
+        bells.add(new Location(Bukkit.getWorld("world"), 25, 76, -120));
     }
 
     private static void playBellEffect(Location loc) {

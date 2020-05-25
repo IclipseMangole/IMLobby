@@ -46,10 +46,10 @@ public class NewsMenu {
                     }, i);
                 }
                 if (IMAPI.hasPage(news, 36, page - 1)) {
-                    menu.addMenuItem(NewsItems.previousNewsPageItem(p, page + 1, IMAPI.maxPage(news, 36)), 7, 5);
+                    menu.addMenuItem(NewsItems.previousNewsPageItem(p, page, IMAPI.maxPage(news, 36)), 7, 5);
                 }
                 if (IMAPI.hasPage(news, 36, page + 1)) {
-                    menu.addMenuItem(NewsItems.nextNewsPageItem(p, page - 1, IMAPI.maxPage(news, 36)), 8, 5);
+                    menu.addMenuItem(NewsItems.nextNewsPageItem(p, page, IMAPI.maxPage(news, 36)), 8, 5);
                 }
             } else {
                 menu.addMenuItem(NewsItems.noNewsItem(p), 4, 2);

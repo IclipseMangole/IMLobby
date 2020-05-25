@@ -5,6 +5,7 @@ import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.Iclipse.IMAPI.Util.menu.MenuItem;
 import de.Iclipse.IMAPI.Util.menu.PopupMenu;
 import de.MangoleHD.IMLobby.Data;
+import de.MangoleHD.IMLobby.PopupMenus.ProfileMenu.BackAction;
 import de.MangoleHD.IMLobby.PopupMenus.ProfileMenu.ProfileMenu;
 import de.MangoleHD.IMLobby.StaticClasses.getClothing;
 import org.bukkit.Color;
@@ -15,9 +16,14 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class ClothingMenu {
 
-    public static void openClothingMenu(Player p, PopupMenu old) {
+    public static void openClothingMenu(Player p) {
         //Menu
-        PopupMenu clothing = ProfileMenu.createSubProfileMenu(Data.dsp.get("clothing.title", p), old, p, 3);
+        PopupMenu clothing = ProfileMenu.createSubProfileMenu(Data.dsp.get("clothing.title", p), p, 3, new BackAction() {
+            @Override
+            public void onBack(Player player) {
+                InventoryMenu.openInventoryMenu(p);
+            }
+        });
         //MenuItems
         ItemStack blackleather = new ItemStack(Material.LEATHER_CHESTPLATE);
         LeatherArmorMeta blackmeta = (LeatherArmorMeta) blackleather.getItemMeta();

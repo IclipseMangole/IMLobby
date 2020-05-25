@@ -2,6 +2,8 @@ package de.MangoleHD.IMLobby.Scheduler;
 
 import de.Iclipse.IMAPI.Util.TickParser;
 import de.MangoleHD.IMLobby.Data;
+import de.MangoleHD.IMLobby.Extras.Animations.Animation;
+import de.MangoleHD.IMLobby.Extras.Bell;
 import de.MangoleHD.IMLobby.Extras.SignSystem.SignUpdate;
 import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
 import org.bukkit.Bukkit;
@@ -91,15 +93,13 @@ public class Scheduler {
                     Bukkit.getScheduler().runTask(Data.instance, () -> Bukkit.getWorlds().forEach(world -> world.setTime(TickParser.parse(new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime())))));
                 }
                 seconds = seconds % 60 + 1;
-                /*
+
                 if (!Data.killlag) {
-                    Vent.vent();
-                    Windmill.windmill();
-                    Flag.flag();
-                    Grave.grave();
-                    Bell.bell();
+                    for (Animation animation : animations) {
+                        animation.update();
+                    }
                 }
-                 */
+                Bell.bell();
 
                 Random random = new Random();
                 int mode = random.nextInt(4);

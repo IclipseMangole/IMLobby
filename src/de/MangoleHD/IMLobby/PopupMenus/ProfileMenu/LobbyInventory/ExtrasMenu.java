@@ -4,6 +4,7 @@ package de.MangoleHD.IMLobby.PopupMenus.ProfileMenu.LobbyInventory;
 import de.Iclipse.IMAPI.Data;
 import de.Iclipse.IMAPI.Util.menu.MenuItem;
 import de.Iclipse.IMAPI.Util.menu.PopupMenu;
+import de.MangoleHD.IMLobby.PopupMenus.ProfileMenu.BackAction;
 import de.MangoleHD.IMLobby.PopupMenus.ProfileMenu.ProfileMenu;
 import de.MangoleHD.IMLobby.StaticClasses.getExtras;
 import org.bukkit.Material;
@@ -15,7 +16,12 @@ public class ExtrasMenu {
 
     public static void openExtrasMenu(Player p, PopupMenu old) {
         //Menu
-        PopupMenu extramenu = ProfileMenu.createSubProfileMenu("Extras", old, p, 3);
+        PopupMenu extramenu = ProfileMenu.createSubProfileMenu("Extras", p, 3, new BackAction() {
+            @Override
+            public void onBack(Player player) {
+                InventoryMenu.openInventoryMenu(p);
+            }
+        });
         //Items
         MenuItem rocket = new MenuItem(Data.dsp.get("extras.rocket", p), new ItemStack(Material.FIREWORK_ROCKET)) {
             @Override
