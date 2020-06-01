@@ -20,7 +20,19 @@ public class SignClick implements Listener {
             if (e.getClickedBlock().getType().name().contains("SIGN")) {
                 if (Sign.isSign(e.getClickedBlock().getLocation())) {
                     String server = Sign.getServer(Sign.getId(e.getClickedBlock().getLocation()));
-                    if (Server.getState(server) == State.Lobby) {
+                    State state = Server.getState(server);
+                    if (state == State.Online && e.getPlayer().hasPermission("im.team.join")) {
+                        dsp.send(e.getPlayer(), "sign.allow");
+                        SignUpdate.update();
+                        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                        out.writeUTF("Connect");
+                        out.writeUTF(server);
+                        e.getPlayer().sendPluginMessage(Data.instance, "BungeeCord", out.toByteArray());
+                        System.out.println("Sent to " + server);
+                    } else {
+                        de.Iclipse.IMAPI.Data.dsp.send(e.getPlayer(), "cmd.noperm");
+                    }
+                    if (state == State.Lobby) {
                         if (Server.getPlayers(server) < Server.getMaxPlayers(server)) {
                             dsp.send(e.getPlayer(), "sign.allow");
                             SignUpdate.update();
@@ -28,6 +40,7 @@ public class SignClick implements Listener {
                             out.writeUTF("Connect");
                             out.writeUTF(server);
                             e.getPlayer().sendPluginMessage(Data.instance, "BungeeCord", out.toByteArray());
+                            System.out.println("Sent to " + server);
                         } else {
                             dsp.send(e.getPlayer(), "sign.disallow");
                         }

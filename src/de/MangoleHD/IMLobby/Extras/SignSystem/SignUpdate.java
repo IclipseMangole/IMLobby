@@ -30,7 +30,17 @@ public class SignUpdate {
                                 break;
                             }
                         }
+
                     }
+                    if (Sign.getServer(id) == null) {
+                        for (String server : Server.getServers(mode)) {
+                            if (Server.getState(server).equals(State.Online) && !Sign.hasOtherSignThisServer(server)) {
+                                Sign.setServer(id, server);
+                                break;
+                            }
+                        }
+                    }
+
 
                     updateSign(id, sign);
                 } else {
@@ -44,10 +54,14 @@ public class SignUpdate {
         if (Sign.getServer(id) != null) {
             String server = Sign.getServer(id);
             sign.setLine(0, server);
-            if (Server.getPlayers(server) < Server.getMaxPlayers(server)) {
-                sign.setLine(1, "§0[§2Lobby§0]");
+            if (Server.getState(server) == State.Lobby) {
+                if (Server.getPlayers(server) < Server.getMaxPlayers(server)) {
+                    sign.setLine(1, "§0[§2Lobby§0]");
+                } else {
+                    sign.setLine(1, "§0[§6Full§0]");
+                }
             } else {
-                sign.setLine(1, "§0[§6Full§0]");
+                sign.setLine(1, "§0[§4TeamOnly§0]");
             }
             if (Server.getMap(server) != null) {
                 sign.setLine(2, Server.getMap(server));

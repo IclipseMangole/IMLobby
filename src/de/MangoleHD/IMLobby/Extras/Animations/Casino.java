@@ -15,11 +15,18 @@ public class Casino {
         animations.add(new Location(Bukkit.getWorld("world"), 137, 2, -28));
         animations.add(new Location(Bukkit.getWorld("world"), 132, 2, -28));
         animations.add(new Location(Bukkit.getWorld("world"), 127, 2, -28));
+        animations.add(new Location(Bukkit.getWorld("world"), 122, 2, -28));
+        animations.add(new Location(Bukkit.getWorld("world"), 117, 2, -28));
+        animations.add(new Location(Bukkit.getWorld("world"), 112, 2, -28));
+        animations.add(new Location(Bukkit.getWorld("world"), 107, 2, -28));
+        animations.add(new Location(Bukkit.getWorld("world"), 102, 2, -28));
+        animations.add(new Location(Bukkit.getWorld("world"), 97, 2, -28));
+        animations.add(new Location(Bukkit.getWorld("world"), 92, 2, -28));
 
 
         ArrayList<Location> casinos = new ArrayList<>();
         casinos.add(new Location(Bukkit.getWorld("world"), -21, 64, -87));
 
-        new Animation(3, 9, 25, false, animations, casinos);
+        new Animation(3, 9, 25, true, animations, casinos);
     }
 }

@@ -17,7 +17,7 @@ public class StatusItems {
         ItemStackBuilder builder = new ItemStackBuilder(Material.NAME_TAG);
         builder.withName(dsp.get("status.item.name", p, line + ""));
         ArrayList<String> list = new ArrayList<>();
-        list.add(dsp.get("status.item.lore0", p, UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "status_line" + line)));
+        list.add(dsp.get("status.item.lore0", p, getStatus(p, line)));
         list.add("");
         list.add(dsp.get("status.item.lore1", p));
         list.add(dsp.get("status.item.lore2", p, line + ""));
@@ -48,11 +48,15 @@ public class StatusItems {
 
     public static ItemStack changeLineItem(Player p, int line) {
         ItemStackBuilder builder = new ItemStackBuilder(Material.NAME_TAG);
-        builder.withName(UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "status_line" + line));
+        builder.withName(getStatus(p, line));
         ArrayList<String> list = new ArrayList<>();
         list.add(dsp.get("status.change.lore0", p));
         list.add(dsp.get("status.change.lore1", p));
         builder.withLore(list);
         return builder.buildStack();
+    }
+
+    public static String getStatus(Player p, int line) {
+        return UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "status_line" + line) == null ? "" : UserSettings.getString(UUIDFetcher.getUUID(p.getName()), "status_line" + line);
     }
 }
