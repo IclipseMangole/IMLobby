@@ -29,10 +29,9 @@ public class SignClick implements Listener {
                         out.writeUTF(server);
                         e.getPlayer().sendPluginMessage(Data.instance, "BungeeCord", out.toByteArray());
                         System.out.println("Sent to " + server);
-                    } else {
+                    } else if (state == State.Online) {
                         de.Iclipse.IMAPI.Data.dsp.send(e.getPlayer(), "cmd.noperm");
-                    }
-                    if (state == State.Lobby) {
+                    } else if (state == State.Lobby) {
                         if (Server.getPlayers(server) < Server.getMaxPlayers(server)) {
                             dsp.send(e.getPlayer(), "sign.allow");
                             SignUpdate.update();

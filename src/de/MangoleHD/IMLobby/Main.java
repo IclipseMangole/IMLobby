@@ -60,8 +60,10 @@ public class Main extends JavaPlugin {
         Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false));
         spawn = new Location(Bukkit.getWorld("world"), 0.5, 55, 0.5, 180, 0);
         bossBar = new BossBar(false);
-        Scheduler.startScheduler();
-        Scheduler.startTickScheduler();
+        if (Bukkit.getOnlinePlayers().size() > 0) {
+            Scheduler.startScheduler();
+            Scheduler.startTickScheduler();
+        }
         Bukkit.getWorld("world").setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
         Server.setState(getServerName(), State.Lobby);
         loadCustomHeads();

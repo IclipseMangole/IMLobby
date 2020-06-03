@@ -4,6 +4,7 @@ package de.MangoleHD.IMLobby.Extras.Animations;
 import de.MangoleHD.IMLobby.Data;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 
 import java.util.*;
 
@@ -27,19 +28,16 @@ public class Animation {
         animationBlocks = new ArrayList<>();
         this.projections = new HashMap<>();
 
-        animations.forEach(loc -> {
+        animations.forEach(location -> {
             ArrayList<Material> blocks = new ArrayList<>();
 
-            Location change = loc.clone();
             for (int x = 0; x < length; x++) {
                 for (int y = 0; y < height; y++) {
                     for (int z = 0; z < width; z++) {
-                        blocks.add(change.getBlock().getType());
-                        change.add(0, 0, 1);
+                        Block change = location.getWorld().getBlockAt(location.getBlockX() + x, location.getBlockY() + y, location.getBlockZ() + z);
+                        blocks.add(change.getType());
                     }
-                    change.add(0, 1, -width);
                 }
-                change.add(1, -height, 0);
             }
             animationBlocks.add(blocks);
         });
@@ -61,16 +59,13 @@ public class Animation {
 
             ArrayList<Material> blocks = animationBlocks.get(animation);
 
-            Location change = location.clone();
-            for (int x = 0; x < length; x++) {
-                for (int y = 0; y < height; y++) {
-                    for (int z = 0; z < width; z++) {
-                        change.getBlock().setType(blocks.get((x * (height * width)) + (y * width) + z));
-                        change.add(0, 0, 1);
+            for (int z = 0; z < width; z++) {
+                for (int x = 0; x < length; x++) {
+                    for (int y = 0; y < height; y++) {
+                        Block block = location.getWorld().getBlockAt(location.getBlockX() + x, location.getBlockY() + y, location.getBlockZ() + z);
+                        block.setType(blocks.get((x * (height * width)) + (y * width) + z));
                     }
-                    change.add(0, 1, -width);
                 }
-                change.add(1, -height, 0);
             }
 
             if (circle) {

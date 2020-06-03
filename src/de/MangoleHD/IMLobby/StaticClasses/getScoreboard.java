@@ -29,7 +29,7 @@ public class getScoreboard {
         ss.setLine(5, "§f" + (int) ((User.getOnlinetime(UUIDFetcher.getUUID(p.getName())) + (System.currentTimeMillis() - de.Iclipse.IMAPI.Data.onlinetime.get(p))) / (1000 * 60 * 60)) + " " + dsp.get("unit.hours", p));
         ss.setLine(6, "" + ChatColor.DARK_BLUE);
         ss.setLine(7, dsp.get("scoreboard.friends", p));
-        ss.setLine(8, "§f" + Friend.getFriends(UUIDFetcher.getUUID(p.getName())).size() + "/" + Friend.getOnlineFriends(UUIDFetcher.getUUID(p.getName())).size());
+        ss.setLine(8, "§f" + Friend.getOnlineFriends(UUIDFetcher.getUUID(p.getName())).size() + "/" + Friend.getFriends(UUIDFetcher.getUUID(p.getName())).size());
         ss.setLine(9, "" + ChatColor.DARK_AQUA);
         ss.setLine(10, "§7 ——————————" + ChatColor.LIGHT_PURPLE);
         ss.setLine(11, "§7| §5§lIclipse§r§fMangole§7 |");

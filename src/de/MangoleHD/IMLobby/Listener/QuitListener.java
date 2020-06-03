@@ -1,7 +1,7 @@
 package de.MangoleHD.IMLobby.Listener;
 
 import de.MangoleHD.IMLobby.Data;
-import de.MangoleHD.IMLobby.Extras.Minigames.MiniArena;
+import de.MangoleHD.IMLobby.Scheduler.Scheduler;
 import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -10,7 +10,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import static de.MangoleHD.IMLobby.Data.*;
-import static de.MangoleHD.IMLobby.Extras.Minigames.MiniArena.clearArena;
 import static de.MangoleHD.IMLobby.Extras.Minigames.MiniArena.finishArena;
 
 
@@ -35,12 +34,17 @@ public class QuitListener implements Listener {
         if(Data.fighting.contains(player)){
             int leaver = fighting.indexOf(player);
             fighting.forEach(player2 -> {
-                fighting.set(leaver,player2);
+                fighting.set(leaver, player2);
             });
             Bukkit.getOnlinePlayers().forEach(entry -> {
-                dsp.send(entry,"miniArena.quit",player.getDisplayName(),fighting.get(leaver).getDisplayName());
+                dsp.send(entry, "miniArena.quit", player.getDisplayName(), fighting.get(leaver).getDisplayName());
             });
             finishArena();
+        }
+
+        if (Bukkit.getOnlinePlayers().size() == 0) {
+            Scheduler.stopScheduler();
+            Scheduler.stopTickScheduler();
         }
 
     }

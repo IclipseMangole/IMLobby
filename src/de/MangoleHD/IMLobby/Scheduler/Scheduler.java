@@ -132,7 +132,7 @@ public class Scheduler {
     public static void startTickScheduler() {
         scheduler2 = Bukkit.getScheduler().runTaskTimerAsynchronously(instance, () -> {
             bossBar.update();
-        }, 0, 2);
+        }, 0, 3);
     }
 
     public static void stopTickScheduler() {
