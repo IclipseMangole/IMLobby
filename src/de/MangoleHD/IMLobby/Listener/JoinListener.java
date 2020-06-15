@@ -1,9 +1,9 @@
 package de.MangoleHD.IMLobby.Listener;
 
+import de.Iclipse.IMAPI.Database.User;
 import de.Iclipse.IMAPI.Database.UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.MangoleHD.IMLobby.Scheduler.Scheduler;
-import de.MangoleHD.IMLobby.StaticClasses.getScoreboard;
 import de.MangoleHD.IMLobby.StaticClasses.getVisibility;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -23,7 +23,7 @@ public class JoinListener implements Listener {
     public void JoinListener(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
-
+        User.createUser(uuid);
         if (Bukkit.getOnlinePlayers().size() == 1) {
             Scheduler.startScheduler();
             Scheduler.startTickScheduler();
@@ -59,7 +59,7 @@ public class JoinListener implements Listener {
             }
         });
 
-        getScoreboard.createScoreboard(p);
+
         p.teleport(new Location(p.getWorld(), 0.5, 55, 0.5, 0, 0));
         p.getActivePotionEffects().clear();
         p.teleport(spawn);

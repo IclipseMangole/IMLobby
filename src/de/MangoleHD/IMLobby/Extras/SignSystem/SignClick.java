@@ -28,7 +28,6 @@ public class SignClick implements Listener {
                         out.writeUTF("Connect");
                         out.writeUTF(server);
                         e.getPlayer().sendPluginMessage(Data.instance, "BungeeCord", out.toByteArray());
-                        System.out.println("Sent to " + server);
                     } else if (state == State.Online) {
                         de.Iclipse.IMAPI.Data.dsp.send(e.getPlayer(), "cmd.noperm");
                     } else if (state == State.Lobby) {
@@ -39,7 +38,6 @@ public class SignClick implements Listener {
                             out.writeUTF("Connect");
                             out.writeUTF(server);
                             e.getPlayer().sendPluginMessage(Data.instance, "BungeeCord", out.toByteArray());
-                            System.out.println("Sent to " + server);
                         } else {
                             dsp.send(e.getPlayer(), "sign.disallow");
                         }

@@ -19,19 +19,19 @@ public class QuitListener implements Listener {
     public void onQuit(PlayerQuitEvent e) {
         e.setQuitMessage(null);
         Player player = e.getPlayer();
-        Bukkit.getOnlinePlayers().forEach(entry -> {
-            dsp.send(entry, "quit.message", e.getPlayer().getDisplayName());
-        });
+        for (Player entry1 : Bukkit.getOnlinePlayers()) {
+            dsp.send(entry1, "quit.message", e.getPlayer().getDisplayName());
+        }
         if (getScoreboard.boards.containsKey(e.getPlayer())) {
             System.out.println("Scoreboard Destroyed");
             getScoreboard.boards.get(e.getPlayer()).destroy();
         }
 
-        if(Data.waiting.contains(player)){
+        if (Data.waiting.contains(player)) {
             waiting.remove(player);
         }
 
-        if(Data.fighting.contains(player)){
+        if (Data.fighting.contains(player)) {
             int leaver = fighting.indexOf(player);
             fighting.forEach(player2 -> {
                 fighting.set(leaver, player2);
@@ -41,8 +41,11 @@ public class QuitListener implements Listener {
             });
             finishArena();
         }
+        getScoreboard.boards.remove(player);
 
-        if (Bukkit.getOnlinePlayers().size() == 0) {
+        System.out.println(Bukkit.getOnlinePlayers().size());
+        if (Bukkit.getOnlinePlayers().size() == 1) {
+            System.out.println("Scheduler wird gestoppt!");
             Scheduler.stopScheduler();
             Scheduler.stopTickScheduler();
         }

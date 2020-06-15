@@ -73,6 +73,7 @@ public class Scheduler {
     static int seconds;
 
     public static void startScheduler() {
+        System.out.println("Scheduler started");
         scheduler = Bukkit.getScheduler().runTaskTimer(Data.instance, new Runnable() {
             @Override
             public void run() {
@@ -126,6 +127,7 @@ public class Scheduler {
     }
 
     public static void stopScheduler() {
+        System.out.println("Scheduler gestoppt");
         scheduler.cancel();
     }
 

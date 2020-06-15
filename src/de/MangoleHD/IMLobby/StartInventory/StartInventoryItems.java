@@ -15,7 +15,9 @@ public class StartInventoryItems {
     public static ItemStack getCompass(Player p) {
         ItemStack compass = new ItemStack(Material.COMPASS);
         ItemMeta comp = compass.getItemMeta();
-        comp.setDisplayName(Data.dsp.get("startinventory.name.teleporter", p));
+        System.out.println("Wird ausgeführt!");
+        String displayname = Data.dsp.get("startinventory.name.teleporter", p);
+        comp.setDisplayName(displayname);
         comp.setLore(Arrays.asList(new String[]{Data.dsp.get("startinventory.lore.teleporter", p)}));
         compass.setItemMeta(comp);
         return compass;

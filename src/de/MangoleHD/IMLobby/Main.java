@@ -102,22 +102,20 @@ public class Main extends JavaPlugin {
     }
 
     public void loadResourceBundles() {
+        HashMap<String, ResourceBundle> langs = new HashMap<>();
         try {
-            HashMap<String, ResourceBundle> langs = new HashMap<>();
             langDE = ResourceBundle.getBundle("i18n.langDE");
             langEN = ResourceBundle.getBundle("i18n.langEN");
-            langs.put("DE", langDE);
-            langs.put("EN", langEN);
-            Data.dsp = new Dispatcher(this,
-                    langs);
         } catch (MissingResourceException e) {
-            e.printStackTrace();
             de.Iclipse.IMAPI.Data.dispatching = false;
-        } catch (NullPointerException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
             System.out.println("Reload oder Bundle not found!");
             de.Iclipse.IMAPI.Data.dispatching = false;
         }
+        langs.put("DE", langDE);
+        langs.put("EN", langEN);
+        Data.dsp = new Dispatcher(this,
+                langs);
     }
 
     public void loadWorld() {
@@ -133,6 +131,7 @@ public class Main extends JavaPlugin {
         try {
             copyFilesInDirectory(from, to);
             Files.copy(new File("/home/IMNetzwerk/BuildServer/IMLobby_world/level.dat").toPath(), new File(Data.instance.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + "/world/level.dat").toPath(), StandardCopyOption.REPLACE_EXISTING);
+            new File(Data.instance.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + "/world/data").mkdir();
         } catch (IOException e) {
             e.printStackTrace();
         }
