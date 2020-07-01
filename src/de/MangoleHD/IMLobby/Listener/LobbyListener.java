@@ -3,7 +3,6 @@ package de.MangoleHD.IMLobby.Listener;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.MangoleHD.IMLobby.Data;
 import org.bukkit.GameMode;
-import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,10 +12,8 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
 
-import javax.swing.*;
 import java.util.UUID;
 
 public class LobbyListener implements Listener {
@@ -52,7 +49,6 @@ public class LobbyListener implements Listener {
     @EventHandler
     public void BlockBreak(BlockBreakEvent e) {
         Player p = e.getPlayer();
-        UUID uuid = UUIDFetcher.getUUID(p.getName());
         if (!p.getGameMode().equals(GameMode.CREATIVE)) {
             if(!Data.fighting.contains(p)) {
                 e.setCancelled(true);
