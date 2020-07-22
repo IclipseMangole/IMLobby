@@ -119,14 +119,12 @@ public class Main extends JavaPlugin {
     }
 
     public void loadWorld() {
-        //if (mapUpdate) {
         File from = new File("/home/IMNetzwerk/BuildServer/IMLobby_world/region");
         File to = new File(Data.instance.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + "/world/region");
 
         if (to.exists()) {
             IMAPI.deleteFile(new File(Data.instance.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + "/world"));
         }
-        //if (to.getTotalSpace() != from.getTotalSpace()) {
 
         try {
             copyFilesInDirectory(from, to);
@@ -135,18 +133,6 @@ public class Main extends JavaPlugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //}
-        /*
-            } else {
-                try {
-                    copyFilesInDirectory(from, to);
-                    Files.copy(new File("/home/IMNetzwerk/BuildServer/IMLobby_world/level.dat").toPath(), new File(Data.instance.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + "/world/level.dat").toPath(), StandardCopyOption.REPLACE_EXISTING);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-         */
     }
 
     public static void createExtras() {
