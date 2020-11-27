@@ -22,10 +22,7 @@ public class QuitListener implements Listener {
         for (Player entry1 : Bukkit.getOnlinePlayers()) {
             dsp.send(entry1, "quit.message", e.getPlayer().getDisplayName());
         }
-        if (getScoreboard.boards.containsKey(e.getPlayer())) {
-            System.out.println("Scoreboard Destroyed");
-            getScoreboard.boards.get(e.getPlayer()).destroy();
-        }
+
 
         if (Data.waiting.contains(player)) {
             waiting.remove(player);
@@ -41,7 +38,6 @@ public class QuitListener implements Listener {
             });
             finishArena();
         }
-        getScoreboard.boards.remove(player);
 
         System.out.println(Bukkit.getOnlinePlayers().size());
         if (Bukkit.getOnlinePlayers().size() == 1) {

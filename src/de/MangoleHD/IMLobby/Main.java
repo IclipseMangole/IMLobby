@@ -1,6 +1,6 @@
 package de.MangoleHD.IMLobby;
 
-import de.Iclipse.IMAPI.Database.Server;
+import de.Iclipse.IMAPI.Database.ServerManager;
 import de.Iclipse.IMAPI.Functions.Servers.State;
 import de.Iclipse.IMAPI.IMAPI;
 import de.Iclipse.IMAPI.Util.Dispatching.Dispatcher;
@@ -65,7 +65,7 @@ public class Main extends JavaPlugin {
             Scheduler.startTickScheduler();
         }
         Bukkit.getWorld("world").setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
-        Server.setState(getServerName(), State.Lobby);
+        ServerManager.setState(getServerName(), State.Lobby);
         loadCustomHeads();
     }
 
@@ -119,7 +119,7 @@ public class Main extends JavaPlugin {
     }
 
     public void loadWorld() {
-        File from = new File("/home/IMNetzwerk/BuildServer/IMLobby_world/region");
+        File from = new File("C:/Users/yanni/Desktop/IMNetzwerk/BuildServer/IMLobby_world/region");
         File to = new File(Data.instance.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + "/world/region");
 
         if (to.exists()) {
@@ -128,7 +128,7 @@ public class Main extends JavaPlugin {
 
         try {
             copyFilesInDirectory(from, to);
-            Files.copy(new File("/home/IMNetzwerk/BuildServer/IMLobby_world/level.dat").toPath(), new File(Data.instance.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + "/world/level.dat").toPath(), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(new File("C:/Users/yanni/Desktop/IMNetzwerk/BuildServer/IMLobby_world/level.dat").toPath(), new File(Data.instance.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + "/world/level.dat").toPath(), StandardCopyOption.REPLACE_EXISTING);
             new File(Data.instance.getDataFolder().getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath() + "/world/data").mkdir();
         } catch (IOException e) {
             e.printStackTrace();

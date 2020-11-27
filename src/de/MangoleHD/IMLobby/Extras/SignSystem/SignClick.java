@@ -2,7 +2,7 @@ package de.MangoleHD.IMLobby.Extras.SignSystem;
 
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
-import de.Iclipse.IMAPI.Database.Server;
+import de.Iclipse.IMAPI.Database.ServerManager;
 import de.Iclipse.IMAPI.Database.Sign;
 import de.Iclipse.IMAPI.Functions.Servers.State;
 import de.MangoleHD.IMLobby.Data;
@@ -20,7 +20,7 @@ public class SignClick implements Listener {
             if (e.getClickedBlock().getType().name().contains("SIGN")) {
                 if (Sign.isSign(e.getClickedBlock().getLocation())) {
                     String server = Sign.getServer(Sign.getId(e.getClickedBlock().getLocation()));
-                    State state = Server.getState(server);
+                    State state = ServerManager.getState(server);
                     if (state == State.Online && e.getPlayer().hasPermission("im.team.join")) {
                         dsp.send(e.getPlayer(), "sign.allow");
                         SignUpdate.update();
@@ -31,7 +31,7 @@ public class SignClick implements Listener {
                     } else if (state == State.Online) {
                         de.Iclipse.IMAPI.Data.dsp.send(e.getPlayer(), "cmd.noperm");
                     } else if (state == State.Lobby) {
-                        if (Server.getPlayers(server) < Server.getMaxPlayers(server)) {
+                        if (ServerManager.getPlayers(server) < ServerManager.getMaxPlayers(server)) {
                             dsp.send(e.getPlayer(), "sign.allow");
                             SignUpdate.update();
                             ByteArrayDataOutput out = ByteStreams.newDataOutput();
