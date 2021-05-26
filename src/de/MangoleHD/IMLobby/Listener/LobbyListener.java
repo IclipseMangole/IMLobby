@@ -2,6 +2,7 @@ package de.MangoleHD.IMLobby.Listener;
 
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
 import de.MangoleHD.IMLobby.Data;
+import de.MangoleHD.IMLobby.IMLobby;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -18,13 +19,19 @@ import java.util.UUID;
 
 public class LobbyListener implements Listener {
 
+    private IMLobby imLobby;
+
+    public LobbyListener(IMLobby imLobby) {
+        this.imLobby = imLobby;
+    }
+
     @EventHandler
     public void Damage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player) {
             Player p = ((Player) e.getEntity()).getPlayer();
-            if (!Data.fighting.contains(p)) {
+            if (!imLobby.getData().getFighting().contains(p)) {
                 if (e.getCause().equals(EntityDamageEvent.DamageCause.VOID)) {
-                    p.teleport(Data.spawn);
+                    p.teleport(imLobby.getData().getSpawn());
                     p.playSound(p.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
                     e.setDamage(0);
                     p.setHealth(20);
@@ -39,7 +46,7 @@ public class LobbyListener implements Listener {
     public void Hunger(FoodLevelChangeEvent e) {
         if (e.getEntity() instanceof Player) {
             Player p = ((Player) e.getEntity()).getPlayer();
-            if (!Data.fighting.contains(p)) {
+            if (!imLobby.getData().getFighting().contains(p)) {
                 e.setCancelled(true);
                 p.setFoodLevel(20);
             }
@@ -50,7 +57,7 @@ public class LobbyListener implements Listener {
     public void BlockBreak(BlockBreakEvent e) {
         Player p = e.getPlayer();
         if (!p.getGameMode().equals(GameMode.CREATIVE)) {
-            if(!Data.fighting.contains(p)) {
+            if(!imLobby.getData().getFighting().contains(p)) {
                 e.setCancelled(true);
             }
         }
@@ -61,7 +68,7 @@ public class LobbyListener implements Listener {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if (!p.getGameMode().equals(GameMode.CREATIVE)) {
-            if(!Data.fighting.contains(p)) {
+            if(!imLobby.getData().getFighting().contains(p)) {
                 e.setCancelled(true);
             }
         }

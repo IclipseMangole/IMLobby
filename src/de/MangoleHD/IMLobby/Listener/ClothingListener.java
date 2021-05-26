@@ -1,9 +1,8 @@
 package de.MangoleHD.IMLobby.Listener;
 
-import de.Iclipse.IMAPI.Database.UserSettings;
 import de.Iclipse.IMAPI.Util.UUIDFetcher;
-import de.MangoleHD.IMLobby.Data;
-import de.MangoleHD.IMLobby.Scheduler.Scheduler;
+import de.MangoleHD.IMLobby.Functions.Scheduler.Scheduler;
+import de.MangoleHD.IMLobby.IMLobby;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -21,13 +20,20 @@ import org.bukkit.util.Vector;
 import java.util.UUID;
 
 public class ClothingListener implements Listener {
+    
+    private final IMLobby imLobby;
 
+    public ClothingListener(IMLobby imLobby) {
+        this.imLobby = imLobby;
+    }
+
+    //TODO
     @EventHandler
     public void onThief(PlayerMoveEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
-        if (!Data.fighting.contains(p)) {
-            if (UserSettings.getString(uuid, "clothing").equals("thief")) {
+        if (!imLobby.getData().getFighting().contains(p)) {
+            if (imLobby.getData().getIMAPI().getData().getUserSettingsTable().getString(uuid, "clothing").equals("thief")) {
                 PotionEffect speed = new PotionEffect(PotionEffectType.SPEED, 20, 4);
                 p.addPotionEffect(speed);
             }
@@ -38,10 +44,10 @@ public class ClothingListener implements Listener {
     public void onJumper(PlayerToggleFlightEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
-        if (!Data.fighting.contains(p)) {
+        if (!imLobby.getData().getFighting().contains(p)) {
             if (!p.getGameMode().equals(GameMode.CREATIVE)) {
                 e.setCancelled(true);
-                if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
+                if (imLobby.getData().getIMAPI().getData().getUserSettingsTable().getString(uuid, "clothing").equals("jumper")) {
                     Vector v = p.getLocation().getDirection().multiply(1).setY(1);
                     p.setVelocity(v);
                     p.setAllowFlight(false);
@@ -55,18 +61,18 @@ public class ClothingListener implements Listener {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
         if (!p.getGameMode().equals(GameMode.CREATIVE)) {
-            if (!Data.fighting.contains(p)) {
-                if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
+            if (!imLobby.getData().getFighting().contains(p)) {
+                if (imLobby.getData().getIMAPI().getData().getUserSettingsTable().getString(uuid, "clothing").equals("jumper")) {
                     if (!p.isSneaking()) {
                         if (p.isOnGround()) {
-                            Data.sneakjumper.put(p, 0);
+                            imLobby.getData().getSneakjumper().put(p, 0);
                         }
                     } else {
-                        if (Data.sneakjumper.containsKey(p)) {
-                            Vector v = p.getLocation().getDirection().setX(0).setZ(0).setY(Data.sneakjumper.get(p) / 10);
+                        if (imLobby.getData().getSneakjumper().containsKey(p)) {
+                            Vector v = p.getLocation().getDirection().setX(0).setZ(0).setY(imLobby.getData().getSneakjumper().get(p) / 10);
                             p.setVelocity(v);
                             p.setAllowFlight(false);
-                            Data.sneakjumper.remove(p);
+                            imLobby.getData().getGhost().remove(p);
                         }
                     }
                 }
@@ -78,9 +84,9 @@ public class ClothingListener implements Listener {
     public void onJumperGround(PlayerMoveEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
-        if (!Data.fighting.contains(p))
+        if (!imLobby.getData().getFighting().contains(p))
             if (p.isOnGround()) {
-                if (UserSettings.getString(uuid, "clothing").equals("jumper")) {
+                if (imLobby.getData().getIMAPI().getData().getUserSettingsTable().getString(uuid, "clothing").equals("jumper")) {
                     p.setAllowFlight(true);
                 }
             }
@@ -90,12 +96,12 @@ public class ClothingListener implements Listener {
     public void onSneakGhost(PlayerToggleSneakEvent e) {
         Player p = e.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(p.getName());
-        if (!Data.fighting.contains(p)) {
-            if (UserSettings.getString(uuid, "clothing").equals("ghost")) {
+        if (!imLobby.getData().getFighting().contains(p)) {
+            if (imLobby.getData().getIMAPI().getData().getUserSettingsTable().getString(uuid, "clothing").equals("ghost")) {
                 if (!p.isSneaking()) {
-                    Data.ghost.add(p);
+                    imLobby.getData().getGhost().add(p);
                 } else {
-                    Data.ghost.remove(p);
+                    imLobby.getData().getGhost().remove(p);
                 }
             }
         }
@@ -105,8 +111,8 @@ public class ClothingListener implements Listener {
     public void onKing(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(player.getName());
-        if (!Data.fighting.contains(player)) {
-            if (UserSettings.getString(uuid, "clothing").equals("king")) {
+        if (!imLobby.getData().getFighting().contains(player)) {
+            if (imLobby.getData().getIMAPI().getData().getUserSettingsTable().getString(uuid, "clothing").equals("king")) {
                 if (!event.getTo().getBlock().getType().equals(Material.AIR) && player.isOnGround() && !event.getFrom().getBlock().getType().equals(Material.AIR)) {
                     Location change = player.getLocation();
                     change.setY(change.getY() - 1);
@@ -123,8 +129,8 @@ public class ClothingListener implements Listener {
     public void onKingSneak(PlayerToggleSneakEvent event) {
         Player player = event.getPlayer();
         UUID uuid = UUIDFetcher.getUUID(player.getName());
-        if (!Data.fighting.contains(player)) {
-            if (UserSettings.getString(uuid, "clothing").equals("king")) {
+        if (!imLobby.getData().getFighting().contains(player)) {
+            if (imLobby.getData().getIMAPI().getData().getUserSettingsTable().getString(uuid, "clothing").equals("king")) {
                 if (!player.isSneaking()) {
                     Location loc = player.getLocation();
                 }
